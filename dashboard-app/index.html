@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Dashboard</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Home">
+<meta name="theme-color" content="#F7F5F0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<style>
+  :root{
+    --harry:#2E5FE8;--freddie:#8B5CF6;--dad:#2F9E5A;--family:#F2994A;--special:#E5484D;
+    --ink:#1C1F26;--paper:#F7F5F0;--card:#FFFFFF;--line:#E4E0D8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,'Segoe UI',system-ui,sans-serif;background:var(--paper);color:var(--ink);padding:24px;max-width:900px;margin:0 auto;}
+  header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;border-bottom:3px solid var(--ink);padding-bottom:12px;flex-wrap:wrap;gap:10px;}
+  h1{font-size:1.6rem;letter-spacing:-0.02em;}
+  .badge{display:inline-block;background:var(--ink);color:#fff;font-size:0.7rem;padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;}
+  .updated{font-size:0.85rem;color:#666;margin-top:2px;}
+  .printbtn{background:var(--ink);color:#fff;border:none;border-radius:8px;padding:9px 16px;font-size:0.85rem;font-weight:600;cursor:pointer;white-space:nowrap;}
+  .printbtn:hover{opacity:0.85;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:600px){.grid{grid-template-columns:1fr;}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;border-left:6px solid var(--family);}
+  .card h2{font-size:1rem;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .card.harry{border-left-color:var(--harry);} .card.freddie{border-left-color:var(--freddie);}
+  .card.dad{border-left-color:var(--dad);} .card.family{border-left-color:var(--family);} .card.special{border-left-color:var(--special);}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0;}
+  .dot.harry{background:var(--harry);} .dot.freddie{background:var(--freddie);} .dot.dad{background:var(--dad);}
+  .dot.family{background:var(--family);} .dot.special{background:var(--special);}
+  ul{list-style:none;font-size:0.9rem;line-height:1.5;}
+  li{border-bottom:1px dashed var(--line);}
+  li:last-child{border-bottom:none;}
+  li a{display:flex;gap:8px;align-items:flex-start;padding:7px 4px;color:inherit;text-decoration:none;border-radius:6px;}
+  li a:hover{background:#F0EEE7;}
+  li a .arrow{margin-left:auto;color:#aaa;flex-shrink:0;}
+  li .plain{display:flex;gap:8px;padding:7px 4px;}
+  .time{font-weight:600;color:#555;flex-shrink:0;}
+  .tag{font-size:0.68rem;color:#999;display:block;margin-top:1px;}
+  .full{grid-column:1/-1;}
+  .key{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;font-size:0.8rem;color:#555;}
+  .key span{display:flex;align-items:center;gap:5px;}
+  
+  .li-row{display:flex;align-items:flex-start;gap:8px;padding:7px 4px;border-radius:6px;}
+  .li-row .txt-block{flex:1;min-width:0;}
+  .li-row a.linkwrap{display:flex;gap:8px;flex:1;min-width:0;color:inherit;text-decoration:none;}
+  .li-row a.linkwrap:hover{background:#F0EEE7;border-radius:6px;}
+  .status-btns{display:flex;gap:4px;flex-shrink:0;margin-left:6px;}
+  .status-btn{
+    font-size:0.65rem;font-weight:700;border:1px solid var(--line);background:#fff;color:#999;
+    border-radius:20px;padding:3px 9px;cursor:pointer;white-space:nowrap;
+  }
+  .status-btn.underway.active{background:#FFF3E0;border-color:#FF8A3D;color:#B85C00;}
+  .status-btn.done.active{background:#E6F4EA;border-color:#2F9E5A;color:#1F7A44;}
+  li.is-underway{background:#FFFCF6;}
+  li.is-done{display:none;}
+
+  .note{font-size:0.78rem;color:#888;margin-top:20px;border-top:1px solid var(--line);padding-top:10px;line-height:1.5;}
+
+  /* ---- Print snapshot ---- */
+  #printSheet{display:none;}
+  @media print{
+    body *{visibility:hidden;}
+    #printSheet, #printSheet *{visibility:visible;}
+    #printSheet{display:block;position:absolute;top:0;left:0;width:100%;padding:20px;}
+    .printbtn{display:none;}
+  }
+  .p-header{border-bottom:3px solid #000;padding-bottom:10px;margin-bottom:16px;}
+  .p-header h1{font-size:1.4rem;}
+  .p-updated{font-size:0.8rem;color:#555;margin-top:2px;}
+  .p-card{border:1px solid #ccc;border-left:5px solid #999;border-radius:6px;padding:12px 14px;margin-bottom:12px;break-inside:avoid;}
+  .p-card.harry{border-left-color:var(--harry);} .p-card.freddie{border-left-color:var(--freddie);}
+  .p-card.dad{border-left-color:var(--dad);} .p-card.family{border-left-color:var(--family);} .p-card.special{border-left-color:var(--special);}
+  .p-card h2{font-size:0.95rem;margin-bottom:8px;}
+  .p-card ul{list-style:none;font-size:0.85rem;}
+  .p-card li{padding:4px 0;border-bottom:1px dashed #ddd;}
+  .p-card li:last-child{border-bottom:none;}
+  .p-time{font-weight:700;margin-right:6px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Home Dashboard <span class="badge">Every evening 6pm</span></h1>
+    <div class="updated">Live pull: Sun 16 Aug, 6:00pm — calendar + inbox</div>
+  </div>
+  <button class="printbtn" onclick="window.print()">🖨️ Print me</button>
+</header>
+
+<div class="grid">
+
+  <div class="card special full">
+    <h2><span class="dot special"></span>Needs attention</h2>
+    <ul>
+      <li data-id="needs-att-1">
+        <div class="li-row">
+          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a004712bd23130f" target="_blank">
+            <span class="txt-block">Harry's Commerce assessment notice — unread<span class="tag">→ opens the school email in Gmail</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('needs-att-1','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('needs-att-1','done')">Done</button>
+          </div>
+        </div>
+      </li>
+      <li data-id="needs-att-2">
+        <div class="li-row">
+          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/19ffa317c31f5b0a" target="_blank">
+            <span class="txt-block">Freddie's English assessment notice — unread<span class="tag">→ opens the school email in Gmail</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('needs-att-2','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('needs-att-2','done')">Done</button>
+          </div>
+        </div>
+      </li>
+      <li data-id="needs-att-3">
+        <div class="li-row">
+          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/19ffe3119477811d" target="_blank">
+            <span class="txt-block">College counsellor emailed about a chat with Harry<span class="tag">→ opens the email in Gmail</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('needs-att-3','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('needs-att-3','done')">Done</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card family">
+    <h2><span class="dot family"></span>Today — Sun 16 Aug</h2>
+    <ul>
+      <li><a href="https://www.google.com/calendar/event?eid=XzhvcWowZHE2NjBvM2NiYTI4aDEzY2I5azhsMmphYjlwOGtvM2ViOWw2dDEzY2Nwbjg0c2syZ2EzNzQgZWRqbWlsbHMxQG0" target="_blank">
+        <span><span class="time">5pm</span> Summer sports registration deadline</span><span class="arrow">↗</span></a></li>
+      <li class="plain"><span class="time">10–11am</span> Church<span class="tag">— link pending calendar migration</span></li>
+    </ul>
+  </div>
+
+  <div class="card dad">
+    <h2><span class="dot dad"></span>School noticeboard</h2>
+    <ul>
+      <li data-id="notice-1">
+        <div class="li-row">
+          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/19ff3eac861de921" target="_blank">
+            <span class="txt-block">Harry's jumper found in lost property — already actioned<span class="tag">→ opens the email thread</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('notice-1','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('notice-1','done')">Done</button>
+          </div>
+        </div>
+      </li>
+      <li data-id="notice-2">
+        <div class="li-row">
+          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/19fef7e3661742fd" target="_blank">
+            <span class="txt-block">Teacher note for Harry: materials &amp; focus in class<span class="tag">→ opens the email thread</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('notice-2','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('notice-2','done')">Done</button>
+          </div>
+        </div>
+      </li>
+      <li data-id="notice-3">
+        <div class="li-row">
+          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/19ffe3e1a554a4ac" target="_blank">
+            <span class="txt-block">SaintsCard auto top-up receipt<span class="tag">→ opens the email — routine, no action</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('notice-3','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('notice-3','done')">Done</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card harry">
+    <h2><span class="dot harry"></span>Harry</h2>
+    <ul>
+      <li><a href="https://www.google.com/calendar/event?eid=Xzc0b2o2aDIyODRyM2ViYTM4ZDBqMmI5azZsMmoyYmExOGNwM2NiYTI3NG9rNGdpNTY0cDQ4YzlsNjRfMjAyNjA4MjRUMDgwMDAwWiBlZGptaWxsczFAbQ" target="_blank">
+        <span><span class="time">Mon 6pm</span> Maths tutor (Sam)</span><span class="arrow">↗</span></a></li>
+      <li class="plain"><span class="time">Wed 4–5:15pm</span> Rugby training<span class="tag">— link pending calendar migration</span></li>
+      <li data-id="harry-commerce">
+        <div class="li-row">
+          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
+            <span class="txt-block">Commerce assessment — due date pending<span class="tag">→ SEQTA (session-dependent — confirm date once Dispatch reads it)</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('harry-commerce','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('harry-commerce','done')">Done</button>
+          </div>
+        </div>
+      </li>
+      <li data-id="harry-science">
+        <div class="li-row">
+          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
+            <span class="txt-block">Science assessment — due date pending<span class="tag">→ SEQTA (session-dependent — confirm date once Dispatch reads it)</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('harry-science','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('harry-science','done')">Done</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card freddie">
+    <h2><span class="dot freddie"></span>Freddie</h2>
+    <ul>
+      <li class="plain"><span class="time">Tue 10am</span> Dr Alex appointment<span class="tag">— link pending calendar migration</span></li>
+      <li class="plain"><span class="time">Wed 4–5:15pm</span> Football training<span class="tag">— link pending calendar migration</span></li>
+      <li><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjA4MjRUMjIxNTAwWiBlZGptaWxsczFAbQ" target="_blank">
+        <span><span class="time">Mon 8:15am</span> STRIVE</span><span class="arrow">↗</span></a></li>
+      <li data-id="freddie-english">
+        <div class="li-row">
+          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
+            <span class="txt-block">English assessment — due date pending<span class="tag">→ SEQTA (session-dependent — confirm date once Dispatch reads it)</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('freddie-english','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('freddie-english','done')">Done</button>
+          </div>
+        </div>
+      </li>
+      <li data-id="freddie-science">
+        <div class="li-row">
+          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
+            <span class="txt-block">Science assessment — due date pending<span class="tag">→ SEQTA (session-dependent — confirm date once Dispatch reads it)</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('freddie-science','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('freddie-science','done')">Done</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card family full">
+    <h2><span class="dot family"></span>This week</h2>
+    <ul>
+      <li class="plain"><span class="time">Thu 20 – Sun 23</span> Possible ski trip (Perisher) — dates look off, worth checking<span class="tag">— link pending calendar migration</span></li>
+      <li class="plain"><span class="time">Sun 23</span> Church, 10–11am<span class="tag">— link pending calendar migration</span></li>
+    </ul>
+  </div>
+
+  <div class="card family full">
+    <h2><span class="dot family"></span>Next 4–6 weeks highlights</h2>
+    <ul>
+      <li><a href="https://www.google.com/calendar/event?eid=XzhsMmo4ZWExNmwwajJiYTU2NG9qZWI5azY4cGsyYmEyNjUyajJiOW82ZDFrOGc5cDYwcGpnaGkxNjQgZWRqbWlsbHMxQG0" target="_blank"><span><span class="time">Wed 2 Sep</span> Father's Day at school</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=XzY0cWphaDltNmtyajZiOWs2dDBrY2I5azcwcGsyYjlwNnAxNDJiOWc4OTBqY2gyMzhsMmo0ZHEyNmcgZWRqbWlsbHMxQG0" target="_blank"><span><span class="time">Tue 8 Sep</span> Dr Ryan Lee — Harry</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=Xzc1MjQ0aGE2NmdxazhiYTY4OHMzZWI5azZsMzQ2YmEyNmNzMzBiOWc4OTFqNGdobDYwcWo2Z3BoNnMgZWRqbWlsbHMxQG0" target="_blank"><span><span class="time">Mon 24 Aug</span> Land Rover — speaker rattle</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=XzhwMzNpY2E0NzByazZiYTQ2NTEzaWI5azZvcms4YjlwNmQwajhiOWg4cDBrY2RxMTZncWplYzFsNm8gZWRqbWlsbHMxQG0" target="_blank"><span><span class="time">Thu 17 Sep, 2pm</span> Dental hygienist — Dr Hocking</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=XzhoMmtjY2k1ODhwMzBiYTU2MG8zZWI5azZrc2syYjlvNzRwamFiYTM2a29qNGQ5aDcwcjRhZTFpNzAgZWRqbWlsbHMxQG0" target="_blank"><span><span class="time">Thu 24 Sep</span> Bistecca before Han Zimmer</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=XzZ0Mmo2ZTlwNnAwazhiOWs4b3AzYWI5azg4czQ0YmExNjBya2FiYTI3NTFrMmNoaTcwcjNnZTIyNjRfMjAyNjA4MjhUMjEwMDAwWiBlZGptaWxsczFAbQ" target="_blank"><span><span class="time">Fri 28 Aug, 7am</span> Pilates (weekly, through Sep)</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=Xzg5MWoyZ3BsNnAyamNiOWg2c3FqNmI5azYxMTNhYjlvNzUyNDZiOW84b28zZWNoazZkMzQyZGhrNmtfMjAyNjA4MjRUMjIxNTAwWiBlZGptaWxsczFAbQ" target="_blank"><span><span class="time">Mon 24 Aug, 7pm</span> Pilates Yin (weekly, through Sep)</span><span class="arrow">↗</span></a></li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="key">
+  <span><span class="dot harry"></span>Harry</span>
+  <span><span class="dot freddie"></span>Freddie</span>
+  <span><span class="dot dad"></span>Dad</span>
+  <span><span class="dot family"></span>Family</span>
+  <span><span class="dot special"></span>Special / urgent</span>
+</div>
+
+<div class="note">Default calendar: edjmills1@gmail.com, cross-referenced against the school calendar for anything important. Fundraising and social notices are shown but kept low priority — not in "Needs attention." Gmail links + edjmills1@gmail.com calendar events are live, tested links. Faded rows are on Home/Mills Family/St Augs sport calendars — once those move to Google Calendar they'll link too.</div>
+
+<!-- ================= PRINT SNAPSHOT — plain text, no hyperlinks ================= -->
+<div id="printSheet">
+  <div class="p-header">
+    <h1>Home Dashboard</h1>
+    <div class="p-updated">Sunday 16 Aug, 6:00pm</div>
+  </div>
+
+  <div class="p-card special">
+    <h2>Needs attention</h2>
+    <ul>
+      <li>Harry's Commerce assessment notice — unread</li>
+      <li>Freddie's English assessment notice — unread</li>
+      <li>College counsellor emailed about a chat with Harry</li>
+    </ul>
+  </div>
+
+  <div class="p-card family">
+    <h2>Today — Sun 16 Aug</h2>
+    <ul>
+      <li><span class="p-time">10–11am</span>Church</li>
+      <li><span class="p-time">5pm</span>Summer sports registration deadline</li>
+    </ul>
+  </div>
+
+  <div class="p-card dad">
+    <h2>School noticeboard</h2>
+    <ul>
+      <li>Harry's jumper found in lost property — already actioned</li>
+      <li>Teacher note for Harry: materials &amp; focus in class</li>
+      <li>SaintsCard auto top-up receipt — routine, no action</li>
+    </ul>
+  </div>
+
+  <div class="p-card harry">
+    <h2>Harry</h2>
+    <ul>
+      <li><span class="p-time">Mon 6pm</span>Maths tutor (Sam)</li>
+      <li><span class="p-time">Wed 4–5:15pm</span>Rugby training</li>
+      <li>Commerce assessment — due date pending</li>
+      <li>Science assessment — due date pending</li>
+    </ul>
+  </div>
+
+  <div class="p-card freddie">
+    <h2>Freddie</h2>
+    <ul>
+      <li><span class="p-time">Tue 10am</span>Dr Alex appointment</li>
+      <li><span class="p-time">Wed 4–5:15pm</span>Football training</li>
+      <li><span class="p-time">Mon 8:15am</span>STRIVE</li>
+      <li>English assessment — due date pending</li>
+      <li>Science assessment — due date pending</li>
+    </ul>
+  </div>
+
+  <div class="p-card family">
+    <h2>This week</h2>
+    <ul>
+      <li><span class="p-time">Thu 20 – Sun 23</span>Possible ski trip (Perisher) — check dates</li>
+      <li><span class="p-time">Sun 23</span>Church, 10–11am</li>
+    </ul>
+  </div>
+
+  <div class="p-card family">
+    <h2>Next 4–6 weeks highlights</h2>
+    <ul>
+      <li><span class="p-time">Wed 2 Sep</span>Father's Day at school</li>
+      <li><span class="p-time">Tue 8 Sep</span>Dr Ryan Lee — Harry</li>
+      <li><span class="p-time">Mon 24 Aug</span>Land Rover — speaker rattle</li>
+      <li><span class="p-time">Thu 17 Sep, 2pm</span>Dental hygienist — Dr Hocking</li>
+      <li><span class="p-time">Thu 24 Sep</span>Bistecca before Han Zimmer</li>
+      <li><span class="p-time">Fri 28 Aug, 7am</span>Pilates (weekly, through Sep)</li>
+      <li><span class="p-time">Mon 24 Aug, 7pm</span>Pilates Yin (weekly, through Sep)</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const STORE_KEY = 'homeDashboardStatus';
+
+  function getStatuses(){
+    try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
+    catch(e){ return {}; }
+  }
+  function saveStatuses(s){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(s)); }
+    catch(e){ /* storage unavailable, status just won't persist */ }
+  }
+
+  function setStatus(id, status){
+    const statuses = getStatuses();
+    // toggle: clicking the same status again reverts to default (not started)
+    statuses[id] = (statuses[id] === status) ? undefined : status;
+    if(statuses[id] === undefined) delete statuses[id];
+    saveStatuses(statuses);
+    applyStatuses();
+  }
+
+  function applyStatuses(){
+    const statuses = getStatuses();
+    document.querySelectorAll('li[data-id]').forEach(li=>{
+      const id = li.dataset.id;
+      const status = statuses[id];
+      li.classList.remove('is-underway','is-done');
+      li.querySelectorAll('.status-btn').forEach(b=>b.classList.remove('active'));
+      if(status === 'underway'){
+        li.classList.add('is-underway');
+        li.querySelector('.status-btn.underway')?.classList.add('active');
+      } else if(status === 'done'){
+        li.classList.add('is-done');
+      }
+    });
+  }
+
+  applyStatuses();
+</script>
+</body>
+</html>

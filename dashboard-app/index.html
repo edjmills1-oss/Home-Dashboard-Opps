@@ -14,6 +14,7 @@
 <style>
 :root{
 --harry:#2E5FE8;--freddie:#8B5CF6;--dad:#2F9E5A;--family:#F2994A;--special:#E5484D;
+--ed:#7C3AED;--shopping:#16A34A;
 --ink:#1C1F26;--paper:#F7F5F0;--card:#FFFFFF;--line:#E4E0D8;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -30,9 +31,11 @@ h1{font-size:1.6rem;letter-spacing:-0.02em;}
 .card h2{font-size:1rem;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .card.harry{border-left-color:var(--harry);} .card.freddie{border-left-color:var(--freddie);}
 .card.dad{border-left-color:var(--dad);} .card.family{border-left-color:var(--family);} .card.special{border-left-color:var(--special);}
+.card.ed{border-left-color:var(--ed);} .card.shopping{border-left-color:var(--shopping);}
 .dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0;}
 .dot.harry{background:var(--harry);} .dot.freddie{background:var(--freddie);} .dot.dad{background:var(--dad);}
 .dot.family{background:var(--family);} .dot.special{background:var(--special);}
+.dot.ed{background:var(--ed);} .dot.shopping{background:var(--shopping);}
 ul{list-style:none;font-size:0.9rem;line-height:1.5;}
 li{border-bottom:1px dashed var(--line);}
 li:last-child{border-bottom:none;}
@@ -43,6 +46,7 @@ li .plain{display:flex;gap:8px;padding:7px 4px;}
 .time{font-weight:600;color:#555;flex-shrink:0;}
 .tag{font-size:0.68rem;color:#999;display:block;margin-top:1px;}
 .full{grid-column:1/-1;}
+.readonly-note{font-size:0.7rem;color:#999;font-weight:400;margin-left:auto;}
 .key{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;font-size:0.8rem;color:#555;}
 .key span{display:flex;align-items:center;gap:5px;}
 
@@ -65,6 +69,7 @@ li.is-done{display:none;}
 .pill.low{background:#EEF1F4;color:#667085;border:1px solid #DCE0E6;}
 .pill.due{background:#FDECEC;color:#B4292D;border:1px solid #F5C2C4;}
 .pill.new{background:#E7F0FF;color:#1A4FCB;border:1px solid #B9D2FF;}
+.pill.action{background:#FFF3E0;color:#B85C00;border:1px solid #FFCC99;}
 
 .note{font-size:0.78rem;color:#888;margin-top:20px;border-top:1px solid var(--line);padding-top:10px;line-height:1.5;}
 
@@ -82,6 +87,7 @@ body *{visibility:hidden;}
 .p-card{border:1px solid #ccc;border-left:5px solid #999;border-radius:6px;padding:12px 14px;margin-bottom:12px;break-inside:avoid;}
 .p-card.harry{border-left-color:var(--harry);} .p-card.freddie{border-left-color:var(--freddie);}
 .p-card.dad{border-left-color:var(--dad);} .p-card.family{border-left-color:var(--family);} .p-card.special{border-left-color:var(--special);}
+.p-card.ed{border-left-color:var(--ed);} .p-card.shopping{border-left-color:var(--shopping);}
 .p-card h2{font-size:0.95rem;margin-bottom:8px;}
 .p-card ul{list-style:none;font-size:0.85rem;}
 .p-card li{padding:4px 0;border-bottom:1px dashed #ddd;}
@@ -94,7 +100,7 @@ body *{visibility:hidden;}
 <header>
 <div>
 <h1>Home Dashboard <span class="badge">Every evening 6pm</span></h1>
-<div class="updated">Live pull: Fri 21 Aug, evening — calendar + inbox + SEQTA (session active, real due dates)</div>
+<div class="updated">Live pull: Tue 25 Aug, evening — calendar + inbox + SEQTA + Google Keep (all sessions active, real due dates &amp; live lists)</div>
 </div>
 <button class="printbtn" onclick="window.print()">🖨️ Print me</button>
 </header>
@@ -106,8 +112,8 @@ body *{visibility:hidden;}
 <ul>
 <li data-id="needs-att-1">
 <div class="li-row">
-<a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
-<span class="txt-block">Harry — Science assessment due <strong>Wed 26 Aug</strong>: Task 3 — Materials Modelling &amp; Data Analysis.<span class="pill due">Due Wed</span><span class="tag">→ opens SEQTA (seqta-p.saintaug.nsw.edu.au)</span></span>
+<a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a036fd377b3fc6a" target="_blank">
+<span class="txt-block">Harry — <strong>Uniform detention Wed 26 Aug</strong>: no sports uniform for PDHPE (2nd time this term). Report to <strong>A2.5 at 12:55</strong>. Entered by Jon McMahon.<span class="pill action">Tomorrow</span><span class="tag">→ opens the teacher's SEQTA notification email in Gmail</span></span>
 </a>
 <div class="status-btns">
 <button class="status-btn underway" onclick="setStatus('needs-att-1','underway')">Underway</button>
@@ -118,7 +124,7 @@ body *{visibility:hidden;}
 <li data-id="needs-att-2">
 <div class="li-row">
 <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
-<span class="txt-block">Harry — Commerce assessment due <strong>Thu 27 Aug</strong>: Task 3 — Investing Extended Response Report.<span class="pill due">Due Thu</span><span class="tag">→ opens SEQTA (seqta-p.saintaug.nsw.edu.au)</span></span>
+<span class="txt-block">Harry — Science assessment due <strong>Wed 26 Aug</strong>: Task 3 — Materials Modelling &amp; Data Analysis.<span class="pill due">Due Wed</span><span class="tag">→ opens SEQTA (seqta-p.saintaug.nsw.edu.au)</span></span>
 </a>
 <div class="status-btns">
 <button class="status-btn underway" onclick="setStatus('needs-att-2','underway')">Underway</button>
@@ -129,7 +135,7 @@ body *{visibility:hidden;}
 <li data-id="needs-att-3">
 <div class="li-row">
 <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
-<span class="txt-block">Freddie — Science assessment due <strong>Mon 31 Aug</strong>: Task 3 — Cells &amp; Classification Data Processing.<span class="pill due">Due Mon</span><span class="tag">→ opens SEQTA (seqta-p.saintaug.nsw.edu.au)</span></span>
+<span class="txt-block">Harry — Commerce assessment due <strong>Thu 27 Aug</strong>: Task 3 — Investing Extended Response Report.<span class="pill due">Due Thu</span><span class="tag">→ opens SEQTA (seqta-p.saintaug.nsw.edu.au)</span></span>
 </a>
 <div class="status-btns">
 <button class="status-btn underway" onclick="setStatus('needs-att-3','underway')">Underway</button>
@@ -139,12 +145,23 @@ body *{visibility:hidden;}
 </li>
 <li data-id="needs-att-4">
 <div class="li-row">
-<a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a01e306dfe81b06" target="_blank">
-<span class="txt-block">Freddie — new SEQTA notification (arrived today): <strong>History</strong> assessment — Task 3 The Aztecs Oral Presentation, due <strong>Thu 3 Sep</strong>.<span class="pill new">New</span><span class="tag">→ opens the SEQTA notification email in Gmail</span></span>
+<a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a036e45e2ded98a" target="_blank">
+<span class="txt-block">Harry — <strong>Year 9 English (ENG10) teacher note</strong> from the Dean of Teaching &amp; Learning: essay on <em>An Inspector Calls</em> (due Tue 1 Sep) will use a provided quote sheet &amp; pre-taught quotes. Provision applies to all <strong>unless you opt out</strong> — decision needed.<span class="pill new">New</span><span class="tag">→ opens the teacher email in Gmail (quote sheet attached)</span></span>
 </a>
 <div class="status-btns">
 <button class="status-btn underway" onclick="setStatus('needs-att-4','underway')">Underway</button>
 <button class="status-btn done" onclick="setStatus('needs-att-4','done')">Done</button>
+</div>
+</div>
+</li>
+<li data-id="needs-att-5">
+<div class="li-row">
+<a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
+<span class="txt-block">Freddie — Science assessment due <strong>Mon 31 Aug</strong>: Task 3 — Cells &amp; Classification Data Processing.<span class="pill due">Due Mon</span><span class="tag">→ opens SEQTA (seqta-p.saintaug.nsw.edu.au)</span></span>
+</a>
+<div class="status-btns">
+<button class="status-btn underway" onclick="setStatus('needs-att-5','underway')">Underway</button>
+<button class="status-btn done" onclick="setStatus('needs-att-5','done')">Done</button>
 </div>
 </div>
 </li>
@@ -156,8 +173,8 @@ body *{visibility:hidden;}
 <ul>
 <li data-id="notice-1">
 <div class="li-row">
-<a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a02155bf939e291" target="_blank">
-<span class="txt-block">Parent Forms — Freddie's student absence request completed its workflow.<span class="tag">→ opens the email — routine confirmation, no action</span></span>
+<a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a03728bbc1b8c7a" target="_blank">
+<span class="txt-block">MTB Program — registration &amp; payment now open for the Summer 2026/27 season (new program structure). Register/pay via the portal if a boy is continuing.<span class="pill low">Optional</span><span class="tag">→ opens the email from Joshua Thomas (Sports Development)</span></span>
 </a>
 <div class="status-btns">
 <button class="status-btn underway" onclick="setStatus('notice-1','underway')">Underway</button>
@@ -167,8 +184,8 @@ body *{visibility:hidden;}
 </li>
 <li data-id="notice-2">
 <div class="li-row">
-<a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a01e2448fc1e023" target="_blank">
-<span class="txt-block">Saints Rugby — parent survey to help shape the 2027 program (2026 season now wrapped up).<span class="pill low">Low</span><span class="tag">→ opens the email — optional survey, low priority</span></span>
+<a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a036662cf09ecdb" target="_blank">
+<span class="txt-block">SaintsCard — Auto Top Up payment received successfully.<span class="tag">→ opens the email — routine receipt, no action</span></span>
 </a>
 <div class="status-btns">
 <button class="status-btn underway" onclick="setStatus('notice-2','underway')">Underway</button>
@@ -183,18 +200,22 @@ body *{visibility:hidden;}
 <h2><span class="dot harry"></span>Harry <span style="font-weight:400;color:#999;font-size:0.8rem;">Year 9</span></h2>
 <ul>
 <li><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
+<span><span class="time">Tue 25 Aug</span> History — Task 1 Timed Response<span class="tag">→ SEQTA assessment (today)</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
 <span><span class="time">Wed 26 Aug</span> Science — Task 3 Materials Modelling &amp; Data Analysis<span class="tag">→ SEQTA assessment</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://mail.google.com/mail/u/0/#all/1a036fd377b3fc6a" target="_blank">
+<span><span class="time">Wed 26 Aug</span> Uniform detention — A2.5 at 12:55 (no PDHPE sports uniform)<span class="tag">→ teacher email in Gmail</span></span><span class="arrow">↗</span></a></li>
 <li><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
 <span><span class="time">Thu 27 Aug</span> Commerce — Task 3 Investing Extended Response Report<span class="tag">→ SEQTA assessment</span></span><span class="arrow">↗</span></a></li>
 <li><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
-<span><span class="time">Tue 1 Sep</span> English — Task 3 Essay<span class="tag">→ SEQTA assessment</span></span><span class="arrow">↗</span></a></li>
+<span><span class="time">Tue 1 Sep</span> English — Task 3 Essay (An Inspector Calls)<span class="tag">→ SEQTA assessment · see ENG10 teacher note above</span></span><span class="arrow">↗</span></a></li>
 <li><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
 <span><span class="time">Thu 3 Sep</span> Maths Core+ — Task 3 Trigonometry, Indices &amp; Linear Relationships Test<span class="tag">→ SEQTA assessment</span></span><span class="arrow">↗</span></a></li>
 <li><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
 <span><span class="time">Mon 14 Sep</span> PDHPE — Task 3 Respectful Relationships Written Response<span class="tag">→ SEQTA assessment</span></span><span class="arrow">↗</span></a></li>
 <li><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
 <span><span class="time">Fri 18 Sep</span> Industrial Tech — Task 3 Theory Examination<span class="tag">→ SEQTA assessment</span></span><span class="arrow">↗</span></a></li>
-<li><a href="https://www.google.com/calendar/event?eid=Xzc0b2o2aDIyODRyM2ViYTM4ZDBqMmI5azZsMmoyYmExOGNwM2NiYTI3NG9rNGdpNTY0cDQ4YzlsNjRfMjAyNjA4MjRUMDgwMDAwWiBlZGptaWxsczFAbQ" target="_blank">
+<li><a href="https://www.google.com/calendar/event?eid=Xzc0b2o2aDIyODRyM2ViYTM4ZDBqMmI5azZsMmoyYmExOGNwM2NiYTI3NG9rNGdpNTY0cDQ4YzlsNjRfMjAyNjA4MzFUMDgwMDAwWiBlZGptaWxsczFAbQ" target="_blank">
 <span><span class="time">Mon 6pm</span> Maths tutor (Sam) — weekly<span class="tag">→ calendar event</span></span><span class="arrow">↗</span></a></li>
 <li><a href="https://www.google.com/calendar/event?eid=XzY0cWphaDltNmtyajZiOWs2dDBrY2I5azcwcGsyYjlwNnAxNDJiOWc4OTBqY2gyMzhsMmo0ZHEyNmcgZWRqbWlsbHMxQG0" target="_blank">
 <span><span class="time">Tue 8 Sep, 4pm</span> Dr Ryan Lee — Harry<span class="tag">→ calendar event</span></span><span class="arrow">↗</span></a></li>
@@ -207,37 +228,39 @@ body *{visibility:hidden;}
 <li><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
 <span><span class="time">Mon 31 Aug</span> Science — Task 3 Cells &amp; Classification Data Processing<span class="tag">→ SEQTA assessment</span></span><span class="arrow">↗</span></a></li>
 <li><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
-<span><span class="time">Thu 3 Sep</span> History — Task 3 The Aztecs Oral Presentation<span class="tag">→ SEQTA assessment (notified today)</span></span><span class="arrow">↗</span></a></li>
+<span><span class="time">Thu 3 Sep</span> History — Task 3 The Aztecs Oral Presentation<span class="tag">→ SEQTA assessment</span></span><span class="arrow">↗</span></a></li>
 <li><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
 <span><span class="time">Mon 7 Sep</span> English — Task 3 Honey Spot Presentation<span class="tag">→ SEQTA assessment</span></span><span class="arrow">↗</span></a></li>
 <li><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
 <span><span class="time">Wed 9 Sep</span> Maths — Task 3 Algebra &amp; Equations Alternate Task<span class="tag">→ SEQTA assessment</span></span><span class="arrow">↗</span></a></li>
 <li><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
 <span><span class="time">Fri 18 Sep</span> Visual Arts — Task 1 Ceramic Communion Creatures<span class="tag">→ SEQTA assessment</span></span><span class="arrow">↗</span></a></li>
-<li><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjA4MjRUMjIxNTAwWiBlZGptaWxsczFAbQ" target="_blank">
-<span><span class="time">Tue 8:15am</span> STRIVE — fortnightly (next Tue 25 Aug)<span class="tag">→ calendar event</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjA5MDdUMjIxNTAwWiBlZGptaWxsczFAbQ" target="_blank">
+<span><span class="time">Tue 8:15am</span> STRIVE — fortnightly (today Tue 25 Aug; next Tue 8 Sep)<span class="tag">→ calendar event</span></span><span class="arrow">↗</span></a></li>
 </ul>
 </div>
 
 <div class="card family full">
-<h2><span class="dot family"></span>This week — Fri 21 to Thu 27 Aug</h2>
+<h2><span class="dot family"></span>This week — Tue 25 to Mon 31 Aug</h2>
 <ul>
-<li><a href="https://www.google.com/calendar/event?eid=XzZ0Mmo2ZTlwNnAwazhiOWs4b3AzYWI5azg4czQ0YmExNjBya2FiYTI3NTFrMmNoaTcwcjNnZTIyNjRfMjAyNjA4MjBUMjEwMDAwWiBlZGptaWxsczFAbQ" target="_blank">
-<span><span class="time">Fri 21, 7am</span> Pilates</span><span class="arrow">↗</span></a></li>
-<li><a href="https://www.google.com/calendar/event?eid=Xzc1MjQ0aGE2NmdxazhiYTY4OHMzZWI5azZsMzQ2YmEyNmNzMzBiOWc4OTFqNGdobDYwcWo2Z3BoNnMgZWRqbWlsbHMxQG0" target="_blank">
-<span><span class="time">Mon 24</span> Drop car at Land Rover — mention driver's speaker rattle</span><span class="arrow">↗</span></a></li>
-<li><a href="https://www.google.com/calendar/event?eid=Xzg4czNnY2kyOGNvM2ViYTE2Y3I0MmI5azYwb2thYmEyNjBzNDZiYTU3MTE0OGMxbDhwMGpnZ2EzNzAgZWRqbWlsbHMxQG0" target="_blank">
-<span><span class="time">Mon 24, 9am</span> Spotlight — curtain measure-up</span><span class="arrow">↗</span></a></li>
-<li><a href="https://www.google.com/calendar/event?eid=Xzc0b2o2aDIyODRyM2ViYTM4ZDBqMmI5azZsMmoyYmExOGNwM2NiYTI3NG9rNGdpNTY0cDQ4YzlsNjRfMjAyNjA4MjRUMDgwMDAwWiBlZGptaWxsczFAbQ" target="_blank">
-<span><span class="time">Mon 24, 6pm</span> Harry — Maths tutor (Sam)</span><span class="arrow">↗</span></a></li>
 <li><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjA4MjRUMjIxNTAwWiBlZGptaWxsczFAbQ" target="_blank">
 <span><span class="time">Tue 25, 8:15am</span> Freddie — STRIVE</span><span class="arrow">↗</span></a></li>
 <li><a href="https://www.google.com/calendar/event?eid=XzZrcmpnaGEzNjEyazRiOWk2NHEzNmI5azZkMWo0YjlwNm9xMzhiOW82c3E0NGNhNjZzcDRjaDFpODQgZWRqbWlsbHMxQG0" target="_blank">
 <span><span class="time">Tue 25, 12pm</span> Butter coming round</span><span class="arrow">↗</span></a></li>
+<li><a href="https://www.google.com/calendar/event?eid=Xzc0cGs4aGE2NjBzamViOWw2Z3JrNmI5azZkMGs0YjlwNjkxMzhiOW43MTJrY2hoajZsMGtjaGhnNmMgZWRqbWlsbHMxQG0" target="_blank">
+<span><span class="time">Wed 26, 10am</span> Message Dan Currie for interview</span><span class="arrow">↗</span></a></li>
 <li><a href="https://www.google.com/calendar/event?eid=XzZnb2s0ZHBoOGdzM2diOWw2b3MzOGI5azhrcWphYjlwNjRzamFiYTU4cDBqYWQ5bDZwMTNhYzlpODQgZWRqbWlsbHMxQG0" target="_blank">
 <span><span class="time">Wed 26</span> Andrew — hospital procedure</span><span class="arrow">↗</span></a></li>
-<li class="plain"><span class="time">Assess.</span> Harry Science due Wed 26 · Harry Commerce due Thu 27<span class="tag">— see Needs attention</span></li>
-<li class="plain"><span class="time">Also</span> Pilates 1-1 &amp; Yin (Mon)<span class="tag">— recurring, on calendar</span></li>
+<li><a href="https://mail.google.com/mail/u/0/#all/1a036fd377b3fc6a" target="_blank">
+<span><span class="time">Wed 26, 12:55</span> Harry — uniform detention (A2.5)</span><span class="arrow">↗</span></a></li>
+<li><a href="https://www.google.com/calendar/event?eid=XzZ0Mmo2ZTlwNnAwazhiOWs4b3AzYWI5azg4czQ0YmExNjBya2FiYTI3NTFrMmNoaTcwcjNnZTIyNjRfMjAyNjA4MjdUMjEwMDAwWiBlZGptaWxsczFAbQ" target="_blank">
+<span><span class="time">Fri 28, 7am</span> Pilates</span><span class="arrow">↗</span></a></li>
+<li><a href="https://www.google.com/calendar/event?eid=XzhnbzM0ZDI0OG9yamdiYTU4NHE0NGI5azg4cWpjYmEyNjBzamliYTY4Y3FqY2dxNDZnczQyZ3BvNmdfMjAyNjA4MzFUMDEzMDAwWiBlZGptaWxsczFAbQ" target="_blank">
+<span><span class="time">Mon 31, 11:30am</span> Dr Glass — Ed (Mona Vale)</span><span class="arrow">↗</span></a></li>
+<li><a href="https://www.google.com/calendar/event?eid=Xzc0b2o2aDIyODRyM2ViYTM4ZDBqMmI5azZsMmoyYmExOGNwM2NiYTI3NG9rNGdpNTY0cDQ4YzlsNjRfMjAyNjA4MzFUMDgwMDAwWiBlZGptaWxsczFAbQ" target="_blank">
+<span><span class="time">Mon 31, 6pm</span> Harry — Maths tutor (Sam)</span><span class="arrow">↗</span></a></li>
+<li class="plain"><span class="time">Assess.</span> Harry Science due Wed 26 · Harry Commerce due Thu 27 · Freddie Science due Mon 31<span class="tag">— see Needs attention</span></li>
+<li class="plain"><span class="time">Also</span> Pilates 1-1 &amp; Yin (Mon 31)<span class="tag">— recurring, on calendar</span></li>
 </ul>
 </div>
 
@@ -261,47 +284,85 @@ body *{visibility:hidden;}
 </ul>
 </div>
 
+<div class="card ed full">
+<h2><span class="dot ed"></span>To-do (Ed) <span class="readonly-note">read-only · live from Google Keep · add on your phone</span></h2>
+<ul>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Send headstone email<span class="tag">→ opens the note in Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Alex plaques for bench and rocks<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Pay school fees — check if I've done them first<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Set up new FB marketplace<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Make a decision on the curtains and blinds and order<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Beaches parking permits<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>A fresh start — what are we doing with our lives<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Cancel Google Play on Alex's phone<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Design the two boxes — one for Alex and one for the trauma; find a picture of them plus one like the one Allyson showed me<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Moved Dr Pauline out to every six weeks<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Rebook doctor appointment<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Update myGov email<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Move my ChatGPT chats across to Claude for more context, especially on the boys and the ops<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Amend will and sign<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Send Daniel Erko stuff — x2 emails<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1YReOeltjzge2UHEinUhJiiTdkcCLDLBXuQ8O9yE45NljSfcrA-n6JXHh7Jq1V-HbrH-ddEhg" target="_blank"><span>Get Harry's blood tests — fasting<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+</ul>
+</div>
+
+<div class="card shopping full">
+<h2><span class="dot shopping"></span>Shopping List <span class="readonly-note">read-only · live from Google Keep · add on your phone</span></h2>
+<ul>
+<li><a href="https://keep.google.com/u/0/#LIST/1ivWLMw3kePsUH3oJFi45DiC3ohJNYM3VI2XFz47HsTyOwJPqz2RnMFKERuPRhI-MGX8cxdL_" target="_blank"><span>Popcorn<span class="tag">→ opens the note in Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1ivWLMw3kePsUH3oJFi45DiC3ohJNYM3VI2XFz47HsTyOwJPqz2RnMFKERuPRhI-MGX8cxdL_" target="_blank"><span>Frozen blueberries<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1ivWLMw3kePsUH3oJFi45DiC3ohJNYM3VI2XFz47HsTyOwJPqz2RnMFKERuPRhI-MGX8cxdL_" target="_blank"><span>Cheese<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1ivWLMw3kePsUH3oJFi45DiC3ohJNYM3VI2XFz47HsTyOwJPqz2RnMFKERuPRhI-MGX8cxdL_" target="_blank"><span>Garlic<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1ivWLMw3kePsUH3oJFi45DiC3ohJNYM3VI2XFz47HsTyOwJPqz2RnMFKERuPRhI-MGX8cxdL_" target="_blank"><span>Fruit<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+<li><a href="https://keep.google.com/u/0/#LIST/1ivWLMw3kePsUH3oJFi45DiC3ohJNYM3VI2XFz47HsTyOwJPqz2RnMFKERuPRhI-MGX8cxdL_" target="_blank"><span>Veg<span class="tag">→ Google Keep</span></span><span class="arrow">↗</span></a></li>
+</ul>
+</div>
+
 </div>
 
 <div class="key">
 <span><span class="dot harry"></span>Harry</span>
 <span><span class="dot freddie"></span>Freddie</span>
-<span><span class="dot dad"></span>Dad</span>
+<span><span class="dot dad"></span>Dad / School</span>
 <span><span class="dot family"></span>Family</span>
 <span><span class="dot special"></span>Special / urgent</span>
+<span><span class="dot ed"></span>Ed to-do</span>
+<span><span class="dot shopping"></span>Shopping</span>
 </div>
 
-<div class="note">Default calendar: edjmills1@gmail.com. The SCGT and Family Google calendars held no events in this window, so school events were cross-referenced from the last 24h of Gmail. <strong>SEQTA was read successfully tonight</strong> — an active session was open, so real assessment titles &amp; due dates are shown for Harry (Year 9) and Freddie (Year 7). SEQTA links point to the portal home (seqta-p.saintaug.nsw.edu.au) as SEQTA doesn't expose stable per-task URLs. Assessments &amp; teacher notes are treated as high priority; the Saints Rugby survey (social) is kept out of "Needs attention". All Gmail thread links and edjmills1@gmail.com calendar links are live.</div>
+<div class="note">Default calendar: edjmills1@gmail.com. The SCGT and Family Google calendars held no events in this window, so school items were cross-referenced from the last 24h of Gmail. <strong>SEQTA was read successfully tonight</strong> — an active session was open, so real assessment titles &amp; due dates are shown for Harry (Year 9) and Freddie (Year 7). SEQTA links point to the portal home (seqta-p.saintaug.nsw.edu.au) as SEQTA doesn't expose stable per-task URLs. <strong>Google Keep was read live</strong> — the To-do (Ed) and Shopping List sections mirror the unchecked items only (checked-off items are excluded as complete); they're read-only here, add items on your phone. Assessments &amp; anything from a teacher/counsellor are treated as high priority; the MTB program registration (co-curricular) is kept out of "Needs attention". All Gmail thread, calendar and Keep links are live.</div>
 
 <!-- ================= PRINT SNAPSHOT — plain text, no hyperlinks ================= -->
 <div id="printSheet">
 <div class="p-header">
 <h1>Home Dashboard</h1>
-<div class="p-updated">Friday 21 Aug, evening</div>
+<div class="p-updated">Tuesday 25 Aug, evening</div>
 </div>
 
 <div class="p-card special">
 <h2>Needs attention today</h2>
 <ul>
+<li>Harry — Uniform detention Wed 26 Aug: report A2.5 at 12:55 (no PDHPE sports uniform, 2nd time)</li>
 <li>Harry — Science assessment due Wed 26 Aug: Task 3 Materials Modelling &amp; Data Analysis</li>
 <li>Harry — Commerce assessment due Thu 27 Aug: Task 3 Investing Extended Response Report</li>
+<li>Harry — Year 9 English (ENG10) teacher note: quote-sheet provision for essay due Tue 1 Sep — opt-out decision needed</li>
 <li>Freddie — Science assessment due Mon 31 Aug: Task 3 Cells &amp; Classification Data Processing</li>
-<li>Freddie — NEW notification today: History Task 3 The Aztecs Oral Presentation, due Thu 3 Sep</li>
 </ul>
 </div>
 
 <div class="p-card dad">
 <h2>School noticeboard</h2>
 <ul>
-<li>Parent Forms — Freddie absence request completed (routine)</li>
-<li>Saints Rugby parent survey — help shape 2027 program (low priority)</li>
+<li>MTB Program — registration &amp; payment open for Summer 2026/27 (optional, if continuing)</li>
+<li>SaintsCard — Auto Top Up payment received (routine)</li>
 </ul>
 </div>
 
 <div class="p-card harry">
 <h2>Harry — Year 9 (SEQTA due dates)</h2>
 <ul>
-<li>Wed 26 Aug — Science Task 3 · Thu 27 Aug — Commerce Task 3</li>
+<li>Tue 25 Aug — History Task 1 (today) · Wed 26 Aug — Science Task 3</li>
+<li>Wed 26 Aug — Uniform detention A2.5 12:55 · Thu 27 Aug — Commerce Task 3</li>
 <li>Tue 1 Sep — English Essay · Thu 3 Sep — Maths Core+ Test</li>
 <li>Mon 14 Sep — PDHPE · Fri 18 Sep — Industrial Tech Theory Exam</li>
 <li>Mon 6pm — Maths tutor (Sam) · Tue 8 Sep 4pm — Dr Ryan Lee</li>
@@ -314,17 +375,16 @@ body *{visibility:hidden;}
 <li>Mon 31 Aug — Science Task 3 · Thu 3 Sep — History (Aztecs)</li>
 <li>Mon 7 Sep — English Honey Spot · Wed 9 Sep — Maths Task 3</li>
 <li>Fri 18 Sep — Visual Arts Ceramic Communion Creatures</li>
-<li>Tue 8:15am — STRIVE (fortnightly, next Tue 25 Aug)</li>
+<li>Tue 8:15am — STRIVE (fortnightly; today, next Tue 8 Sep)</li>
 </ul>
 </div>
-
 <div class="p-card family">
-<h2>This week — Fri 21 to Thu 27 Aug</h2>
+<h2>This week — Tue 25 to Mon 31 Aug</h2>
 <ul>
-<li>Fri 21, 7am — Pilates</li>
-<li>Mon 24 — Land Rover drop-off (speaker rattle) · 9am Spotlight curtain measure · 6pm Harry Maths tutor</li>
 <li>Tue 25, 8:15am — Freddie STRIVE · 12pm Butter round</li>
-<li>Wed 26 — Andrew hospital procedure</li>
+<li>Wed 26 — 10am Message Dan Currie · Andrew hospital procedure · 12:55 Harry detention</li>
+<li>Fri 28, 7am — Pilates</li>
+<li>Mon 31 — 11:30am Dr Glass (Ed) · 6pm Harry Maths tutor · Pilates 1-1 &amp; Yin</li>
 </ul>
 </div>
 
@@ -336,6 +396,23 @@ body *{visibility:hidden;}
 <li>Fri 11 Sep, 7pm — Dinner, Radio Ave crew</li>
 <li>Tue 15 Sep, 12pm — 30·60·90 Peter &amp; Ed</li>
 <li>Thu 24 Sep, 2pm — Dental hygienist (Dr Hocking) · Bistecca before Hans Zimmer</li>
+</ul>
+</div>
+
+<div class="p-card ed">
+<h2>To-do (Ed) — from Google Keep (unchecked)</h2>
+<ul>
+<li>Send headstone email · Alex plaques for bench and rocks · Pay school fees (check first)</li>
+<li>Set up new FB marketplace · Curtains &amp; blinds decision + order · Beaches parking permits</li>
+<li>A fresh start · Cancel Google Play on Alex's phone · Design the two boxes</li>
+<li>Moved Dr Pauline to every 6 weeks · Rebook doctor appointment · Update myGov email</li>
+<li>Move ChatGPT chats to Claude · Amend will &amp; sign · Send Daniel Erko x2 emails · Harry's fasting blood tests</li>
+</ul>
+</div>
+<div class="p-card shopping">
+<h2>Shopping List — from Google Keep (unchecked)</h2>
+<ul>
+<li>Popcorn · Frozen blueberries · Cheese · Garlic · Fruit · Veg</li>
 </ul>
 </div>
 </div>
@@ -379,4 +456,4 @@ li.classList.add('is-done');
 applyStatuses();
 </script>
 </body>
-                                                                                                     </html>
+</html>

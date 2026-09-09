@@ -3,44 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home Dashboard — Monday 7 September 2026</title>
+<title>Home Dashboard — Wednesday 9 September 2026</title>
 <link rel="manifest" href="manifest.json">
 <style>
 :root{
-  --urgent:#c62828;
-  --board:#2e7d32;
-  --harry:#1565c0;
-  --freddie:#6a1b9a;
-  --week:#ef6c00;
-  --ahead:#455a64;
-  --todo:#7c4dff;
-  --shop:#7cb342;
-  --ink:#1c1f23;
-  --muted:#6b7280;
-  --line:#e5e7eb;
-  --bg:#f5f6f8;
-  --card:#ffffff;
+--urgent:#c62828;
+--board:#2e7d32;
+--harry:#1565c0;
+--freddie:#6a1b9a;
+--week:#ef6c00;
+--ahead:#455a64;
+--todo:#7c4dff;
+--shop:#7cb342;
+--ink:#1c1f23;
+--muted:#6b7280;
+--line:#e5e7eb;
+--bg:#f5f6f8;
+--card:#ffffff;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);
-  font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;padding:0 0 60px}
+font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+-webkit-font-smoothing:antialiased;padding:0 0 60px}
 header{background:#12171d;color:#fff;padding:22px 20px 18px}
 .wrap{max-width:900px;margin:0 auto}
 h1{margin:0;font-size:22px;letter-spacing:-.01em}
 .sub{color:#9aa4b2;font-size:13px;margin-top:4px}
 .key{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .key span{font-size:11px;text-transform:uppercase;letter-spacing:.05em;
-  padding:3px 9px;border-radius:99px;color:#fff;font-weight:600}
+padding:3px 9px;border-radius:99px;color:#fff;font-weight:600}
 section{max-width:900px;margin:20px auto;padding:0 20px}
 .card{background:var(--card);border-radius:14px;border:1px solid var(--line);
-  border-left:5px solid var(--c);overflow:hidden;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+border-left:5px solid var(--c);overflow:hidden;box-shadow:0 1px 2px rgba(16,24,40,.04)}
 .hd{padding:14px 18px 12px;border-bottom:1px solid var(--line)}
 .hd h2{margin:0;font-size:15px;font-weight:700;color:var(--c);
-  text-transform:uppercase;letter-spacing:.06em}
+text-transform:uppercase;letter-spacing:.06em}
 .hd .st{font-size:12px;color:var(--muted);margin-top:2px}
 .row{display:flex;gap:12px;align-items:flex-start;padding:12px 18px;
-  border-bottom:1px solid #f1f2f4;transition:opacity .25s,transform .25s}
+border-bottom:1px solid #f1f2f4;transition:opacity .25s,transform .25s}
 .row:last-child{border-bottom:0}
 .row.done{opacity:.32}
 .row .body{flex:1;min-width:0}
@@ -49,435 +49,502 @@ section{max-width:900px;margin:20px auto;padding:0 20px}
 .row .t a:hover{border-bottom-color:currentColor}
 .row .m{font-size:13px;color:var(--muted);margin-top:2px}
 .when{flex:0 0 84px;font-size:11px;font-weight:700;text-transform:uppercase;
-  letter-spacing:.04em;color:var(--c);padding-top:2px}
+letter-spacing:.04em;color:var(--c);padding-top:2px}
 .tick{flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);
-  background:#fff;cursor:pointer;color:var(--muted);font-size:13px;line-height:1;
-  display:flex;align-items:center;justify-content:center;padding:0}
+background:#fff;cursor:pointer;color:var(--muted);font-size:13px;line-height:1;
+display:flex;align-items:center;justify-content:center;padding:0}
 .tick:hover{border-color:var(--c);color:var(--c)}
 .nolink{font-size:11px;color:#b45309;background:#fef3c7;border-radius:4px;
-  padding:1px 6px;margin-left:6px;font-weight:600;white-space:nowrap}
+padding:1px 6px;margin-left:6px;font-weight:600;white-space:nowrap}
+.new{font-size:11px;color:#fff;background:var(--c);border-radius:4px;
+padding:1px 6px;margin-left:6px;font-weight:700;white-space:nowrap;vertical-align:middle}
 .pills{display:flex;flex-wrap:wrap;gap:8px;padding:16px 18px}
 .pill{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;
-  border:1.5px solid var(--c);color:var(--c);background:color-mix(in srgb,var(--c) 8%,#fff);
-  border-radius:99px;padding:6px 8px 6px 14px;max-width:100%;
-  transition:opacity .25s,transform .25s}
+border:1.5px solid var(--c);color:var(--c);background:color-mix(in srgb,var(--c) 8%,#fff);
+border-radius:99px;padding:6px 8px 6px 14px;max-width:100%;
+transition:opacity .25s,transform .25s}
 .pill.done{opacity:0;transform:scale(.9);pointer-events:none;display:none}
 .pill .x{flex:0 0 auto;width:20px;height:20px;border-radius:50%;border:0;cursor:pointer;
-  background:color-mix(in srgb,var(--c) 18%,#fff);color:var(--c);font-size:12px;line-height:1;
-  display:flex;align-items:center;justify-content:center;padding:0}
+background:color-mix(in srgb,var(--c) 18%,#fff);color:var(--c);font-size:12px;line-height:1;
+display:flex;align-items:center;justify-content:center;padding:0}
 .pill .x:hover{background:var(--c);color:#fff}
 .empty{padding:14px 18px;color:var(--muted);font-size:14px;font-style:italic}
 footer{max-width:900px;margin:26px auto 0;padding:0 20px;color:var(--muted);font-size:12px}
 .reset{background:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;
-  font-size:12px;color:var(--muted);cursor:pointer;margin-top:10px}
+font-size:12px;color:var(--muted);cursor:pointer;margin-top:10px}
 @media(max-width:560px){.when{flex-basis:64px;font-size:10px}.row{padding:11px 14px}
-  .hd{padding:12px 14px 10px}.pills{padding:14px}}
+.hd{padding:12px 14px 10px}.pills{padding:14px}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap">
-    <h1>Home Dashboard</h1>
-    <div class="sub">Monday 7 September 2026 &middot; evening build &middot; Harry (Y09) &amp; Freddie (Y07), St Augustine's</div>
-    <div class="key">
-      <span style="background:#c62828">Special / urgent</span>
-      <span style="background:#2e7d32">Noticeboard</span>
-      <span style="background:#1565c0">Harry</span>
-      <span style="background:#6a1b9a">Freddie</span>
-      <span style="background:#ef6c00">This week</span>
-      <span style="background:#455a64">Weeks ahead</span>
-      <span style="background:#7c4dff">Ed</span>
-      <span style="background:#7cb342">Shopping</span>
-    </div>
-  </div>
+<div class="wrap">
+<h1>Home Dashboard</h1>
+<div class="sub">Wednesday 9 September 2026 &middot; evening build &middot; Harry (Y09) &amp; Freddie (Y07), St Augustine's &middot; covers Tue 8 + Wed 9 (Tuesday's build didn't publish)</div>
+<div class="key">
+<span style="background:#c62828">Special / urgent</span>
+<span style="background:#2e7d32">Noticeboard</span>
+<span style="background:#1565c0">Harry</span>
+<span style="background:#6a1b9a">Freddie</span>
+<span style="background:#ef6c00">This week</span>
+<span style="background:#455a64">Weeks ahead</span>
+<span style="background:#7c4dff">Ed</span>
+<span style="background:#7cb342">Shopping</span>
+</div>
+</div>
 </header>
 
 <section><div class="card" style="--c:var(--urgent)">
-  <div class="hd"><h2>1 &middot; Needs attention today</h2>
-    <div class="st">assessments, deadlines, and anything from a teacher or counsellor</div></div>
+<div class="hd"><h2>1 &middot; Needs attention today</h2>
+<div class="st">assessments, deadlines, and anything from a teacher or counsellor</div></div>
 
-  <div class="row" data-id="na1">
-    <div class="when">Tomorrow</div>
-    <div class="body">
-      <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a079b202ca67331" target="_blank" rel="noopener">Freddie — Maths Task 3 Part A not handed in</a></div>
-      <div class="m">Miss Wright (Caoimhe Wright), parental contact logged today. Part A was due to be checked today and wasn't done — <strong>could cost 5% of the overall grade</strong>. Must be complete by <strong>tomorrow's lesson</strong>. Details in the Task Notification, today's lesson on SEQTA, or the Task 3 folder on OneNote. He may need to print a fresh sheet.</div>
-    </div>
-    <button class="tick" aria-label="Mark done">&#10003;</button>
-  </div>
+<div class="row" data-id="na-harry-detention-11sep">
+<div class="when">Fri 11 Sep</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0831a7f5561ac5" target="_blank" rel="noopener">Harry — 1-hour detention, Friday 3:30–4:30pm</a><span class="new">new</span></div>
+<div class="m">David Badlan, Wed 9 Sept. Triggered by <strong>3 accumulated white cards</strong>. Held in <strong>C1.1 (Communitas)</strong>, 3:30–4:30pm. Note it lands the same afternoon as Freddie's English deadline and before the Radio Ave dinner at 7pm.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
 
-  <div class="row" data-id="na2">
-    <div class="when">Fri 11 Sep</div>
-    <div class="body">
-      <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a079ac20c163881" target="_blank" rel="noopener">Freddie — English Task 3 extended to Friday</a></div>
-      <div class="m">Kirsten Begg, Head of House (Murray) and English teacher. Honey Spot Presentation was due today; because Freddie was on approved leave he has an extension to <strong>Friday 11 Sept</strong> and this week's class time to work on it. Lisa Xu and Adam Russell cc'd.</div>
-    </div>
-    <button class="tick" aria-label="Mark done">&#10003;</button>
-  </div>
+<div class="row" data-id="na-harry-challenge-binfield-9sep">
+<div class="when">Today</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a08392408cc6ef4" target="_blank" rel="noopener">Harry — Challenge logged today (Tess Binfield)</a><span class="new">new</span></div>
+<div class="m">"Continuously disruptive, throwing things, did not complete worksheet." Second incident with Ms Binfield this week after Monday's Leave Pass. Worth a conversation tonight.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
 
-  <div class="row" data-id="na3">
-    <div class="when">Wed 9 Sep</div>
-    <div class="body">
-      <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4690:17411:6009" target="_blank" rel="noopener">Freddie — Mathematics Task 3: Algebra &amp; Equations Alternate Task</a></div>
-      <div class="m">Due Wed 9 Sept in SEQTA. Part A above feeds into this.</div>
-    </div>
-    <button class="tick" aria-label="Mark done">&#10003;</button>
-  </div>
+<div class="row" data-id="na-harry-whitecard-uniform-8sep">
+<div class="when">Tue 8 Sep</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a07ef4c9feb45c2" target="_blank" rel="noopener">Harry — White Card: no sports uniform for PDHPE practical (3rd time this term)</a><span class="new">new</span></div>
+<div class="m">Jon McMahon. This is the third white card and the one that tipped him into Friday's detention. <strong>Fix:</strong> pack the sports uniform the night before every PDHPE practical — check the timetable on SEQTA for which days.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
 
-  <div class="row" data-id="na4">
-    <div class="when">Overdue</div>
-    <div class="body">
-      <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0796c3156ccc1b" target="_blank" rel="noopener">Harry — IT loan laptop still not returned</a></div>
-      <div class="m">Alina at IT Helpdesk chased again this morning. Return was due 21/08. She's asked whether Harry is back at school and can drop it in today — <strong>IT Helpdesk, Goold Level 3</strong>. It was last known to be in his locker. Ticket SR-8761.</div>
-    </div>
-    <button class="tick" aria-label="Mark done">&#10003;</button>
-  </div>
+<div class="row" data-id="na-harry-challenge-owen-8sep">
+<div class="when">Tue 8 Sep</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a07ed86f9118c14" target="_blank" rel="noopener">Harry — Challenge logged (Sarah Owen)</a><span class="new">new</span></div>
+<div class="m">Pulling faces at the door of her lesson, disrupting students, when he was meant to be in another class.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
 
-  <div class="row" data-id="na5">
-    <div class="when">Today</div>
-    <div class="body">
-      <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a07a3e5d4e74204" target="_blank" rel="noopener">Harry — Class Leave Pass logged, Period 6</a></div>
-      <div class="m">Tess Binfield, 7 Sept: left class at 2:50 and did not return until 3:00. Logged rather than actioned — worth a quiet word.</div>
-    </div>
-    <button class="tick" aria-label="Mark done">&#10003;</button>
-  </div>
+<div class="row" data-id="na-freddie-maths-task3-9sep">
+<div class="when">Today</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a079b202ca67331" target="_blank" rel="noopener">Freddie — Maths Task 3 (Algebra &amp; Equations) sat today — check it went in</a></div>
+<div class="m">Miss Wright's follow-up (Tue) attached the Task Notification, Part A sheet, checklist, revision questions, scope &amp; sequence and past papers. Assessed on algebra (like terms, simplifying, expanding, factorising) and equations (one- and two-step). She'll try to post to SEQTA Homework as well as OneNote in future. <a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank" rel="noopener">SEQTA</a></div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
 
-  <div class="row" data-id="na6">
-    <div class="when">Reply</div>
-    <div class="body">
-      <div class="t">Confirm parent helper availability for Sat 12 Sept carnival <span class="nolink">no link — reply to Stu King's email</span></div>
-      <div class="m">Still open from last week's ISA Athletics season letter. Parents of competing boys asked to help run the Homebush day. king.s@saintaug.nsw.edu.au</div>
-    </div>
-    <button class="tick" aria-label="Mark done">&#10003;</button>
-  </div>
+<div class="row" data-id="na-freddie-english-11sep">
+<div class="when">Fri 11 Sep</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a079ac20c163881" target="_blank" rel="noopener">Freddie — English Task 3: Honey Spot Presentation due Friday</a></div>
+<div class="m">Mrs Begg's extension (SEQTA still shows the original 9 Sept date). Two evenings left. <a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank" rel="noopener">SEQTA</a></div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
+
+<div class="row" data-id="na-harry-english-catchup">
+<div class="when">Confirm</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a05b9e545a247ee" target="_blank" rel="noopener">Harry — English Task 3 Extended Response catch-up was set for P4 Tuesday</a></div>
+<div class="m">Carmelo Aragone confirmed "P4 tomorrow" late Monday, with the learning enhancement team arranging his reader. No confirmation since that it happened — ask Harry, or reply to Carmelo.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
+
+<div class="row" data-id="na-freddie-counsellor">
+<div class="when">Watch</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a07e27916c2deb0" target="_blank" rel="noopener">Freddie — Kim Bulloch (College Counsellor) will offer him a check-in</a><span class="new">new</span></div>
+<div class="m">Her reply to your "Freddie today" note (Jake O'Brien cc'd). You also said you'd email <strong>Paul Hull</strong> for a Monday-evening water polo exemption, keeping only the Friday morning session — not yet done as far as Gmail shows.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
+
+<div class="row" data-id="na-harry-laptop">
+<div class="when">Overdue</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0796c3156ccc1b" target="_blank" rel="noopener">Harry — IT loan laptop still not returned</a></div>
+<div class="m">Carried over. Return was due 21/08; last chase Monday from Alina, IT Helpdesk, Goold Level 3. Ticket SR-8761. No new chase in the last 48 hours.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
+
+<div class="row" data-id="na-carnival-helper">
+<div class="when">Reply</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a070a3e6c24e96e" target="_blank" rel="noopener">Confirm parent helper availability for Sat 12 Sept ISA Invitational</a></div>
+<div class="m">Carried over from Stu King's athletics letter. Homebush, SACS hosting the field events. king.s@saintaug.nsw.edu.au</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
 </div></section>
 
 <section><div class="card" style="--c:var(--board)">
-  <div class="hd"><h2>2 &middot; School noticeboard</h2>
-    <div class="st">low priority — fundraising, social and general notices</div></div>
+<div class="hd"><h2>2 &middot; School noticeboard</h2>
+<div class="st">low priority — fundraising, social and general notices</div></div>
 
-  <div class="row" data-id="nb1">
-    <div class="when">Mon–Wed</div>
-    <div class="body">
-      <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a075770514b0a1b" target="_blank" rel="noopener">Water polo uniform distribution — Communitas</a></div>
-      <div class="m">Paul Hull. Mon all of lunch, Tue 2nd half of lunch, Wed all of lunch. Order shirts/swimmers through the TryBooking link previously provided — all in stock except size 38 swimmers.</div>
-    </div>
-    <button class="tick" aria-label="Mark done">&#10003;</button>
-  </div>
+<div class="row" data-id="nb-harry-affirmation">
+<div class="when">Good news</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a07e6f6f815be88" target="_blank" rel="noopener">Harry — Affirmation from Carmelo Aragone</a><span class="new">new</span></div>
+<div class="m">"Good attention paid in class today. Well done." Tuesday, English. Worth mentioning alongside the harder conversations.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
 
-  <div class="row" data-id="nb2">
-    <div class="when">Schedule</div>
-    <div class="body">
-      <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0738401019b9ef" target="_blank" rel="noopener">Water polo training changes — in place to end of term</a></div>
-      <div class="m"><strong>Harry (Yr 9):</strong> Mon 4–5pm, plus Tue 6.45–8.15pm (Yr 8/9).
-      <strong>Freddie (Yr 7):</strong> Wed 6.30–8am (half), Fri 6.30–7.30am (half), plus Mon 6.45–8.15pm (Yr 5/6/7).
-      Main change: Yr 10/11 move to Wednesday evenings; Yr 8 gain Friday afternoons.</div>
-    </div>
-    <button class="tick" aria-label="Mark done">&#10003;</button>
-  </div>
+<div class="row" data-id="nb-gotcha4life-row">
+<div class="when">Sat–Sun</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a08359133602f58" target="_blank" rel="noopener">Gotcha4Life 24 Hour Row — this weekend (Year 7)</a><span class="new">new</span></div>
+<div class="m">Jake O'Brien, Head of Year 7. Optional. Two steps: join the House team on 24hourrow.com.au (Freddie is Goold), then pick a time slot on the Microsoft form. Links in the email.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
 
-  <div class="row" data-id="nb3">
-    <div class="when">Receipt</div>
-    <div class="body">
-      <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a079d619a69a200" target="_blank" rel="noopener">SaintsCard auto top-up processed</a></div>
-      <div class="m">Payment received 7 Sept. No action — log in to SaintsCard if you want to see the new balance.</div>
-    </div>
-    <button class="tick" aria-label="Mark done">&#10003;</button>
-  </div>
+<div class="row" data-id="nb-saintscard-3x">
+<div class="when">Receipts</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a083aae5bd8619d" target="_blank" rel="noopener">SaintsCard auto top-up — three receipts in two days</a></div>
+<div class="m">Two on Tuesday (<a href="https://mail.google.com/mail/u/0/#all/1a07e7f2d78cdde3" target="_blank" rel="noopener">thread</a>) and one this morning. Fine if the boys are buying lunch daily, but worth a glance at the balance/spend in SaintsCard.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
 
-  <div class="row" data-id="nb4">
-    <div class="when">Optional</div>
-    <div class="body">
-      <div class="t"><a href="https://www.nswathletics.org.au/events/342895" target="_blank" rel="noopener">NSW All Schools Carnival — 26 to 29 Sept</a></div>
-      <div class="m">Over the weekend and first days of the holidays. Open to all students, no club membership needed. Sign-up via the link.</div>
-    </div>
-    <button class="tick" aria-label="Mark done">&#10003;</button>
-  </div>
+<div class="row" data-id="nb-waterpolo-schedule">
+<div class="when">Schedule</div>
+<div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0738401019b9ef" target="_blank" rel="noopener">Water polo training — schedule to end of term</a></div>
+<div class="m"><strong>Harry (Yr 9):</strong> Mon 4–5pm, Tue 6.45–8.15pm. <strong>Freddie (Yr 7):</strong> Wed 6.30–8am (half), Fri 6.30–7.30am (half), Mon 6.45–8.15pm — pending the exemption you plan to ask Paul Hull for.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
 
-  <div class="row" data-id="nb5">
-    <div class="when">SEQTA</div>
-    <div class="body">
-      <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/notices" target="_blank" rel="noopener">SEQTA notices — none published for 7 Sept</a></div>
-      <div class="m">Checked tonight: no notices have yet been made available.</div>
-    </div>
-    <button class="tick" aria-label="Mark done">&#10003;</button>
-  </div>
+<div class="row" data-id="nb-nsw-all-schools">
+<div class="when">Optional</div>
+<div class="body">
+<div class="t"><a href="https://www.nswathletics.org.au/events/342895" target="_blank" rel="noopener">NSW All Schools Carnival — 26 to 29 Sept</a></div>
+<div class="m">Over the first days of the holidays. Open to all students, no club membership needed.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
+
+<div class="row" data-id="nb-seqta-notices-9sep">
+<div class="when">SEQTA</div>
+<div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/notices" target="_blank" rel="noopener">SEQTA notices — none published for 9 Sept</a></div>
+<div class="m">Checked tonight via your logged-in session.</div>
+</div>
+<button class="tick" aria-label="Mark done">&#10003;</button>
+</div>
 </div></section>
 
 <section><div class="card" style="--c:var(--harry)">
-  <div class="hd"><h2>3 &middot; Harry</h2><div class="st">Year 9 &middot; 09GOO2</div></div>
+<div class="hd"><h2>3 &middot; Harry</h2><div class="st">Year 9 &middot; 09GOO2</div></div>
 
-  <div class="row" data-id="h1"><div class="when">Overdue</div><div class="body">
-    <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0796c3156ccc1b" target="_blank" rel="noopener">Return IT loan laptop — Goold Level 3</a></div>
-    <div class="m">Third chase from the Helpdesk. They are short of loan machines.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="h-detention"><div class="when">Fri 3:30pm</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0831a7f5561ac5" target="_blank" rel="noopener">1-hour detention — C1.1 Communitas, 3:30–4:30pm</a></div>
+<div class="m">For 3 white cards. He'll be home late Friday.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="h2"><div class="when">Today</div><div class="body">
-    <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a07a3e5d4e74204" target="_blank" rel="noopener">Class Leave Pass — Period 6</a></div>
-    <div class="m">Tess Binfield: out of class 2:50–3:00.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="h-behaviour-week"><div class="when">This week</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a08392408cc6ef4" target="_blank" rel="noopener">Four behaviour entries since Monday</a></div>
+<div class="m">Mon: Leave Pass (Binfield). Tue: Challenge (Owen), White Card — no PDHPE kit (McMahon). Wed: Challenge — disruptive, throwing things (Binfield). Plus one Affirmation (Aragone).</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="h3"><div class="when">Mon 14 Sep</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/4580:17369:6048" target="_blank" rel="noopener">PDHPE — Task 3: Respectful Relationships Written Response</a></div>
-    <div class="m">Upcoming assessment.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="h-sports-uniform"><div class="when">Routine</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a07ef4c9feb45c2" target="_blank" rel="noopener">Pack sports uniform for PDHPE practical days</a></div>
+<div class="m">Third miss this term. Check the day on the SEQTA timetable and pack the night before.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="h4"><div class="when">Fri 18 Sep</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/4587:17593:6048" target="_blank" rel="noopener">Industrial Technology (Timber) — Task 3: Theory Examination</a></div>
-    <div class="m">Upcoming assessment.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="h-english-catchup"><div class="when">Confirm</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a05b9e545a247ee" target="_blank" rel="noopener">English Task 3 Extended Response — catch-up sat P4 Tuesday?</a></div>
+<div class="m">Aragone confirmed the slot; no word since.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="h5"><div class="when">Fri 6 Nov</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/4587:17593:6048" target="_blank" rel="noopener">Industrial Technology (Timber) — Task 4: Pinball Practical and Portfolio</a></div>
-    <div class="m">Long-run project — worth starting early.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="h-laptop"><div class="when">Overdue</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0796c3156ccc1b" target="_blank" rel="noopener">Return IT loan laptop — Goold Level 3</a></div>
+<div class="m">Ticket SR-8761. Last known in his locker.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="h6"><div class="when">Mon 6pm</div><div class="body">
-    <div class="t"><a href="https://www.google.com/calendar/event?eid=Xzc0b2o2aDIyODRyM2ViYTM4ZDBqMmI5azZsMmoyYmExOGNwM2NiYTI3NG9rNGdpNTY0cDQ4YzlsNjRfMjAyNjA5MDdUMDgwMDAwWiBlZGptaWxsczFAbQ" target="_blank" rel="noopener">Maths Tutor Sam — Harry</a></div>
-    <div class="m">Tonight, 6–7pm. Recurring weekly.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="h-pdhpe-14sep"><div class="when">Mon 14 Sep</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank" rel="noopener">PDHPE — Task 3: Respectful Relationships Written Response</a></div>
+<div class="m">Five days out. Nothing on SEQTA Homework about it yet.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="h7"><div class="when">Tue 4pm</div><div class="body">
-    <div class="t"><a href="https://www.google.com/calendar/event?eid=XzY0cWphaDltNmtyajZiOWs2dDBrY2I5azcwcGsyYjlwNnAxNDJiOWc4OTBqY2gyMzhsMmo0ZHEyNmcgZWRqbWlsbHMxQG0" target="_blank" rel="noopener">Dr Ryan Lee — Harry</a></div>
-    <div class="m">Tue 8 Sept, 4–5pm. Suite 1, 359–365 Barrenjoey Rd, Newport. Clashes with athletics training / Blessing of the Singlets.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="h-timber-exam-16sep"><div class="when">Wed 16 Sep</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank" rel="noopener">Industrial Technology (Timber) — Task 3: Theory Examination</a><span class="new">date moved</span></div>
+<div class="m">SEQTA now shows <strong>Wed 16 Sept</strong> — Monday's dashboard had Fri 18. Two days earlier than planned.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="h8"><div class="when">Sport</div><div class="body">
-    <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0738401019b9ef" target="_blank" rel="noopener">Water polo Yr 9 — Mon 4–5pm and Tue 6.45–8.15pm</a></div>
-    <div class="m">New schedule holds to end of term.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="h-timber-pinball-6nov"><div class="when">Fri 6 Nov</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank" rel="noopener">Industrial Technology (Timber) — Task 4: Pinball Practical and Portfolio</a></div>
+<div class="m">Long-run project — worth staging over the holidays.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
+
+<div class="row" data-id="h-tutor-14sep"><div class="when">Mon 6pm</div><div class="body">
+<div class="t"><a href="https://www.google.com/calendar/event?eid=Xzc0b2o2aDIyODRyM2ViYTM4ZDBqMmI5azZsMmoyYmExOGNwM2NiYTI3NG9rNGdpNTY0cDQ4YzlsNjRfMjAyNjA5MTRUMDgwMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank" rel="noopener">Maths Tutor Sam — Harry</a></div>
+<div class="m">Next session Mon 14 Sept, 6–7pm. Weekly.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
+
+<div class="row" data-id="h-waterpolo"><div class="when">Sport</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0738401019b9ef" target="_blank" rel="noopener">Water polo Yr 9 — Mon 4–5pm and Tue 6.45–8.15pm</a></div>
+<div class="m">Holds to end of term.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 </div></section>
 
 <section><div class="card" style="--c:var(--freddie)">
-  <div class="hd"><h2>4 &middot; Freddie</h2><div class="st">Year 7 &middot; 07GOO2</div></div>
+<div class="hd"><h2>4 &middot; Freddie</h2><div class="st">Year 7 &middot; 07GOO2</div></div>
 
-  <div class="row" data-id="f1"><div class="when">Tomorrow</div><div class="body">
-    <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a079b202ca67331" target="_blank" rel="noopener">Maths Task 3 Part A — must be done by tomorrow's lesson</a></div>
-    <div class="m">Miss Wright. 5% of the grade at risk. Sheet is in the Task 3 folder on OneNote if the printed one is lost.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="f-maths-task3"><div class="when">Today</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank" rel="noopener">Mathematics — Task 3: Algebra &amp; Equations Alternate Task (sat today)</a></div>
+<div class="m">Confirm Part A and the in-class task were both handed in. Miss Wright's full pack is in <a href="https://mail.google.com/mail/u/0/#all/1a079b202ca67331" target="_blank" rel="noopener">the email thread</a> — useful for the tutor and for the end-of-year exam.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="f2"><div class="when">Wed 9 Sep</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4690:17411:6009" target="_blank" rel="noopener">Mathematics — Task 3: Algebra &amp; Equations Alternate Task</a></div>
-    <div class="m">Upcoming assessment.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="f-english-11sep"><div class="when">Fri 11 Sep</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank" rel="noopener">English — Task 3: Honey Spot Presentation (extended)</a></div>
+<div class="m">Mrs Begg's Friday deadline. SEQTA still shows 9 Sept.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="f3"><div class="when">Fri 11 Sep</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4685:17273:6009" target="_blank" rel="noopener">English — Task 3: Honey Spot Presentation (extended)</a></div>
-    <div class="m">Originally due today; Mrs Begg has moved it to Friday and given class time this week.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="f-counsellor"><div class="when">Watch</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a07e27916c2deb0" target="_blank" rel="noopener">Kim Bulloch will offer a check-in</a></div>
+<div class="m">Following your Tuesday note about him being exhausted after the late water polo night.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="f4"><div class="when">Wed 16 Sep</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4687:17654:6009" target="_blank" rel="noopener">Japanese — Task 3: Message to a friend</a></div>
-    <div class="m">Upcoming assessment.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="f-waterpolo-exemption"><div class="when">Ed to do</div><div class="body">
+<div class="t">Email Paul Hull — Monday-evening water polo exemption, keep Friday mornings only <span class="nolink">not yet sent</span></div>
+<div class="m">You committed to this in the Bulloch thread. Paul's last email: <a href="https://mail.google.com/mail/u/0/#all/1a0738401019b9ef" target="_blank" rel="noopener">training schedule</a>.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="f5"><div class="when">Fri 18 Sep</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4776:17857:6009" target="_blank" rel="noopener">Visual Arts — Task 1: Ceramic Communion Creatures</a></div>
-    <div class="m">Upcoming assessment.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="f-japanese-16sep"><div class="when">Wed 16 Sep</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank" rel="noopener">Japanese — Task 3: Message to a friend</a></div>
+<div class="m">Upcoming assessment. Same day as Harry's Timber exam.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="f6"><div class="when">Mon 26 Oct</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4692:17143:6009" target="_blank" rel="noopener">PDHPE — Task 3: Celebrating Diversity Research Report</a></div>
-    <div class="m">Upcoming assessment.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="f-visarts-18sep"><div class="when">Fri 18 Sep</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank" rel="noopener">Visual Arts — Task 1: Ceramic Communion Creatures</a></div>
+<div class="m">Upcoming assessment.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="f7"><div class="when">Fri 6 Nov</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4695:17692:6009" target="_blank" rel="noopener">Technology — Task 3: Unit Practical and Portfolio</a></div>
-    <div class="m">Long-run project.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="f-pdhpe-26oct"><div class="when">Mon 26 Oct</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank" rel="noopener">PDHPE — Task 3: Celebrating Diversity Research Report</a></div>
+<div class="m">First assessment back after the holidays.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="f8"><div class="when">Mon 9 Nov</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4692:17143:6009" target="_blank" rel="noopener">PDHPE — Task 4: Space Invaders Practical</a></div>
-    <div class="m">Upcoming assessment.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="f-tech-6nov"><div class="when">Fri 6 Nov</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank" rel="noopener">Technology — Task 3: Unit Practical and Portfolio</a></div>
+<div class="m">Long-run project.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="f9"><div class="when">Tue 8:15</div><div class="body">
-    <div class="t"><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjA5MDdUMjIxNTAwWiBlZGptaWxsczFAbQ" target="_blank" rel="noopener">STRIVE — Freddie</a></div>
-    <div class="m">Tue 8 Sept, 8:15–9:15am. Recurring fortnightly.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="f-pdhpe-9nov"><div class="when">Mon 9 Nov</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank" rel="noopener">PDHPE — Task 4: Space Invaders Practical</a></div>
+<div class="m">Upcoming assessment.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="f10"><div class="when">Sport</div><div class="body">
-    <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0738401019b9ef" target="_blank" rel="noopener">Water polo Yr 7 — Wed 6.30–8am, Fri 6.30–7.30am, Mon 6.45–8.15pm</a></div>
-    <div class="m">Year 7 is split in half for the morning sessions — check which half Freddie is in.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="f-gotcha4life"><div class="when">Optional</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a08359133602f58" target="_blank" rel="noopener">Gotcha4Life 24 Hour Row — Team Goold, this weekend</a></div>
+<div class="m">Only if he has the energy for it — Kim's check-in suggests a quiet weekend might be better.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
+
+<div class="row" data-id="f-strive-22sep"><div class="when">Tue 22 Sep</div><div class="body">
+<div class="t"><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjA5MjFUMjIxNTAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank" rel="noopener">STRIVE — Freddie</a></div>
+<div class="m">8:15–9:15am. Fortnightly; then Tue 6 Oct and Tue 20 Oct.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
+
+<div class="row" data-id="f-waterpolo"><div class="when">Sport</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0738401019b9ef" target="_blank" rel="noopener">Water polo Yr 7 — Wed 6.30–8am, Fri 6.30–7.30am, Mon 6.45–8.15pm</a></div>
+<div class="m">Year 7 is split in half for the mornings — check which half he's in. Monday evening subject to the exemption request.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 </div></section>
 
 <section><div class="card" style="--c:var(--week)">
-  <div class="hd"><h2>5 &middot; This week</h2><div class="st">Mon 7 – Sun 13 September</div></div>
+<div class="hd"><h2>5 &middot; This week</h2><div class="st">Wed 9 – Sun 13 September</div></div>
 
-  <div class="row" data-id="w1"><div class="when">Mon 7</div><div class="body">
-    <div class="t"><a href="https://www.google.com/calendar/event?eid=XzcxMWo0ZTFsOG9zMzBiOWo2NG9rOGI5azZvbzQ0YmEyNjRvMzJiOWg4Z3EzMmhpNDY0cms2aGhoNzAgZWRqbWlsbHMxQG0" target="_blank" rel="noopener">Chris builder starts demo</a></div>
-    <div class="m">All day, today.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="w-wed9"><div class="when">Wed 9</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank" rel="noopener">Freddie — Maths Task 3 sat today</a></div>
+<div class="m">Also today: Harry's Challenge from Ms Binfield; Harry's detention notice arrived; SaintsCard top-up.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="w2"><div class="when">Mon 7</div><div class="body">
-    <div class="t"><a href="https://www.google.com/calendar/event?eid=Xzg5MWoyZ3BsNnAyamNiOWg2c3FqNmI5azYxMTNhYjlvNzUyNDZiOW84b28zZWNoazZkMzQyZGhrNmtfMjAyNjA5MDdUMDkwMDAwWiBlZGptaWxsczFAbQ" target="_blank" rel="noopener">Rest of today</a></div>
-    <div class="m">Pilates 1-1 11am &middot; Physio (C, fourth session) 12:15pm &middot; Healthy life resource meeting 3pm &middot; Maths tutor Sam 6pm &middot; Pilates Yin 7pm.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="w-thu10"><div class="when">Thu 10</div><div class="body">
+<div class="t">Clear day on the calendar <span class="nolink">nothing scheduled</span></div>
+<div class="m">Good night for Freddie's Honey Spot rehearsal and for Harry to start PDHPE Task 3 prep. Thursday printed Tasks &amp; Actions summary as usual.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="w3"><div class="when">Tue 8</div><div class="body">
-    <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a070a3e6c24e96e" target="_blank" rel="noopener">Athletics training + Blessing of the Singlets</a></div>
-    <div class="m">Training on the main oval (throws and relays), then the Blessing in the Auditorium — parents invited. Also today: STRIVE Freddie 8:15am, Dr Ryan Lee &ndash; Harry 4pm, Freddie's Maths Part A checked in class.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="w-fri11"><div class="when">Fri 11</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a0831a7f5561ac5" target="_blank" rel="noopener">Harry detention 3:30–4:30pm &middot; Freddie English due</a></div>
+<div class="m"><a href="https://www.google.com/calendar/event?eid=XzZ0Mmo2ZTlwNnAwazhiOWs4b3AzYWI5azg4czQ0YmExNjBya2FiYTI3NTFrMmNoaTcwcjNnZTIyNjRfMjAyNjA5MTBUMjEwMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank" rel="noopener">Pilates 7am</a> &middot; Freddie water polo 6.30am &middot; <a href="https://www.google.com/calendar/event?eid=XzY4cGphYzFnOGdwMzJiOW44OHMzNGI5azg0cjNhYjlwNnAyM2diOW83NHIzNmdoaTY0cmtjZ2kzNzQgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank" rel="noopener">Dinner Radio Ave crew 7pm</a>, Maki, Balgowlah Heights. Tight afternoon: Harry out at 4:30, dinner at 7.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="w4"><div class="when">Wed 9</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4690:17411:6009" target="_blank" rel="noopener">Freddie — Maths Task 3 due</a></div>
-    <div class="m">Also: water polo Yr 7 morning session 6.30–8am.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="w-sat12"><div class="when">Sat 12</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a070a3e6c24e96e" target="_blank" rel="noopener">ISA Invitational carnival — Homebush</a></div>
+<div class="m">SACS hosts the field events. Parent helpers requested. <span class="nolink">not on your calendar</span> Gotcha4Life 24 Hour Row also runs Sat–Sun (optional).</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="w5"><div class="when">Fri 11</div><div class="body">
-    <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a079ac20c163881" target="_blank" rel="noopener">Freddie — English Task 3 extension deadline</a></div>
-    <div class="m">Hard date from Mrs Begg. Also today: Pilates with Richard 7am, water polo Yr 7 6.30am, Dinner with the Radio Ave crew 7pm at Maki, Balgowlah Heights.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
-
-  <div class="row" data-id="w6"><div class="when">Sat 12</div><div class="body">
-    <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a070a3e6c24e96e" target="_blank" rel="noopener">ISA Invitational carnival — Homebush</a></div>
-    <div class="m">SACS hosts the field events. All boys competing or wanting to compete at ISA expected to attend, plus Summer Co-Curricular athletes. Parent helpers requested. <span class="nolink">not yet on your calendar</span></div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="w-sun13"><div class="when">Sun 13</div><div class="body">
+<div class="t">Prep for Monday <span class="nolink">nothing scheduled</span></div>
+<div class="m">Harry PDHPE Task 3 is due Mon; pack his sports kit for the week; Ed has Pilates 1-1 and Dr Glass overlapping Monday morning (see below).</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 </div></section>
 
 <section><div class="card" style="--c:var(--ahead)">
-  <div class="hd"><h2>6 &middot; Next 4–6 weeks highlights</h2><div class="st">mid-September through late October</div></div>
+<div class="hd"><h2>6 &middot; Next 4–6 weeks highlights</h2><div class="st">mid-September through late October</div></div>
 
-  <div class="row" data-id="x1"><div class="when">Mon 14</div><div class="body">
-    <div class="t"><a href="https://www.google.com/calendar/event?eid=XzhnbzM0ZDI0OG9yamdiYTU4NHE0NGI5azg4cWpjYmEyNjBzamliYTY4Y3FqY2dxNDZnczQyZ3BvNmdfMjAyNjA5MTRUMDEzMDAwWiBlZGptaWxsczFAbQ" target="_blank" rel="noopener">Dr Glass — Ed</a> &middot; 11:30am</div>
-    <div class="m">Suite 33, 90 Mona Vale Road, Mona Vale. Same day as Harry's PDHPE task and Pilates 1-1.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="x-mon14-clash"><div class="when">Mon 14</div><div class="body">
+<div class="t"><a href="https://www.google.com/calendar/event?eid=XzhnbzM0ZDI0OG9yamdiYTU4NHE0NGI5azg4cWpjYmEyNjBzamliYTY4Y3FqY2dxNDZnczQyZ3BvNmdfMjAyNjA5MTRUMDEzMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank" rel="noopener">Dr Glass — Ed, 11:30am</a> overlaps <a href="https://www.google.com/calendar/event?eid=XzZvcjRhZHBoNjEyajRiOW02b3MzY2I5azY4bzM2YjlwNmtvNGFiOW83NTJqOGUxaDhvc2s0aGk1ODhfMjAyNjA5MTRUMDEwMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank" rel="noopener">Pilates 1-1, 11am</a><span class="new">clash</span></div>
+<div class="m">Pilates 11–12, Dr Glass 11:30–1 (Suite 33, 90 Mona Vale Rd). Same overlap repeats Mon 28 Sept and Mon 12 Oct — your Keep to-do already says to reschedule Dr Glass. Also Mon: Harry PDHPE task due, Maths tutor 6pm, Pilates Yin 7pm.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="x2"><div class="when">Tue 15</div><div class="body">
-    <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a070a3e6c24e96e" target="_blank" rel="noopener">ISA Athletics Carnival — Homebush</a></div>
-    <div class="m">Final team announced as soon as practical. <span class="nolink">not yet on your calendar</span> Also this day: 306090 with Peter, 12pm.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="x-tue15"><div class="when">Tue 15</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a070a3e6c24e96e" target="_blank" rel="noopener">ISA Athletics Carnival — Homebush</a></div>
+<div class="m">Final team announced when practical. <span class="nolink">not on your calendar</span> Also: <a href="https://www.google.com/calendar/event?eid=XzZjcTNnaDlpNnQyajRiOW42Y3EzMGI5azZjb2thYmEyNm9vajZiYTI2Y3MzaWQxajZ0MWo4aDI2NjAgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank" rel="noopener">306090 with Peter, 12pm</a>.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="x3"><div class="when">Wed 16</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4687:17654:6009" target="_blank" rel="noopener">Freddie — Japanese Task 3 due</a></div>
-    <div class="m">Message to a friend.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="x-wed16"><div class="when">Wed 16</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank" rel="noopener">Both boys assessed — Harry Timber theory exam, Freddie Japanese</a></div>
+<div class="m">Harry's exam moved forward from the 18th. Freddie also has water polo 6.30am.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="x4"><div class="when">Fri 18</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank" rel="noopener">Both boys have assessments</a></div>
-    <div class="m">Harry: Industrial Technology Theory Examination. Freddie: Visual Arts Ceramic Communion Creatures.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="x-fri18"><div class="when">Fri 18</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank" rel="noopener">Freddie — Visual Arts Ceramic Communion Creatures</a></div>
+<div class="m">Pilates 7am. Last full week of term follows.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="x5"><div class="when">Tue 22</div><div class="body">
-    <div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a070a3e6c24e96e" target="_blank" rel="noopener">CIS Championships — if the boys qualify at ISA</a></div>
-    <div class="m">Officially ends the athletics season. <span class="nolink">not yet on your calendar</span> Also: STRIVE Freddie 8:15am.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="x-tue22"><div class="when">Tue 22</div><div class="body">
+<div class="t"><a href="https://mail.google.com/mail/u/0/#all/1a070a3e6c24e96e" target="_blank" rel="noopener">CIS Championships — if the boys qualify at ISA</a></div>
+<div class="m"><span class="nolink">not on your calendar</span> STRIVE Freddie 8:15am the same morning.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="x6"><div class="when">Thu 24</div><div class="body">
-    <div class="t"><a href="https://www.google.com/calendar/event?eid=XzhoMmtjY2k1ODhwMzBiYTU2MG8zZWI5azZrc2syYjlvNzRwamFiYTM2a29qNGQ5aDcwcjRhZTFpNzAgZWRqbWlsbHMxQG0" target="_blank" rel="noopener">Book Bistecca for dinner before Hans Zimmer</a></div>
-    <div class="m">All-day reminder. Dental hygienist (Dr Hocking) same day at 2pm.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="x-thu24"><div class="when">Thu 24</div><div class="body">
+<div class="t"><a href="https://www.google.com/calendar/event?eid=XzhoMmtjY2k1ODhwMzBiYTU2MG8zZWI5azZrc2syYjlvNzRwamFiYTM2a29qNGQ5aDcwcjRhZTFpNzAgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank" rel="noopener">Book Bistecca for dinner before Hans Zimmer</a></div>
+<div class="m">All-day reminder. <a href="https://www.google.com/calendar/event?eid=XzhwMzNpY2E0NzBya2ZiYTQ2NTEzaWI5azZvcms4YjlwNmQwajhiOWg4cDBrY2RxMTZncWplYzFsNm8gZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank" rel="noopener">Dental hygienist (Dr Hocking) 2pm</a>.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="x7"><div class="when">26–29 Sep</div><div class="body">
-    <div class="t"><a href="https://www.nswathletics.org.au/events/342895" target="_blank" rel="noopener">NSW All Schools Carnival — optional</a></div>
-    <div class="m">Weekend and first days of the holidays. Open to all students.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="x-26-29sep"><div class="when">26–29 Sep</div><div class="body">
+<div class="t"><a href="https://www.nswathletics.org.au/events/342895" target="_blank" rel="noopener">NSW All Schools Carnival — optional</a></div>
+<div class="m">Start of the holidays.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="x8"><div class="when">Mon 28</div><div class="body">
-    <div class="t"><a href="https://www.google.com/calendar/event?eid=XzhnbzM0ZDI0OG9yamdiYTU4NHE0NGI5azg4cWpjYmEyNjBzamliYTY4Y3FqY2dxNDZnczQyZ3BvNmdfMjAyNjA5MjhUMDEzMDAwWiBlZGptaWxsczFAbQ" target="_blank" rel="noopener">Dr Glass — Ed</a> &middot; 11:30am</div>
-    <div class="m">Recurring fortnightly. Next after that: Mon 12 Oct.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="x-mon28"><div class="when">Mon 28</div><div class="body">
+<div class="t"><a href="https://www.google.com/calendar/event?eid=XzhnbzM0ZDI0OG9yamdiYTU4NHE0NGI5azg4cWpjYmEyNjBzamliYTY4Y3FqY2dxNDZnczQyZ3BvNmdfMjAyNjA5MjhUMDEzMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank" rel="noopener">Dr Glass — Ed, 11:30am</a></div>
+<div class="m">Again overlapping Pilates 1-1 at 11. Maths tutor and Pilates Yin still on in the evening (holidays — check Sam is running).</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="x9"><div class="when">Sat 24 Oct</div><div class="body">
-    <div class="t"><a href="https://www.google.com/calendar/event?eid=XzhsMGtjZTFrNzUxa2NiOW03NHNqNGI5azY4czM4YjlwOG9yM2ViOWo4OHNqY2gxZzYwcjNnZHBoODQgZWRqbWlsbHMxQG0" target="_blank" rel="noopener">Bondi to Manly run</a></div>
-    <div class="m">Meet George, Tim and Conor as they switch legs again.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="x-oct"><div class="when">October</div><div class="body">
+<div class="t"><a href="https://www.google.com/calendar/event?eid=XzhnbzM0ZDI0OG9yamdiYTU4NHE0NGI5azg4cWpjYmEyNjBzamliYTY4Y3FqY2dxNDZnczQyZ3BvNmdfMjAyNjEwMTJUMDAzMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank" rel="noopener">Mon 12 Oct — Dr Glass 11:30am</a> &middot; Tue 6 &amp; 20 Oct — STRIVE Freddie</div>
+<div class="m">Daylight saving starts Sun 4 Oct. Term 4 starts mid-October.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="x10"><div class="when">Mon 26 Oct</div><div class="body">
-    <div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4692:17143:6009" target="_blank" rel="noopener">Freddie — PDHPE Task 3: Celebrating Diversity</a></div>
-    <div class="m">First assessment back after the holidays.</div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="x-sat24oct"><div class="when">Sat 24 Oct</div><div class="body">
+<div class="t"><a href="https://www.google.com/calendar/event?eid=XzhsMGtjZTFrNzUxa2NiOW03NHNqNGI5azY4czM4YjlwOG9yM2ViOWo4OHNqY2gxZzYwcjNnZHBoODQgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank" rel="noopener">Bondi to Manly run</a></div>
+<div class="m">Meet George, Tim and Conor as they switch legs again.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 
-  <div class="row" data-id="x11"><div class="when">Fri 6 Nov</div><div class="body">
-    <div class="t">Both boys' major practical/portfolio tasks land the same day</div>
-    <div class="m">Harry: Industrial Technology Pinball. Freddie: Technology Unit Practical. Worth staging the work over the holidays. <a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank" rel="noopener">SEQTA</a></div></div>
-    <button class="tick" aria-label="Mark done">&#10003;</button></div>
+<div class="row" data-id="x-mon26oct"><div class="when">Mon 26 Oct</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank" rel="noopener">Freddie — PDHPE Task 3: Celebrating Diversity</a></div>
+<div class="m">First assessment of Term 4.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
+
+<div class="row" data-id="x-6nov"><div class="when">Fri 6 Nov</div><div class="body">
+<div class="t"><a href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank" rel="noopener">Both boys' major practical/portfolio tasks land the same day</a></div>
+<div class="m">Harry: Industrial Technology Pinball. Freddie: Technology Unit Practical. Freddie's PDHPE Space Invaders practical follows Mon 9 Nov.</div></div>
+<button class="tick" aria-label="Mark done">&#10003;</button></div>
 </div></section>
 
 <section><div class="card" style="--c:var(--todo)">
-  <div class="hd"><h2>7 &middot; To-do (Ed)</h2><div class="st">from Google Keep &middot; read-only, unchecked items only</div></div>
-  <div class="pills" id="todoPills"></div>
+<div class="hd"><h2>7 &middot; To-do (Ed)</h2><div class="st">from Google Keep &middot; read-only, unchecked items only &middot; 19 open</div></div>
+<div class="pills" id="todoPills"></div>
 </div></section>
 
 <section><div class="card" style="--c:var(--shop)">
-  <div class="hd"><h2>8 &middot; Shopping list</h2><div class="st">from Google Keep &middot; read-only, unchecked items only</div></div>
-  <div class="pills" id="shopPills"></div>
+<div class="hd"><h2>8 &middot; Shopping list</h2><div class="st">from Google Keep &middot; read-only, unchecked items only &middot; 8 open</div></div>
+<div class="pills" id="shopPills"></div>
 </div></section>
 
 <footer>
-  <p><strong>Outstanding tasks section omitted this run.</strong> <code>~/MillsTasks/tasks-master.md</code> was not reachable from tonight's session, so the card is left out rather than shown empty. It will appear again as soon as that folder is connected.</p>
-  <p>The SCGT calendar returned no events for this period and the Family calendar is empty. Keep and SEQTA were read through your existing logged-in browser sessions — nothing was entered, edited or ticked in either. Dismissing an item here only hides it on this device.</p>
-  <button class="reset" id="reset">Reset all dismissed items</button>
+<p><strong>Outstanding tasks section omitted this run.</strong> <code>~/MillsTasks/tasks-master.md</code> was not reachable — no folder is connected to the scheduled session and an unattended run can't request one. The card is left out rather than shown empty; connect that folder once and it will appear.</p>
+<p>Tuesday's build didn't publish, so this one covers everything since Monday night. The SCGT and Family calendars are empty for this period; all dated items come from edjmills1@gmail.com, Gmail and SEQTA. Keep and SEQTA were read through your existing logged-in browser sessions — nothing was entered, edited or ticked in either. Dismissing an item here only hides it on this device.</p>
+<button class="reset" id="reset">Reset all dismissed items</button>
 </footer>
 <script>
 (function(){
-  var KEY='homeDash.done.v3';
-  var done={};
-  try{done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){done={}}
-  function save(){try{localStorage.setItem(KEY,JSON.stringify(done))}catch(e){}}
+var KEY='homeDash.done.v3';
+var done={};
+try{done=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){done={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(done))}catch(e){}}
 
-  document.querySelectorAll('.row').forEach(function(row){
-    var id=row.dataset.id;
-    if(done[id])row.classList.add('done');
-    var btn=row.querySelector('.tick');
-    if(!btn)return;
-    btn.addEventListener('click',function(){
-      var on=!row.classList.contains('done');
-      row.classList.toggle('done',on);
-      if(on){done[id]=1}else{delete done[id]}
-      save();
-    });
-  });
+document.querySelectorAll('.row').forEach(function(row){
+var id=row.dataset.id;
+if(done[id])row.classList.add('done');
+var btn=row.querySelector('.tick');
+if(!btn)return;
+btn.addEventListener('click',function(){
+var on=!row.classList.contains('done');
+row.classList.toggle('done',on);
+if(on){done[id]=1}else{delete done[id]}
+save();
+});
+});
 
-  var todo=[
-    "Send headstone email",
-    "Alex plaques for bench and rocks",
-    "Pay School fees — check if I’ve done them first",
-    "Set up new FB marketplace",
-    "Change over the photos from Alix’s Stone",
-    "Email Darryl for Jonathan and Giles",
-    "Reschedule Dr Glass (me), Dr Pauline (Harry), Dr Alix (Freddie)",
-    "Get UK docs together and Rich’s passport",
-    "Review Richard’s documents on motorcade company",
-    "A fresh start — what are we doing with our lives",
-    "Cancel Google Play on Alex’s phone",
-    "Design the two boxes — one for Alex, one for the trauma",
-    "Rebook doctor appointment for mental health plan",
-    "Update myGov email",
-    "Move ChatGPT chats across to Claude for context",
-    "Amend Will and sign",
-    "Send Daniel Erko stuff — x2 emails",
-    "Get Harry’s blood tests — fasting"
-  ];
-  var shop=["Popcorn","Frozen blueberries","Cheese","Garlic","Fruit","Veg","Frozen raspberries","Frozen mango chunks"];
+var todo=[
+"Send headstone email",
+"Alex plaques for bench and rocks",
+"Book appointment at the resellers — Manly and Freshwater",
+"Pay school fees — check if I’ve done them first",
+"Amend Will and sign",
+"Get fortnight back-up",
+"Give Claude access to Amber again — predict monthly and quarterly bills",
+"Get Claude to pull up all direct debits and payments so monthly living cost is level",
+"Send Daniel Erko stuff — x2 emails",
+"Reschedule Dr Glass (me), Dr Pauline (Harry), Dr Alix (Freddie)",
+"Rebook doctor appointment for mental health plan",
+"Get UK docs together and Rich’s passport",
+"Review Richard’s documents on motorcade company",
+"A fresh start — what are we doing with our lives",
+"Cancel Google Play on Alex’s phone",
+"Design the two boxes — one for Alex, one for the trauma",
+"Update myGov email",
+"Move ChatGPT chats across to Claude for context",
+"Get Harry’s blood tests — fasting"
+];
+var shop=["Cheese","Frozen raspberries","Butter","Pasta sauce","Brown sugar","Ham","Turkey slices","Chic Mali"];
 
-  function pills(items,host,prefix){
-    var box=document.getElementById(host);
-    if(!box)return;
-    if(!items.length){box.outerHTML='<div class="empty">Nothing outstanding.</div>';return}
-    items.forEach(function(txt,i){
-      var id=prefix+i;
-      var el=document.createElement('span');
-      el.className='pill'+(done[id]?' done':'');
-      el.dataset.id=id;
-      var t=document.createElement('span');
-      t.textContent=txt;
-      var x=document.createElement('button');
-      x.className='x';x.type='button';x.innerHTML='&#10005;';
-      x.setAttribute('aria-label','Dismiss: '+txt);
-      x.addEventListener('click',function(){
-        el.classList.add('done');done[id]=1;save();
-      });
-      el.appendChild(t);el.appendChild(x);
-      box.appendChild(el);
-    });
-  }
-  pills(todo,'todoPills','td');
-  pills(shop,'shopPills','sh');
+function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)}
+function pills(items,host,prefix){
+var box=document.getElementById(host);
+if(!box)return;
+if(!items.length){box.outerHTML='<div class="empty">Nothing outstanding.</div>';return}
+items.forEach(function(txt){
+var id=prefix+'-'+slug(txt);
+var el=document.createElement('span');
+el.className='pill'+(done[id]?' done':'');
+el.dataset.id=id;
+var t=document.createElement('span');
+t.textContent=txt;
+var x=document.createElement('button');
+x.className='x';x.type='button';x.innerHTML='&#10005;';
+x.setAttribute('aria-label','Dismiss: '+txt);
+x.addEventListener('click',function(){
+el.classList.add('done');done[id]=1;save();
+});
+el.appendChild(t);el.appendChild(x);
+box.appendChild(el);
+});
+}
+pills(todo,'todoPills','td');
+pills(shop,'shopPills','sh');
 
-  var r=document.getElementById('reset');
-  if(r)r.addEventListener('click',function(){done={};save();location.reload()});
+var r=document.getElementById('reset');
+if(r)r.addEventListener('click',function(){done={};save();location.reload()});
 })();
 </script>
 </body>

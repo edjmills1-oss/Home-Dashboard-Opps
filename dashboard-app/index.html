@@ -48,6 +48,7 @@
   .tag{font-size:0.68rem;color:#999;display:block;margin-top:1px;}
   .who{font-size:0.65rem;font-weight:700;border-radius:4px;padding:1px 5px;color:#fff;flex-shrink:0;margin-top:3px;}
   .who.harry{background:var(--harry);} .who.freddie{background:var(--freddie);}
+  .flag{font-size:0.62rem;font-weight:700;border-radius:4px;padding:1px 5px;background:#FFF3E0;color:#B85C00;border:1px solid #FFCF99;margin-left:4px;white-space:nowrap;}
   .full{grid-column:1/-1;}
   .key{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;font-size:0.8rem;color:#555;}
   .key span{display:flex;align-items:center;gap:5px;}
@@ -109,7 +110,7 @@
 <header>
   <div>
     <h1>Home Dashboard <span class="badge">Every evening 6pm</span></h1>
-    <div class="updated">Live pull: Thu 10 Sep, 6:00pm — calendar + inbox + SEQTA + Keep</div>
+    <div class="updated">Live pull: Sat 12 Sep, 5:15pm — calendar + inbox + Keep · SEQTA not logged in tonight</div>
   </div>
   <button class="printbtn" onclick="window.print()">🖨️ Print me</button>
 </header>
@@ -120,27 +121,26 @@
   <div class="card special full">
     <h2><span class="dot special"></span>Needs attention today</h2>
     <ul>
-      <li data-id="na-harry-pastoral-0910">
+      <li data-id="na-harry-challenge-0911">
         <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
+          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a08ed8824729588" target="_blank">
             <span class="who harry">H</span>
-            <span class="txt-block">Harry — 2 new Challenges this week (Wed: disruptive, worksheet not done — Tess Binfield; Tue: pulling faces at another class's door — Sarah Owen) plus a White Card for no sports uniform, 3rd time this term (Jon McMahon)<span class="tag">→ SEQTA dashboard, pastoral care notes — worth a chat tonight</span></span>
+            <span class="txt-block"><strong>New Challenge for Harry — Fri 11 Sep</strong> (Lydia Xu, Religion cover): refused to do the work, was drawing instead, kept throwing his book on the floor<span class="tag">→ opens the SEQTA notification email (unread). Third Challenge in a week — Tess Binfield's Thu note was positive, so worth a calm chat this weekend</span></span>
           </a>
           <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-harry-pastoral-0910','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-harry-pastoral-0910','done')">Done</button>
+            <button class="status-btn underway" onclick="setStatus('na-harry-challenge-0911','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('na-harry-challenge-0911','done')">Done</button>
           </div>
         </div>
       </li>
-      <li data-id="na-freddie-hw-tomorrow">
+      <li data-id="na-seqta-login">
         <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
-            <span class="who freddie">F</span>
-            <span class="txt-block">Freddie — homework due <strong>tomorrow</strong>: English Stolen Generation questions, and Technology Onguard tests (needed for workshop access)<span class="tag">→ SEQTA dashboard, homework panel</span></span>
+          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank">
+            <span class="txt-block">SEQTA homework &amp; assessments — <strong>pending review</strong>: no SEQTA session was active tonight, so the boys' homework panels and pastoral notes weren't re-read<span class="tag">→ log in to SEQTA and check the dashboard. Assessment dates below are carried from Thursday's read and haven't changed on the school side as far as we can tell</span></span>
           </a>
           <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-freddie-hw-tomorrow','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-freddie-hw-tomorrow','done')">Done</button>
+            <button class="status-btn underway" onclick="setStatus('na-seqta-login','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('na-seqta-login','done')">Done</button>
           </div>
         </div>
       </li>
@@ -148,7 +148,7 @@
         <div class="li-row">
           <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank">
             <span class="who harry">H</span>
-            <span class="txt-block">Harry — PDHPE Task 3 "Respectful Relationships" written response due <strong>Mon 14 Sep</strong><span class="tag">→ SEQTA, Harry's upcoming assessments</span></span>
+            <span class="txt-block">Harry — PDHPE Task 3 "Respectful Relationships" written response due <strong>Mon 14 Sep</strong> (the day after tomorrow)<span class="tag">→ SEQTA, Harry's upcoming assessments <span class="flag">carried from Thu — not re-checked</span></span></span>
           </a>
           <div class="status-btns">
             <button class="status-btn underway" onclick="setStatus('na-harry-pdhpe-0914','underway')">Underway</button>
@@ -160,7 +160,7 @@
         <div class="li-row">
           <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank">
             <span class="who harry">H</span>
-            <span class="txt-block">Harry — Industrial Technology (Timber) Task 3 theory exam <strong>Wed 16 Sep</strong><span class="tag">→ SEQTA, Harry's upcoming assessments</span></span>
+            <span class="txt-block">Harry — Industrial Technology (Timber) Task 3 theory exam <strong>Wed 16 Sep</strong><span class="tag">→ SEQTA, Harry's upcoming assessments <span class="flag">carried from Thu — not re-checked</span></span></span>
           </a>
           <div class="status-btns">
             <button class="status-btn underway" onclick="setStatus('na-harry-timber-0916','underway')">Underway</button>
@@ -172,7 +172,7 @@
         <div class="li-row">
           <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank">
             <span class="who freddie">F</span>
-            <span class="txt-block">Freddie — Japanese Task 3 "Message to a friend" due <strong>Wed 16 Sep</strong><span class="tag">→ SEQTA, Freddie's upcoming assessments</span></span>
+            <span class="txt-block">Freddie — Japanese Task 3 "Message to a friend" due <strong>Wed 16 Sep</strong><span class="tag">→ SEQTA, Freddie's upcoming assessments <span class="flag">carried from Thu — not re-checked</span></span></span>
           </a>
           <div class="status-btns">
             <button class="status-btn underway" onclick="setStatus('na-freddie-japanese-0916','underway')">Underway</button>
@@ -180,38 +180,25 @@
           </div>
         </div>
       </li>
-      <li data-id="na-freddie-honeyspot">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a085bd6ac3050af" target="_blank">
-            <span class="who freddie">F</span>
-            <span class="txt-block">Freddie shared his "Honey Spot assessment script" Google Doc with you last night — he may want you to read it<span class="tag">→ opens the share email in Gmail (not yet on SEQTA's upcoming list — likely English/Drama)</span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-freddie-honeyspot','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-freddie-honeyspot','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="na-waterpolo-0912">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a088455674f46d3" target="_blank">
-            <span class="who freddie">F</span>
-            <span class="txt-block">Water polo v Joeys <strong>Sat 12 Sep</strong> — Freddie is named in a squad. St Joseph's College pool, Hunters Hill (Mark St gates). Check his squad for arrival time — games run 8:00am–1:30pm<span class="tag">→ squads &amp; fixtures email from Paul Hull (coach). Reply ASAP if he's unavailable.</span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-waterpolo-0912','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-waterpolo-0912','done')">Done</button>
-          </div>
-        </div>
-      </li>
       <li data-id="na-mon-clash">
         <div class="li-row">
           <a class="linkwrap" href="https://www.google.com/calendar/event?eid=XzhnbzM0ZDI0OG9yamdiYTU4NHE0NGI5azg4cWpjYmEyNjBzamliYTY4Y3FqY2dxNDZnczQyZ3BvNmdfMjAyNjA5MTRUMDEzMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank">
-            <span class="txt-block">Clash Mon 14 Sep: Pilates 1-1 (11am–12pm) overlaps Dr Glass in Mona Vale (11:30am)<span class="tag">→ opens the Dr Glass event — your Keep to-do also says Dr Glass needs rescheduling</span></span>
+            <span class="txt-block">Clash Mon 14 Sep: Pilates 1-1 (11am–12pm) overlaps Dr Glass in Mona Vale (11:30am) — still unresolved on the calendar<span class="tag">→ opens the Dr Glass event. Your Keep to-do also still lists rescheduling Dr Pauline (Harry) and Dr Alex (Freddie)</span></span>
           </a>
           <div class="status-btns">
             <button class="status-btn underway" onclick="setStatus('na-mon-clash','underway')">Underway</button>
             <button class="status-btn done" onclick="setStatus('na-mon-clash','done')">Done</button>
+          </div>
+        </div>
+      </li>
+      <li data-id="na-cabo-trip">
+        <div class="li-row">
+          <a class="linkwrap" href="https://www.google.com/calendar/event?eid=XzYwb2thaGhwNnAzNDZiOW42NTMzZ2I5azZvcms4YjlwNnNyM2ViOWg2MHI0MmgxZzg4cDQyaGEyNnMgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank">
+            <span class="txt-block"><strong>New on the calendar:</strong> flights LAX → San José del Cabo (AA 6449, Mon 5 Oct US time) and home SJD → LAX → Sydney (AA 73, Tue 13 Oct, lands Wed 14 Oct) — booking HARKMW. Nothing yet on the calendar for getting to LA, and the recurring Mon 5 &amp; 12 Oct Pilates / Dr Glass / Maths tutor and Tue 6 Oct STRIVE all fall while you're away<span class="tag">→ opens the LAX→SJD flight event. Two entries exist for the outbound leg (Gmail auto-event says 5am LA time, your manual one says midday) — check which is right</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('na-cabo-trip','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('na-cabo-trip','done')">Done</button>
           </div>
         </div>
       </li>
@@ -222,32 +209,21 @@
   <div class="card dad">
     <h2><span class="dot dad"></span>School noticeboard</h2>
     <ul>
-      <li data-id="notice-freddie-affirm">
+      <li data-id="notice-binfield-reply">
         <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
-            <span class="txt-block">Freddie — Affirmation Wed 9 Sep: positive effort in Visual Arts (Robyn Larbalestier)<span class="tag">→ SEQTA pastoral notes — good news, tell him</span></span>
+          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a08392408cc6ef4" target="_blank">
+            <span class="txt-block">Good news — Tess Binfield replied Thu: Harry completed his work, wanted to show her, and was calm in the lesson<span class="tag">→ opens the thread (your reply to Wednesday's Challenge). Tell Harry she noticed</span></span>
           </a>
           <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('notice-freddie-affirm','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('notice-freddie-affirm','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="notice-harry-affirm">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
-            <span class="txt-block">Harry — Affirmation Tue 8 Sep: good attention in class (Carmelo Aragone)<span class="tag">→ SEQTA pastoral notes — a bright spot alongside the challenges</span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('notice-harry-affirm','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('notice-harry-affirm','done')">Done</button>
+            <button class="status-btn underway" onclick="setStatus('notice-binfield-reply','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('notice-binfield-reply','done')">Done</button>
           </div>
         </div>
       </li>
       <li data-id="notice-absences">
         <div class="li-row">
           <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
-            <span class="txt-block">Unresolved absences on SEQTA — Harry: several dates Feb–May; Freddie: 2 Apr, 17 Jun, 26 Jun<span class="tag">→ SEQTA dashboard — explain via Absences → New Absence when you get a minute</span></span>
+            <span class="txt-block">Unresolved absences on SEQTA — Harry: several dates Feb–May; Freddie: 2 Apr, 17 Jun, 26 Jun<span class="tag">→ SEQTA dashboard — Absences → New Absence <span class="flag">carried from Thu</span></span></span>
           </a>
           <div class="status-btns">
             <button class="status-btn underway" onclick="setStatus('notice-absences','underway')">Underway</button>
@@ -255,26 +231,17 @@
           </div>
         </div>
       </li>
-      <li data-id="notice-saintscard">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a088d0c73b38a86" target="_blank">
-            <span class="txt-block">SaintsCard auto top-up receipt (this morning)<span class="tag">→ opens the email — routine, no action</span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('notice-saintscard','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('notice-saintscard','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li class="plain"><span class="txt-block">SEQTA Notices: nothing new posted for 10 Sep<span class="tag">— checked live tonight</span></span></li>
+      <li class="plain"><span class="txt-block">Gmail, last 24h: no other school mail — no portal notices, forms or payments. No SaintsCard or fundraising mail either<span class="tag">— searched tonight; the only school item was the Harry Challenge above</span></span></li>
+      <li class="plain"><span class="txt-block">SEQTA Notices: not checked tonight (no active session)<span class="tag">— log in via the link in Needs attention</span></span></li>
     </ul>
   </div>
 
   <!-- TODAY -->
   <div class="card family">
-    <h2><span class="dot family"></span>Today — Thu 10 Sep</h2>
+    <h2><span class="dot family"></span>Today — Sat 12 Sep</h2>
     <ul>
-      <li class="plain"><span class="txt-block">Nothing on the calendar tonight<span class="tag">— tomorrow: Pilates 7am, Radio Ave dinner 7pm</span></span></li>
+      <li><a href="https://www.google.com/calendar/event?eid=XzZjcjNnZHBuODRzazRiOWo2a3FrNGI5azZrb2oyYjlwNjkwazRiYTY2NHBqNGdpMjY4b2syZDlrNjAgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">7pm</span> Dinner — ladies coming over</span><span class="arrow">↗</span></a></li>
+      <li class="plain"><span class="txt-block">Earlier today: Freddie's water polo v Joeys (Hunters Hill) and the Freshwater reseller drop at 12pm<span class="tag">— tomorrow: Reseller Manly 11:30am</span></span></li>
     </ul>
   </div>
 
@@ -282,26 +249,28 @@
   <div class="card harry">
     <h2><span class="dot harry"></span>Harry</h2>
     <ul>
-      <li data-id="harry-mathspace">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
-            <span class="txt-block">Homework: MathSpace task due next Maths lesson<span class="tag">→ SEQTA homework panel</span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('harry-mathspace','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('harry-mathspace','done')">Done</button>
-          </div>
-        </div>
-      </li>
+      <li><a href="https://mail.google.com/mail/u/0/#all/1a08ed8824729588" target="_blank">
+        <span><span class="time">Fri 11 Sep</span> Challenge — Religion cover (Lydia Xu)</span><span class="arrow">↗</span></a></li>
       <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank">
-        <span><span class="time">Mon 14 Sep</span> PDHPE Task 3 — Respectful Relationships written response</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank">
-        <span><span class="time">Wed 16 Sep</span> Industrial Tech (Timber) Task 3 — theory exam</span><span class="arrow">↗</span></a></li>
+        <span><span class="time">Mon 14 Sep</span> PDHPE Task 3 — Respectful Relationships written response <span class="flag">carried from Thu</span></span><span class="arrow">↗</span></a></li>
       <li><a href="https://www.google.com/calendar/event?eid=Xzc0b2o2aDIyODRyM2ViYTM4ZDBqMmI5azZsMmoyYmExOGNwM2NiYTI3NG9rNGdpNTY0cDQ4YzlsNjRfMjAyNjA5MTRUMDgwMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank">
         <span><span class="time">Mon 6pm</span> Maths tutor (Sam)</span><span class="arrow">↗</span></a></li>
       <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank">
-        <span><span class="time">Fri 6 Nov</span> Industrial Tech Task 4 — Pinball practical &amp; portfolio</span><span class="arrow">↗</span></a></li>
-      <li class="plain"><span class="txt-block">Sports uniform: pack it for PDHPE prac — 3 strikes this term already<span class="tag">— from SEQTA pastoral notes</span></span></li>
+        <span><span class="time">Wed 16 Sep</span> Industrial Tech (Timber) Task 3 — theory exam <span class="flag">carried from Thu</span></span><span class="arrow">↗</span></a></li>
+      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank">
+        <span><span class="time">Fri 6 Nov</span> Industrial Tech Task 4 — Pinball practical &amp; portfolio <span class="flag">carried from Thu</span></span><span class="arrow">↗</span></a></li>
+      <li data-id="harry-hw-check">
+        <div class="li-row">
+          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
+            <span class="txt-block">Homework: not read tonight — Thursday showed a MathSpace task due next Maths lesson<span class="tag">→ SEQTA homework panel once logged in</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('harry-hw-check','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('harry-hw-check','done')">Done</button>
+          </div>
+        </div>
+      </li>
+      <li class="plain"><span class="txt-block">Sports uniform for PDHPE prac — 3 White Cards this term<span class="tag">— from Thursday's SEQTA pastoral notes. Keep also has "Get Harry's blood tests — fasting"</span></span></li>
     </ul>
   </div>
 
@@ -309,51 +278,48 @@
   <div class="card freddie">
     <h2><span class="dot freddie"></span>Freddie</h2>
     <ul>
-      <li data-id="freddie-hw-week">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
-            <span class="txt-block">Homework this week: English — Reconciliation poster; Maths — Part A + 100Qs; Technology — finish Onguard<span class="tag">→ SEQTA homework panel (tomorrow's items are in Needs attention)</span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('freddie-hw-week','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('freddie-hw-week','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a088455674f46d3" target="_blank">
-        <span><span class="time">Sat 12 Sep</span> Water polo v Joeys — St Joseph's, Hunters Hill</span><span class="arrow">↗</span></a></li>
       <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank">
-        <span><span class="time">Wed 16 Sep</span> Japanese Task 3 — Message to a friend</span><span class="arrow">↗</span></a></li>
+        <span><span class="time">Wed 16 Sep</span> Japanese Task 3 — Message to a friend <span class="flag">carried from Thu</span></span><span class="arrow">↗</span></a></li>
       <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank">
-        <span><span class="time">Fri 18 Sep</span> Visual Arts Task 1 — Ceramic Communion Creatures</span><span class="arrow">↗</span></a></li>
+        <span><span class="time">Fri 18 Sep</span> Visual Arts Task 1 — Ceramic Communion Creatures <span class="flag">carried from Thu</span></span><span class="arrow">↗</span></a></li>
       <li><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjA5MjFUMjIxNTAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank">
         <span><span class="time">Tue 22 Sep, 8:15am</span> STRIVE</span><span class="arrow">↗</span></a></li>
       <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank">
-        <span><span class="time">Mon 26 Oct</span> PDHPE Task 3 — Celebrating Diversity research report</span><span class="arrow">↗</span></a></li>
+        <span><span class="time">Mon 26 Oct</span> PDHPE Task 3 — Celebrating Diversity research report <span class="flag">carried from Thu</span></span><span class="arrow">↗</span></a></li>
       <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank">
-        <span><span class="time">Fri 6 Nov</span> Technology Task 3 — unit practical &amp; portfolio</span><span class="arrow">↗</span></a></li>
+        <span><span class="time">Fri 6 Nov</span> Technology Task 3 — unit practical &amp; portfolio <span class="flag">carried from Thu</span></span><span class="arrow">↗</span></a></li>
       <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank">
-        <span><span class="time">Mon 9 Nov</span> PDHPE Task 4 — Space Invaders practical</span><span class="arrow">↗</span></a></li>
+        <span><span class="time">Mon 9 Nov</span> PDHPE Task 4 — Space Invaders practical <span class="flag">carried from Thu</span></span><span class="arrow">↗</span></a></li>
+      <li data-id="freddie-hw-check">
+        <div class="li-row">
+          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
+            <span class="txt-block">Homework: not read tonight — Thursday showed English Reconciliation poster, Maths Part A + 100Qs, Technology Onguard<span class="tag">→ SEQTA homework panel once logged in. Honey Spot script doc he shared Wed is still worth a read</span></span>
+          </a>
+          <div class="status-btns">
+            <button class="status-btn underway" onclick="setStatus('freddie-hw-check','underway')">Underway</button>
+            <button class="status-btn done" onclick="setStatus('freddie-hw-check','done')">Done</button>
+          </div>
+        </div>
+      </li>
+      <li class="plain"><span class="txt-block">Water polo v Joeys was this morning — no result or next fixture in the inbox yet<span class="tag">— Keep still lists rescheduling Dr Alex for Freddie</span></span></li>
     </ul>
   </div>
 
   <!-- 5. THIS WEEK -->
   <div class="card family full">
-    <h2><span class="dot family"></span>This week <span class="sub">Fri 11 – Thu 17 Sep</span></h2>
+    <h2><span class="dot family"></span>This week <span class="sub">Sun 13 – Sat 19 Sep</span></h2>
     <ul>
-      <li><a href="https://www.google.com/calendar/event?eid=XzZ0Mmo2ZTlwNnAwazhiOWs4b3AzYWI5azg4czQ0YmExNjBya2FiYTI3NTFrMmNoaTcwcjNnZTIyNjRfMjAyNjA5MTBUMjEwMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Fri 11, 7am</span> Pilates</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzY4cGphYzFnOGdwMzJiOW44OHMzNGI5azg0cjNhYjlwNnAyM2diOW83NHIzNmdoaTY0cmtjZ2kzNzQgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Fri 11, 7pm</span> Dinner — Radio Ave crew, Maki Balgowlah Heights</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a088455674f46d3" target="_blank"><span><span class="time">Sat 12, am</span> Freddie water polo v Joeys — Hunters Hill (time per squad)</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhsMmsyZDluNjRvNDJiOWw2NHBqaWI5azYwb2oyYmExOGwyazJiOWg2MHFqNGM5bDZ0Mms0ZDlrNnMgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Sat 12, 12pm</span> Reseller — Freshwater</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzZjcjNnZHBuODRzazRiOWo2a3FrNGI5azZrb2oyYjlwNjkwazRiYTY2NHBqNGdpMjY4b2syZDlrNjAgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Sat 12, 7pm</span> Dinner — ladies coming over</span><span class="arrow">↗</span></a></li>
       <li><a href="https://www.google.com/calendar/event?eid=XzZrcjM0ZGhpNmwzNGFiOXA2MHBqY2I5azZrc2o4YjlvODkxajRiYTI4Y3NqMGdoazYwcDM4ZDlpOGcgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Sun 13, 11:30am</span> Reseller — Manly</span><span class="arrow">↗</span></a></li>
       <li><a href="https://www.google.com/calendar/event?eid=XzZvcjRhZHBoNjEyajRiOW02b3MzY2I5azY4bzM2YjlwNmtvNGFiOW83NTJqOGUxaDhvc2s0aGk1ODhfMjAyNjA5MTRUMDEwMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Mon 14, 11am</span> Pilates 1-1 <em>(clashes with Dr Glass)</em></span><span class="arrow">↗</span></a></li>
       <li><a href="https://www.google.com/calendar/event?eid=XzhnbzM0ZDI0OG9yamdiYTU4NHE0NGI5azg4cWpjYmEyNjBzamliYTY4Y3FqY2dxNDZnczQyZ3BvNmdfMjAyNjA5MTRUMDEzMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Mon 14, 11:30am</span> Dr Glass — Ed, Mona Vale</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank"><span><span class="time">Mon 14</span> Harry PDHPE written response due</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank"><span><span class="time">Mon 14</span> Harry PDHPE written response due <span class="flag">carried from Thu</span></span><span class="arrow">↗</span></a></li>
       <li><a href="https://www.google.com/calendar/event?eid=Xzc0b2o2aDIyODRyM2ViYTM4ZDBqMmI5azZsMmoyYmExOGNwM2NiYTI3NG9rNGdpNTY0cDQ4YzlsNjRfMjAyNjA5MTRUMDgwMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Mon 14, 6pm</span> Maths tutor Sam — Harry</span><span class="arrow">↗</span></a></li>
       <li><a href="https://www.google.com/calendar/event?eid=Xzg5MWoyZ3BsNnAyamNiOWg2c3FqNmI5azYxMTNhYjlvNzUyNDZiOW84b28zZWNoazZkMzQyZGhrNmtfMjAyNjA5MTRUMDkwMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Mon 14, 7pm</span> Pilates Yin</span><span class="arrow">↗</span></a></li>
       <li><a href="https://www.google.com/calendar/event?eid=XzZjcTNnaDlpNnQyajRiOW42Y3EzMGI5azZjb2thYmEyNm9vajZiYTI2Y3MzaWQxajZ0MWo4aDI2NjAgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Tue 15, 12pm</span> 30/60/90 — Peter &amp; Ed</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank"><span><span class="time">Wed 16</span> Harry Timber theory exam · Freddie Japanese task due</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank"><span><span class="time">Wed 16</span> Harry Timber theory exam · Freddie Japanese task due <span class="flag">carried from Thu</span></span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=XzZ0Mmo2ZTlwNnAwazhiOWs4b3AzYWI5azg4czQ0YmExNjBya2FiYTI3NTFrMmNoaTcwcjNnZTIyNjRfMjAyNjA5MTdUMjEwMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Fri 18, 7am</span> Pilates</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank"><span><span class="time">Fri 18</span> Freddie Visual Arts ceramics task due <span class="flag">carried from Thu</span></span><span class="arrow">↗</span></a></li>
+      <li class="plain"><span class="txt-block">Keep says "Book hair cuts Monday" — nothing booked on the calendar yet<span class="tag">— from your To-do list below</span></span></li>
     </ul>
   </div>
 
@@ -361,18 +327,20 @@
   <div class="card family full">
     <h2><span class="dot family"></span>Next 4–6 weeks highlights</h2>
     <ul>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank"><span><span class="time">Fri 18 Sep</span> Freddie Visual Arts ceramics task due</span><span class="arrow">↗</span></a></li>
       <li><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjA5MjFUMjIxNTAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Tue 22 Sep, 8:15am</span> STRIVE — Freddie</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhoMmtjY2k1ODhwMzBiYTU2MG8zZWI5azZrc2syYjlvNzRwamFiYTM2a29qNGQ5aDcwcjRhZTFpNzAgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Thu 24 Sep</span> Book Bistecca before Hans Zimmer</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=XzhoMmtjY2k1ODhwMzBiYTU2MG8zZWI5azZrc2syYjlvNzRwamFiYTM2a29qNGQ5aDcwcjRhZTFpNzAgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Thu 24 Sep</span> Book Bistecca before Hans Zimmer (concert is Wed 28 Oct)</span><span class="arrow">↗</span></a></li>
       <li><a href="https://www.google.com/calendar/event?eid=XzhwMzNpY2E0NzByazZiYTQ2NTEzaWI5azZvcms4YjlwNmQwajhiOWg4cDBrY2RxMTZncWplYzFsNm8gZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Thu 24 Sep, 2pm</span> Dental hygienist — Dr Hocking</span><span class="arrow">↗</span></a></li>
       <li class="plain"><span class="time">Fri 25 Sep</span> Last day of Term 3 (NSW) — holidays to Fri 9 Oct<span class="tag">— standard NSW dates, not on your calendar or SEQTA; confirm with the College</span></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhnbzM0ZDI0OG9yamdiYTU4NHE0NGI5azg4cWpjYmEyNjBzamliYTY4Y3FqY2dxNDZnczQyZ3BvNmdfMjAyNjA5MjhUMDEzMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Mon 28 Sep, 11:30am</span> Dr Glass — Ed (fortnightly, also 12 Oct)</span><span class="arrow">↗</span></a></li>
-      <li class="plain"><span class="time">Sun 4 Oct</span> Daylight saving starts — clocks forward 1hr<span class="tag">— not on calendar</span></li>
-      <li class="plain"><span class="time">Mon 5 Oct</span> Labour Day public holiday<span class="tag">— Holidays in Australia calendar</span></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjEwMDVUMjExNTAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Tue 6 Oct, 8:15am</span> STRIVE — Freddie (falls in school holidays — check)</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=XzhnbzM0ZDI0OG9yamdiYTU4NHE0NGI5azg4cWpjYmEyNjBzamliYTY4Y3FqY2dxNDZnczQyZ3BvNmdfMjAyNjA5MjhUMDEzMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Mon 28 Sep, 11:30am</span> Dr Glass — Ed (fortnightly; 12 &amp; 26 Oct too)</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=MjAyNjEwMDRfNXBscjc5NTNxM2Jhc3Z1cmdibGFhYmhmaDggZW4uYXVzdHJhbGlhbiNob2xpZGF5QHY" target="_blank"><span><span class="time">Sun 4 Oct</span> Daylight saving starts — clocks forward 1hr</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=MjAyNjEwMDVfcWxzazgzOHZjN3FiOHJuaHN1b21mYnZrc2MgZW4uYXVzdHJhbGlhbiNob2xpZGF5QHY" target="_blank"><span><span class="time">Mon 5 Oct</span> Labour Day public holiday (NSW)</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=XzYwb2thaGhwNnAzNDZiOW42NTMzZ2I5azZvcms4YjlwNnNyM2ViOWg2MHI0MmgxZzg4cDQyaGEyNnMgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Mon 5 Oct (US)</span> ✈ AA 6449 LAX → San José del Cabo — <em>new this week</em></span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjEwMDVUMjExNTAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Tue 6 Oct, 8:15am</span> STRIVE — Freddie (school holidays + you're overseas — check)</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=Xzg5Mmo4Y2hvODUya2FiOW44OG8zZ2I5azhncjM2YjlvNmNzazJiYTI4cDI0YWUyNThjcTNpYzFsNmMgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Tue 13 Oct (US)</span> ✈ AA 73 LAX → Sydney, lands Wed 14 Oct — <em>new this week</em></span><span class="arrow">↗</span></a></li>
       <li><a href="https://www.google.com/calendar/event?eid=XzhsMGtjZTFrNzUxa2NiOW03NHNqNGI5azY4czM4YjlwOG9yM2ViOWo4OHNqY2gxZzYwcjNnZHBoODQgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Sat 24 Oct</span> Bondi to Manly run — meet George, Tim &amp; Conor at the leg switch</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank"><span><span class="time">Mon 26 Oct</span> Freddie PDHPE research report due</span><span class="arrow">↗</span></a></li>
-      <li class="plain"><span class="time">Weekly</span> Pilates Fri 7am · Pilates 1-1 Mon 11am · Pilates Yin Mon 7pm · Maths tutor (Harry) Mon 6pm<span class="tag">— recurring through October</span></li>
+      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank"><span><span class="time">Mon 26 Oct</span> Freddie PDHPE research report due <span class="flag">carried from Thu</span></span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.google.com/calendar/event?eid=XzhoMWowZTlwODRvamViYTY4OTEzMGI5azg4c2oyYmExNmdyMzZiOWw2dDIzMmhocDZjbzNnZTFwNm8gZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Wed 28 Oct, 7:30pm</span> Hans Zimmer — Qudos Bank Arena, with Mark &amp; Kayia</span><span class="arrow">↗</span></a></li>
+      <li class="plain"><span class="time">Weekly</span> Pilates Fri 7am · Pilates 1-1 Mon 11am · Pilates Yin Mon 7pm · Maths tutor (Harry) Mon 6pm<span class="tag">— recurring through October, including the week you're in Mexico</span></li>
     </ul>
   </div>
 
@@ -402,94 +370,88 @@
   <span><span class="dot shop"></span>Shopping (Keep)</span>
 </div>
 
-<div class="note">Default calendar: edjmills1@gmail.com (Family and SCGT calendars are empty for this window; no separate school calendar is shared to Google yet — school dates come from SEQTA). SEQTA and Google Keep were read live from your logged-in browser tonight; nothing was edited or ticked off there. Keep pills: tap ✕ to dismiss here only — it does not change Keep. Outstanding-tasks section omitted: <code>~/MillsTasks/tasks-master.md</code> wasn't found. Fundraising/social notices stay out of "Needs attention".</div>
+<div class="note">Default calendar: edjmills1@gmail.com (Family and SCGT calendars are empty for this window; no separate school calendar is shared to Google yet, so school dates come from SEQTA). <strong>SEQTA was not logged in tonight</strong> — no credentials were entered, so assessment dates marked "carried from Thu" are from Thursday's read and haven't been re-verified. Google Keep was read live from your logged-in browser; nothing was edited or ticked off there, and checked-off items are excluded. Keep pills: tap ✕ to dismiss here only — it does not change Keep. Outstanding-tasks section omitted: <code>~/MillsTasks/tasks-master.md</code> wasn't found. Fundraising/social notices stay out of "Needs attention".</div>
 
 <!-- ================= PRINT SNAPSHOT — plain text, no hyperlinks ================= -->
 <div id="printSheet">
   <div class="p-header">
     <h1>Home Dashboard</h1>
-    <div class="p-updated">Thursday 10 Sep, 6:00pm</div>
+    <div class="p-updated">Saturday 12 Sep, 5:15pm</div>
   </div>
 
   <div class="p-card special">
     <h2>Needs attention today</h2>
     <ul>
-      <li>Harry — 2 new Challenges this week + White Card (no sports uniform, 3rd time) — SEQTA</li>
-      <li>Freddie — homework due tomorrow: English Stolen Generation questions; Technology Onguard tests</li>
-      <li>Harry — PDHPE Task 3 written response due Mon 14 Sep</li>
-      <li>Harry — Industrial Tech (Timber) theory exam Wed 16 Sep</li>
-      <li>Freddie — Japanese Task 3 due Wed 16 Sep</li>
-      <li>Freddie shared "Honey Spot assessment script" doc — read it</li>
-      <li>Water polo v Joeys Sat 12 Sep, St Joseph's Hunters Hill — check Freddie's squad time</li>
-      <li>Mon 14 Sep clash: Pilates 1-1 11am vs Dr Glass 11:30am</li>
+      <li>Harry — NEW Challenge Fri 11 Sep (Lydia Xu, Religion cover): refused work, drawing, throwing book — chat this weekend</li>
+      <li>SEQTA not logged in tonight — homework panels &amp; pastoral notes pending review; log in and check</li>
+      <li>Harry — PDHPE Task 3 written response due Mon 14 Sep (carried from Thu)</li>
+      <li>Harry — Industrial Tech (Timber) theory exam Wed 16 Sep (carried from Thu)</li>
+      <li>Freddie — Japanese Task 3 due Wed 16 Sep (carried from Thu)</li>
+      <li>Mon 14 Sep clash: Pilates 1-1 11am vs Dr Glass 11:30am — still unresolved</li>
+      <li>NEW: Cabo flights 5–13 Oct (AA 6449 / AA 73, booking HARKMW) — no LA leg on calendar; Mon 5 &amp; 12 Oct appointments and Tue 6 Oct STRIVE fall while away; outbound time conflicts between two entries</li>
     </ul>
   </div>
 
   <div class="p-card dad">
     <h2>School noticeboard</h2>
     <ul>
-      <li>Freddie — Affirmation, Visual Arts (9 Sep)</li>
-      <li>Harry — Affirmation, good attention in class (8 Sep)</li>
+      <li>Tess Binfield reply Thu — Harry completed his work, calm in class (good news)</li>
       <li>Unresolved absences on SEQTA — Harry (Feb–May), Freddie (2 Apr, 17 Jun, 26 Jun)</li>
-      <li>SaintsCard auto top-up receipt — routine</li>
-      <li>SEQTA Notices — nothing new</li>
+      <li>Gmail last 24h — no other school mail</li>
+      <li>SEQTA Notices — not checked (no session)</li>
     </ul>
   </div>
 
   <div class="p-card harry">
     <h2>Harry</h2>
     <ul>
-      <li>Homework: MathSpace task due next lesson</li>
+      <li><span class="p-time">Fri 11 Sep</span>Challenge — Religion cover (Lydia Xu)</li>
       <li><span class="p-time">Mon 14 Sep</span>PDHPE Task 3 — written response</li>
       <li><span class="p-time">Mon 6pm</span>Maths tutor (Sam)</li>
       <li><span class="p-time">Wed 16 Sep</span>Industrial Tech Timber — theory exam</li>
       <li><span class="p-time">Fri 6 Nov</span>Industrial Tech Task 4 — Pinball</li>
-      <li>Pack sports uniform for PDHPE prac</li>
+      <li>Homework not read tonight (Thu: MathSpace due next lesson) · Pack sports uniform · Blood tests (fasting)</li>
     </ul>
   </div>
 
   <div class="p-card freddie">
     <h2>Freddie</h2>
     <ul>
-      <li>Homework: Reconciliation poster; Maths Part A + 100Qs; finish Onguard</li>
-      <li><span class="p-time">Sat 12 Sep</span>Water polo v Joeys — Hunters Hill</li>
       <li><span class="p-time">Wed 16 Sep</span>Japanese Task 3 — Message to a friend</li>
       <li><span class="p-time">Fri 18 Sep</span>Visual Arts Task 1 — Ceramic Communion Creatures</li>
       <li><span class="p-time">Tue 22 Sep, 8:15am</span>STRIVE</li>
       <li><span class="p-time">Mon 26 Oct</span>PDHPE Task 3 — research report</li>
       <li><span class="p-time">Fri 6 Nov</span>Technology Task 3 — practical &amp; portfolio</li>
       <li><span class="p-time">Mon 9 Nov</span>PDHPE Task 4 — Space Invaders practical</li>
+      <li>Homework not read tonight (Thu: Reconciliation poster; Maths Part A + 100Qs; Onguard) · Honey Spot script</li>
     </ul>
   </div>
 
   <div class="p-card family">
-    <h2>This week (Fri 11 – Thu 17 Sep)</h2>
+    <h2>This week (Sun 13 – Sat 19 Sep)</h2>
     <ul>
-      <li><span class="p-time">Fri 11, 7am</span>Pilates</li>
-      <li><span class="p-time">Fri 11, 7pm</span>Dinner — Radio Ave crew, Maki Balgowlah Heights</li>
-      <li><span class="p-time">Sat 12, am</span>Freddie water polo v Joeys, Hunters Hill</li>
-      <li><span class="p-time">Sat 12, 12pm</span>Reseller — Freshwater</li>
-      <li><span class="p-time">Sat 12, 7pm</span>Dinner — ladies coming over</li>
+      <li><span class="p-time">Sat 12, 7pm</span>Dinner — ladies coming over (tonight)</li>
       <li><span class="p-time">Sun 13, 11:30am</span>Reseller — Manly</li>
       <li><span class="p-time">Mon 14, 11am</span>Pilates 1-1 (clashes with Dr Glass 11:30am, Mona Vale)</li>
-      <li><span class="p-time">Mon 14, 6pm</span>Maths tutor Sam — Harry</li>
-      <li><span class="p-time">Mon 14, 7pm</span>Pilates Yin</li>
+      <li><span class="p-time">Mon 14</span>Harry PDHPE due · Maths tutor 6pm · Pilates Yin 7pm · hair cuts (Keep)</li>
       <li><span class="p-time">Tue 15, 12pm</span>30/60/90 — Peter &amp; Ed</li>
       <li><span class="p-time">Wed 16</span>Harry Timber exam · Freddie Japanese task due</li>
+      <li><span class="p-time">Fri 18</span>Pilates 7am · Freddie Visual Arts due</li>
     </ul>
   </div>
 
   <div class="p-card family">
     <h2>Next 4–6 weeks highlights</h2>
     <ul>
-      <li><span class="p-time">Fri 18 Sep</span>Freddie Visual Arts task due</li>
       <li><span class="p-time">Tue 22 Sep, 8:15am</span>STRIVE — Freddie</li>
-      <li><span class="p-time">Thu 24 Sep</span>Book Bistecca before Hans Zimmer · Dental hygienist 2pm</li>
+      <li><span class="p-time">Thu 24 Sep</span>Book Bistecca (Hans Zimmer 28 Oct) · Dental hygienist 2pm</li>
       <li><span class="p-time">Fri 25 Sep</span>Last day Term 3 (NSW) — holidays to 9 Oct (confirm)</li>
-      <li><span class="p-time">Mon 28 Sep</span>Dr Glass — Ed (also 12 Oct)</li>
+      <li><span class="p-time">Mon 28 Sep</span>Dr Glass — Ed (also 12 &amp; 26 Oct)</li>
       <li><span class="p-time">Sun 4 Oct</span>Daylight saving starts · <span class="p-time">Mon 5 Oct</span>Labour Day</li>
+      <li><span class="p-time">5–13 Oct</span>Cabo trip — AA 6449 LAX→SJD Mon 5 Oct; AA 73 LAX→SYD Tue 13 Oct (lands 14 Oct)</li>
       <li><span class="p-time">Sat 24 Oct</span>Bondi to Manly run</li>
       <li><span class="p-time">Mon 26 Oct</span>Freddie PDHPE research report due</li>
+      <li><span class="p-time">Wed 28 Oct, 7:30pm</span>Hans Zimmer — Qudos Bank Arena</li>
     </ul>
   </div>
 
@@ -507,20 +469,20 @@
 <script>
   const STORE_KEY = 'homeDashboardStatus';
 
-  // ---- Keep lists (unchecked items only, read live Thu 10 Sep 6pm) ----
+  // ---- Keep lists (unchecked items only, read live Sat 12 Sep ~5:15pm) ----
   const TODO_ITEMS = [
     "Send headstone email",
     "Alex plaques for bench and rocks",
-    "Book appointment at the resellers Manly and Freshwater",
+    "Rebook appointment at the reseller Freshwater",
     "Pay school fees — check if I've done them first",
     "Amend Will and sign",
+    "Order new bulbs for the stove top",
+    "Write Dan's message",
     "Book hair cuts Monday",
     "Get fortnight back up",
-    "Paint Eva's wall",
     "Send Daniel Erko stuff x 2 emails",
-    "Give Claude access to Amber again — predict monthly and quarterly bills",
     "Get Claude to pull up all direct debits and payments so monthly living cost is fixed",
-    "Reschedule Dr Glass (me), Dr Pauline (Harry) and Dr Alix (Freddie)",
+    "Reschedule Dr Pauline (Harry) and Dr Alex (Freddie)",
     "Rebook doctor appointment for my mental health plan",
     "Get UK docs together and Rich passport",
     "Review Richard's documents on motorcade company",

@@ -111,7 +111,7 @@
 <header>
   <div>
     <h1>Home Dashboard <span class="badge">Every evening 6pm</span></h1>
-    <div class="updated">Live pull: Tue 15 Sep, 6pm — calendar + inbox + SEQTA + Keep · all four sources read live tonight; tomorrow is the big one — Harry's Timber exam and Freddie's Japanese task both land Wednesday</div>
+    <div class="updated">Live pull: Tue 15 Sep, 3:30pm re-run (Keep updated) — calendar + inbox + SEQTA + Keep · all four sources read live today; tomorrow is the big one — Harry's Timber exam and Freddie's Japanese task both land Wednesday</div>
   </div>
   <button class="printbtn" onclick="window.print()">🖨️ Print me</button>
 </header>
@@ -183,7 +183,7 @@
       <li data-id="na-cabo-trip">
         <div class="li-row">
           <a class="linkwrap" href="https://www.google.com/calendar/event?eid=XzYwb2thaGhwNnAzNDZiOW42NTMzZ2I5azZvcms4YjlwNnNyM2ViOWg2MHI0MmgxZzg4cDQyaGEyNnMgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank">
-            <span class="txt-block">Cabo trip 5–13 Oct (AA 6449 LAX → SJD, AA 73 home, booking HARKMW) — under 3 weeks out: still no Sydney → LA leg on the calendar, and Mon 5 &amp; 12 Oct Pilates / Dr Glass / Maths tutor plus Tue 6 Oct STRIVE all fall while you're away<span class="tag">→ opens the LAX→SJD flight event. Keep still has "US visas" and "Take pictures of my clothes for holiday" open — the US entry paperwork is the one to start first</span></span>
+            <span class="txt-block">Cabo trip 5–13 Oct (AA 6449 LAX → SJD, AA 73 home, booking HARKMW) — under 3 weeks out: still no Sydney → LA leg on the calendar, and Mon 5 &amp; 12 Oct Pilates / Dr Glass / Maths tutor plus Tue 6 Oct STRIVE all fall while you're away<span class="tag">→ opens the LAX→SJD flight event. Keep still has "US visas" and "Take pictures of my clothes for holiday" open, plus a new one today — "Reply to Dr Glass and reschedule 5–12 appointment asap" (the Mon 12 Oct slot is mid-trip). The US entry paperwork is the one to start first</span></span>
           </a>
           <div class="status-btns">
             <button class="status-btn underway" onclick="setStatus('na-cabo-trip','underway')">Underway</button>
@@ -374,7 +374,7 @@
 
   <!-- 7. TO-DO (ED) -->
   <div class="card todo full">
-    <h2><span class="dot todo"></span>To-do (Ed) <span class="sub">from Google Keep · 25 open · unchanged since last night</span></h2>
+    <h2><span class="dot todo"></span>To-do (Ed) <span class="sub">from Google Keep · 20 open · 6 cleared + 1 added this afternoon · ordered by urgency</span></h2>
     <div class="pills" id="todoPills"></div>
   </div>
 
@@ -398,13 +398,13 @@
   <span><span class="dot shop"></span>Shopping (Keep)</span>
 </div>
 
-<div class="note">Default calendar: edjmills1@gmail.com (Family and SCGT calendars are empty for this window; no separate school calendar is shared to Google yet, so school dates come from SEQTA). Gmail, last 24h: five school-related emails — the counsellor's reply, the IT Helpdesk laptop-loan confirmation, the SaintsCard ready-for-collection notice, and two Parent Forms absence-request completions (one per boy); nothing else school-related, and no fundraising or social notices. SEQTA was already logged in — no credentials were entered; the dashboard, both boys' upcoming assessments, homework panels, task list, pastoral notes, timetables and Notices were read live. Harry's PDHPE Task 3 has left the upcoming list since last night; nothing else changed on SEQTA. Google Keep was read live from your logged-in browser: To-do (25 open) and shopping list (4 open) both unchanged since last night. Nothing was edited or ticked off in Keep, and checked-off items are excluded. Keep pills: tap ✕ to dismiss here only — it does not change Keep. Outstanding-tasks section omitted: <code>~/MillsTasks/tasks-master.md</code> wasn't found on this Mac.</div>
+<div class="note">Default calendar: edjmills1@gmail.com (Family and SCGT calendars are empty for this window; no separate school calendar is shared to Google yet, so school dates come from SEQTA). Gmail, last 24h: five school-related emails — the counsellor's reply, the IT Helpdesk laptop-loan confirmation, the SaintsCard ready-for-collection notice, and two Parent Forms absence-request completions (one per boy); nothing else school-related, and no fundraising or social notices. SEQTA was already logged in — no credentials were entered; the dashboard, both boys' upcoming assessments, homework panels, task list, pastoral notes, timetables and Notices were read live. Harry's PDHPE Task 3 has left the upcoming list since last night; nothing else changed on SEQTA. Google Keep was re-read live at 3:30pm after you updated it: To-do now 20 open — six cleared since the 6pm-style build (both Dan's-message items, Dr Pauline/Dr Alex rescheduling, UK docs, Richard's motorcade documents, "a fresh start"), one added ("Reply to Dr Glass and reschedule 5–12 appointment asap"), two reworded. Shopping list unchanged at 4. The To-do pills are shown in priority order (deadline-driven first), not Keep's order. Nothing was edited or ticked off in Keep, and checked-off items are excluded. Gmail and SEQTA were unchanged since the earlier pull. Keep pills: tap ✕ to dismiss here only — it does not change Keep. Outstanding-tasks section omitted: <code>~/MillsTasks/tasks-master.md</code> wasn't found on this Mac.</div>
 
 <!-- ================= PRINT SNAPSHOT — plain text, no hyperlinks ================= -->
 <div id="printSheet">
   <div class="p-header">
     <h1>Home Dashboard</h1>
-    <div class="p-updated">Tuesday 15 Sep, 6pm</div>
+    <div class="p-updated">Tuesday 15 Sep, 3:30pm re-run (Keep updated)</div>
   </div>
 
   <div class="p-card special">
@@ -497,33 +497,34 @@
 <script>
   const STORE_KEY = 'homeDashboardStatus';
 
-  // ---- Keep lists (unchecked items only, read live Tue 15 Sep ~6pm) ----
+  // ---- Keep lists (unchecked items only, read live Tue 15 Sep ~3:30pm) ----
+  // To-do order = priority (deadline-driven first), not Keep's order. Text is Keep's, lightly tidied.
   const TODO_ITEMS = [
+    // This week — real deadlines
+    "US visas",
+    "Reply to Dr Glass and reschedule 5–12 Oct appointment asap",
+    "Pay school fees — check if I've done them first",
+    "Book hair cuts Monday",
+    "Get Harry's blood tests — fasting",
+    // Before Cabo
+    "Rebook doctor appointment for my mental health plan (diazepam)",
+    "Take pictures of my clothes for holiday",
+    "Cancel Google Play on Alex's phone",
+    "Update myGov email",
+    // Batch on one admin afternoon
+    "Send Daniel Erko stuff x 2 emails",
+    "Rebook appointment at the reseller, Freshwater / Manly",
+    "Print Dan's towels",
+    "Get another Boost SIM",
+    "Get fortnight back up",
+    // Hand to Claude
+    "Get Claude to pull up all direct debits and payments so monthly living cost is fixed",
+    "Move ChatGPT chats across to Claude for context on the boys and the ops",
+    // Own time, not a to-do slot
     "Send headstone email",
     "Alex plaques for bench and rocks",
-    "Rebook appointment at the reseller Freshwater",
-    "Pay school fees — check if I've done them first",
     "Amend Will and sign",
-    "Get another Boost SIM",
-    "Write Dan's message — urgent!!!!",
-    "Take pictures of my clothes for holiday",
-    "US visas",
-    "Print Dan's towels",
-    "Write Dan's message",
-    "Book hair cuts Monday",
-    "Get fortnight back up",
-    "Send Daniel Erko stuff x 2 emails",
-    "Get Claude to pull up all direct debits and payments so monthly living cost is fixed",
-    "Reschedule Dr Pauline (Harry) and Dr Alex (Freddie)",
-    "Rebook doctor appointment for my mental health plan",
-    "Get UK docs together and Rich passport",
-    "Review Richard's documents on motorcade company",
-    "A fresh start — what are we doing with our lives",
-    "Cancel Google Play on Alex's phone",
-    "Design the two boxes — one for Alex, one for the trauma (picture like Allyson's)",
-    "Update myGov email",
-    "Move ChatGPT chats across to Claude for context on the boys and the ops",
-    "Get Harry's blood tests — fasting"
+    "Design the two boxes — one for Alex, one for the trauma (picture like Allyson's)"
   ];
   const SHOP_ITEMS = [
     "Frozen raspberries",

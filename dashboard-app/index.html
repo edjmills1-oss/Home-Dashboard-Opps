@@ -1,780 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home Dashboard</title>
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Home">
-<meta name="theme-color" content="#F7F5F0">
-<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<style>
-  :root{
-    --harry:#2E5FE8;--freddie:#8B5CF6;--dad:#2F9E5A;--family:#F2994A;--special:#E5484D;
-    --todo:#5B21B6;--shop:#65A30D;
-    --ink:#1C1F26;--paper:#F7F5F0;--card:#FFFFFF;--line:#E4E0D8;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:-apple-system,'Segoe UI',system-ui,sans-serif;background:var(--paper);color:var(--ink);padding:24px;max-width:900px;margin:0 auto;}
-  header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;border-bottom:3px solid var(--ink);padding-bottom:12px;flex-wrap:wrap;gap:10px;}
-  h1{font-size:1.6rem;letter-spacing:-0.02em;}
-  .badge{display:inline-block;background:var(--ink);color:#fff;font-size:0.7rem;padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;}
-  .updated{font-size:0.85rem;color:#666;margin-top:2px;}
-  .printbtn{background:var(--ink);color:#fff;border:none;border-radius:8px;padding:9px 16px;font-size:0.85rem;font-weight:600;cursor:pointer;white-space:nowrap;}
-  .printbtn:hover{opacity:0.85;}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  @media (max-width:600px){.grid{grid-template-columns:1fr;}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;border-left:6px solid var(--family);}
-  .card h2{font-size:1rem;margin-bottom:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-  .card h2 .sub{font-size:0.72rem;font-weight:400;color:#888;margin-left:auto;}
-  .card.harry{border-left-color:var(--harry);} .card.freddie{border-left-color:var(--freddie);}
-  .card.dad{border-left-color:var(--dad);} .card.family{border-left-color:var(--family);} .card.special{border-left-color:var(--special);}
-  .card.todo{border-left-color:var(--todo);} .card.shop{border-left-color:var(--shop);}
-  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0;}
-  .dot.harry{background:var(--harry);} .dot.freddie{background:var(--freddie);} .dot.dad{background:var(--dad);}
-  .dot.family{background:var(--family);} .dot.special{background:var(--special);}
-  .dot.todo{background:var(--todo);} .dot.shop{background:var(--shop);}
-  ul{list-style:none;font-size:0.9rem;line-height:1.5;}
-  li{border-bottom:1px dashed var(--line);}
-  li:last-child{border-bottom:none;}
-  li a{display:flex;gap:8px;align-items:flex-start;padding:7px 4px;color:inherit;text-decoration:none;border-radius:6px;}
-  li a:hover{background:#F0EEE7;}
-  li a .arrow{margin-left:auto;color:#aaa;flex-shrink:0;}
-  li .plain{display:flex;gap:8px;padding:7px 4px;}
-  .time{font-weight:600;color:#555;flex-shrink:0;}
-  .tag{font-size:0.68rem;color:#999;display:block;margin-top:1px;}
-  .who{font-size:0.65rem;font-weight:700;border-radius:4px;padding:1px 5px;color:#fff;flex-shrink:0;margin-top:3px;}
-  .who.harry{background:var(--harry);} .who.freddie{background:var(--freddie);}
-  .flag{font-size:0.62rem;font-weight:700;border-radius:4px;padding:1px 5px;background:#FFF3E0;color:#B85C00;border:1px solid #FFCF99;margin-left:4px;white-space:nowrap;}
-  .flag.live{background:#E6F4EA;color:#1F7A44;border-color:#9FD5B0;}
-  .flag.nolink{background:#F0EEE7;color:#777;border-color:#D8D3C8;}
-  .full{grid-column:1/-1;}
-  .key{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;font-size:0.8rem;color:#555;}
-  .key span{display:flex;align-items:center;gap:5px;}
+Home Dashboard Every evening 6pm
+Rebuilt Tue 20 Oct evening. New: three teacher notices about Freddie (Challenge today, White Card and a changing-room reminder Mon), Year 7 English exam Tue 3 Nov with study booklet, and Water Polo pizza night Fri 23 Oct. Assessments read live from SEQTA tonight (new: Harry Science Thu 5 Nov). Google Keep read live in Chrome: To-do (Ed) now includes the unchecked Keep items; the shopping list has nothing unchecked (Toothpaste and Nutragrain are already bought), so that section is omitted. Each item appears once; ticked-off items are gone.
+🖨️ Print me
 
-  .li-row{display:flex;align-items:flex-start;gap:8px;padding:7px 4px;border-radius:6px;}
-  .li-row .txt-block{flex:1;min-width:0;}
-  .li-row a.linkwrap{display:flex;gap:8px;flex:1;min-width:0;color:inherit;text-decoration:none;}
-  .li-row a.linkwrap:hover{background:#F0EEE7;border-radius:6px;}
-  .li-row .nolinkwrap{display:flex;gap:8px;flex:1;min-width:0;}
-  .status-btns{display:flex;gap:4px;flex-shrink:0;margin-left:6px;}
-  .status-btn{
-    font-size:0.65rem;font-weight:700;border:1px solid var(--line);background:#fff;color:#999;
-    border-radius:20px;padding:3px 9px;cursor:pointer;white-space:nowrap;
-  }
-  .status-btn.underway.active{background:#FFF3E0;border-color:#FF8A3D;color:#B85C00;}
-  .status-btn.done.active{background:#E6F4EA;border-color:#2F9E5A;color:#1F7A44;}
-  li.is-underway{background:#FFFCF6;}
-  li.is-done{display:none;}
+Needs attention today
+from Gmail & SEQTA
+	•	F Challenge entered (Mr Ellison, today): threw a classmate’s worksheet out of the window in a maths lesson. Worth a chat tonight.→ opens the Gmail thread · teacher notice, high priority  Underway Done
+	•	F White Card (Mr Ramsden, Mon 19 Oct): “poor choices” entry for Freddie.→ opens the Gmail thread · teacher notice, high priority  Underway Done
+	•	F Mr Ramsden (Head of House): changing-room behaviour reminder after a public complaint at the WAC — reinforce that he represents the College at sports events.→ opens the Gmail thread · teacher notice, high priority  Underway Done
+	•	F Year 7 English exam Tue 3 Nov (Week 4) — Tim Burton / Auteur unit. Study booklet PDF attached; work through it progressively (Ms Xu).→ opens the Gmail thread · teacher notice, high priority  Underway Done
+	•	F Freddie needs to CHOOSE a novel for Tutor Group — today Tue 20 Oct (every Tuesday; no picture books or magazines) (Mr Oates)→ opens the Gmail thread · teacher notice, high priority  Underway Done
+	•	F Sports uniform infringement: didn’t bring sports uniform to PE prac Mon 19 Oct (Mr Burke). A second time in a term = uniform detention — pack it for the next PE prac.→ opens the Gmail thread · teacher notice  Underway Done
+	•	Assessments due within a week: Freddie RE Task 3 Thu 22 Oct · Harry RE Task 3 Tue 27 Oct (full lists under each boy)→ opens SEQTA · read live Tue 20 Oct  Underway Done
 
-  /* ---- Pills (Keep lists + Outstanding tasks) ---- */
-  .pills{display:flex;flex-wrap:wrap;gap:8px;}
-  .pill{display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;line-height:1.3;padding:5px 6px 5px 11px;border-radius:999px;border:1.5px solid;background:#fff;transition:opacity .25s,transform .25s;max-width:100%;}
-  .pill span{word-break:break-word;}
-  .pill .x{border:none;background:transparent;font-size:0.9rem;line-height:1;width:22px;height:22px;border-radius:50%;cursor:pointer;color:inherit;opacity:0.55;flex-shrink:0;}
-  .pill .x:hover{opacity:1;background:rgba(0,0,0,0.06);}
-  .pill.todo{border-color:var(--todo);color:var(--todo);background:#F3EEFB;}
-  .pill.shop{border-color:var(--shop);color:#3F6B0A;background:#F1F8E4;}
-  .pill.special{border-color:var(--special);color:#B3262B;background:#FDECEC;}
-  .pill.is-done{display:none;}
-  .pill.fading{opacity:0;transform:scale(0.9);}
-  .pill .new{font-size:0.6rem;font-weight:700;background:#E6F4EA;color:#1F7A44;border-radius:4px;padding:0 4px;}
-  .empty{font-size:0.8rem;color:#999;font-style:italic;padding:4px;}
-  .sublink{text-decoration:underline;cursor:pointer;}
-  .sublink:hover{opacity:0.75;}
+School noticeboard
+from Gmail · low priority
+	•	Fri 23 Oct, 6–8pm Water Polo Season Launch Pizza Night — tickets via Try Booking (Mr Hull)→ opens the Gmail thread · social event, low priority  ↗
+	•	Mon 19 Oct Parent WhatsApp groups per year level for lifts to games/training (Year 7 — Evadne Janeke; Year 9 — Carolyn Northcote)→ opens the Gmail thread · low priority, optional  ↗
 
-  .note{font-size:0.78rem;color:#888;margin-top:20px;border-top:1px solid var(--line);padding-top:10px;line-height:1.5;}
+Harry
+assessments by date · from SEQTA
+	•	H Tue 27 Oct · Religious Education · Task 3 — The Church in Australia Topic Test→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	H Fri 30 Oct · History · Task 2 — Multimedia Presentation WW2→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	H Mon 2 Nov · Commerce · Task 4 — Examination→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	H Mon 2 Nov · English · Task 4 — Examination→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	H Mon 2 Nov · Maths Core + Standard · Task 4 — Examination→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	H Thu 5 Nov · Science · Task 4 — Examination→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	H Fri 6 Nov · Industrial Technology (Timber) · Task 4 — Pinball Practical & Portfolio→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	H Fri 6 Nov · PDHPE · Task 4 — Cricket & Softball Practical→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	H Follow-up with Dr Ryan Lee — Mon 14 Dec, 2pmnot on calendar yet · from marked-up printout  Underway Done
 
-  /* ---- Print snapshot ---- */
-  #printSheet{display:none;}
-  @media print{
-    body *{visibility:hidden;}
-    #printSheet, #printSheet *{visibility:visible;}
-    #printSheet{display:block;position:absolute;top:0;left:0;width:100%;padding:20px;}
-    .printbtn{display:none;}
-  }
-  .p-header{border-bottom:3px solid #000;padding-bottom:10px;margin-bottom:16px;}
-  .p-header h1{font-size:1.4rem;}
-  .p-updated{font-size:0.8rem;color:#555;margin-top:2px;}
-  .p-card{border:1px solid #ccc;border-left:5px solid #999;border-radius:6px;padding:12px 14px;margin-bottom:12px;break-inside:avoid;}
-  .p-card.harry{border-left-color:var(--harry);} .p-card.freddie{border-left-color:var(--freddie);}
-  .p-card.dad{border-left-color:var(--dad);} .p-card.family{border-left-color:var(--family);} .p-card.special{border-left-color:var(--special);}
-  .p-card.todo{border-left-color:var(--todo);} .p-card.shop{border-left-color:var(--shop);}
-  .p-card h2{font-size:0.95rem;margin-bottom:8px;}
-  .p-card ul{list-style:none;font-size:0.85rem;}
-  .p-card li{padding:4px 0;border-bottom:1px dashed #ddd;}
-  .p-card li:last-child{border-bottom:none;}
-  .p-time{font-weight:700;margin-right:6px;}
-  .p-pills{font-size:0.85rem;line-height:1.7;}
-</style>
-</head>
-<body>
-<header>
-  <div>
-    <h1>Home Dashboard <span class="badge">Every evening 6pm</span></h1>
-    <div class="updated">Evening pull: Tue 22 Sep, 5:20pm — calendar + inbox + SEQTA + Keep, all read live. <strong>Both boys were home today</strong> (Parent Forms 7271 Harry, 7273 Freddie, 8:39–8:43am) — Harry's fourth school day in a row. Two teacher/staff emails landed this afternoon and both want a reply: <strong>Mr Aragone's pastoral note</strong> (Harry got his English essay back and was upset; needs a new English book) and <strong>Alison Donnan asking whether Harry still needs meds kept at reception</strong>. Katie Quirke's Friday check-in is still unanswered (Sent folder empty) — three short replies tonight clears all of it. Tomorrow: Harry has PDHPE 11:05 (sports uniform, three infringements already) and a Science double first up; Freddie has a Maths double first up with 10.04 due Thursday. New on the calendar today: Journ3y AI catch-up Wed 1pm, Land Rover drop-off Fri 2 Oct, and the Adam King "Check in" has moved to Tue 29 Sep.</div>
-  </div>
-  <button class="printbtn" onclick="window.print()">🖨️ Print me</button>
-</header>
+Freddie
+assessments by date · from Gmail & SEQTA
+	•	F Sat 24 Oct 9:30am: water polo 14B v SJC at St Joseph’s Pool — tell Mr Hull ASAP of any unavailability→ opens the Gmail thread · not on calendar  Underway Done
+	•	F Thu 22 Oct · Religious Education · Task 3 — Affirming Human Dignity Timed Responses→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	F Wed 28 Oct · Japanese · Task 4 — In-Class Test→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	F Join Northern Beaches Libraries by Fri 30 Oct (free sign-up; card delivered to school) (Mr O’Brien)→ opens the Gmail thread · Head of Year deadline  Underway Done
+	•	F Mon 2 Nov · Mathematics · Task 4 — Examination→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	F Tue 3 Nov · English · Task 4 — Exam (study booklet: see Needs attention)→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	F Tue 3 Nov · Science · Task 4 — Solutions & Mixtures Practical Investigation→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	F Fri 6 Nov · History · Task 4 — The Vikings Examination→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	F Fri 6 Nov · PDHPE · Task 3 — Celebrating Diversity Research Report→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	F Fri 6 Nov · Technology · Task 3 — Unit Practical and Portfolio→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	F Fri 6 Nov · Visual Arts · Task 2 — Self-Portrait Drawing→ opens SEQTA · read live Tue 20 Oct  Underway Done
+	•	F Mon 9 Nov · PDHPE · Task 4 — Space Invaders Practical→ opens SEQTA · read live Tue 20 Oct  Underway Done
 
-<div class="grid">
+This week
+Tue 20 – Sun 25 Oct · from calendar
+	•	Tue 20, 6:45pm Freddie water polo training (14B), Brookvale  ↗
+	•	Fri 23, 7am Pilates  ↗
+	•	Sat 24 Bondi to Manly run — meet George, Tim & Conor  ↗
 
-  <!-- 1. NEEDS ATTENTION TODAY -->
-  <div class="card special full">
-    <h2><span class="dot special"></span>Needs attention today <span class="sub">from Gmail, SEQTA, calendar &amp; Keep</span></h2>
-    <ul>
-      <li data-id="na-both-absent-0922">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a0c61fb2569cf08" target="_blank">
-            <span class="who harry">H</span><span class="who freddie">F</span>
-            <span class="txt-block"><strong>Both boys absent today — Parent Forms 7271 (Harry, 8:39am) and 7273 (Freddie, 8:41am).</strong> Harry: Thu, Fri, Mon, Tue — four school days; Freddie: Thu and today. The form emails only confirm the redirection — the illness application still has to be finished on SEQTA (Absences → New Absence). SEQTA still shows Thu 17 unresolved for both; Fri 18, Mon 21 and today aren't listed yet<span class="tag">→ opens Harry's form confirmation. Freddie's is <span class="sublink" data-href="https://mail.google.com/mail/u/0/#all/1a0c62357e5841c0" style="color:#8B5CF6;">7273 here</span>. SEQTA absences: <span class="sublink" data-href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" style="color:#2E5FE8;">dashboard, read live 5:05pm</span> <span class="flag">new today</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-both-absent-0922','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-both-absent-0922','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="na-aragone-note-0922">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a0c7524ccd7b69f" target="_blank">
-            <span class="who harry">H</span>
-            <span class="txt-block"><strong>Pastoral note from Carmelo Aragone (English), 2:14pm — Harry got his English Task 3 essay back and was "naturally, quite upset with the result".</strong> Mr Aragone talked him through his approach and says Harry understands he needs to change his in-class and pre-assessment habits if he wants to improve. Also: Harry is out of pages in his English book and needs a new one. The mark isn't on SEQTA yet (Task 3 Essay, 1 Sep, still "results pending"); earlier essays were 50% and 60%<span class="tag">→ opens the SEQTA Parental Contact email. Teacher note = high priority — worth a short thank-you reply and a new exercise book in the bag. Odd detail: the note says "today", but Harry was marked absent this morning — ask him whether he went in late <span class="flag">new today · reply</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-aragone-note-0922','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-aragone-note-0922','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="na-quirke-checkin-0918">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a0b2644e260f130" target="_blank">
-            <span class="who harry">H</span>
-            <span class="txt-block"><strong>Reply to Harry's tutor Katie Quirke (Goold House) — Friday's check-in is now unanswered for a fifth day, and he's missed two more days since.</strong> "absent for 2 consecutive days… is everything okay and whether there is any support we can provide." Logged as a SEQTA Parental Contact<span class="tag">→ opens the email. Nothing in Sent since Friday. She has Harry for House period every morning at 10:30 — a two-line reply tonight is the one thing worth doing before bed <span class="flag">reply today</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-quirke-checkin-0918','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-quirke-checkin-0918','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="na-donnan-meds-0922">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a0c774faf440af7" target="_blank">
-            <span class="who harry">H</span>
-            <span class="txt-block"><strong>Alison Donnan (Sports Physiotherapist), 2:51pm — "does Harry still need meds stored at reception?"</strong> She's auditing what's held there. A one-line yes/no reply closes it<span class="tag">→ opens the email. Staff query about Harry = high priority, quick to answer <span class="flag">new today · reply</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-donnan-meds-0922','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-donnan-meds-0922','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="na-freddie-science-0921">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4694:17569:6009&item=9950" target="_blank">
-            <span class="who freddie">F</span>
-            <span class="txt-block"><strong>Freddie's Science Task 3 result (Cells &amp; Classification Data Processing, 31 Aug): 63.33%</strong> vs class average 79.81. Booklet 10/10 · Multiple choice 7/10 · <strong>Short response 5/25</strong>. Same pattern as Friday's Maths (20%) and Technology (33%) — full marks on booklet work, written responses fall away. Earlier: Task 1 40%, Task 2 62%<span class="tag">→ opens the result on SEQTA. He was home today, so the conversation hasn't had a school day to land on — Science is Wed 14:30 (Joshua Don), Maths double Wed 8:40 (Caoimhe Wright) <span class="flag live">carried over</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-freddie-science-0921','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-freddie-science-0921','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="na-freddie-results-0918">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4690:17411:6009&item=9988" target="_blank">
-            <span class="who freddie">F</span>
-            <span class="txt-block"><strong>Friday's two Freddie results still need the conversation:</strong> Maths Task 3 (Algebra &amp; Equations alternate task) <strong>20.16%</strong> vs 60.19, and Technology Task 2 <strong>33%</strong> vs 64.45. Maths homework <strong>10.04 Q1–4 + MathSpace Stem &amp; Leaf is due Thursday</strong> — and the teacher's note says the description was given in today's lesson, which he missed<span class="tag">→ opens the Maths result; Technology result is <span class="sublink" data-href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4695:17692:6009&item=10072" style="color:#8B5CF6;">here</span>. Maths double tomorrow 8:40 — a chance to ask Ms Wright what he missed <span class="flag live">carried over</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-freddie-results-0918','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-freddie-results-0918','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="na-tomorrow-0923">
-        <div class="li-row">
-          <a class="linkwrap" href="https://www.google.com/calendar/event?eid=XzhnczMyZWE0NzRyM2diOW04b3NqY2I5azhvcms2YmExODhxa2FiOXA3NTBqYWc5ajZvcjM4Z2kxODQgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank">
-            <span class="txt-block"><strong>Tomorrow, Wed 23: Harry — Science double 8:40 (Tess Binfield), then PDHPE 11:05 (Jon McMahon) — sports uniform, three infringements already this term;</strong> English 12:00 (Mr Aragone — new book), Commerce 13:35 (crypto research still owed to Mr Baker), Timber 14:30. <strong>Freddie — Maths double 8:40 (10.04 due Thu), English 11:05 (AirPods), Visual Arts, History, Science 14:30.</strong> You: Journ3y AI catch-up 1pm (added this morning). Wednesday is otherwise clear — still the best day for Harry's detention<span class="tag">→ opens the Journ3y AI catch-up event. Wed timetables read live on SEQTA. Bags tonight: sports uniform + English book (H); laptop, AirPods, wide-reading book (F) <span class="flag">tonight</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-tomorrow-0923','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-tomorrow-0923','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="na-cal-duplicates-0921">
-        <div class="li-row">
-          <a class="linkwrap" href="https://www.google.com/calendar/event?eid=NzdtcnJvOWppMjY2MThhajE4MGZzc25pMGMgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank">
-            <span class="txt-block"><strong>Calendar duplicates from Sunday night are still there</strong> — Adam King 2pm today (×2), Thu dental hygienist (×2), Fri Pilates 7am (×2), AA72 SYD→LAX (×2, one with an "estimated arrival" note), 16 Oct Dr Beckwith (×2). The Adam King "Check in" has <strong>moved to Tue 29 Sep 1pm</strong> (both copies updated 4:03pm today) — only the Sunday-added "journ3y Check in (Teams)" 1pm copy was left on today. Delete the copies when you have a minute so reminders don't fire twice<span class="tag">→ opens the duplicate "Adam King" 2pm event. Links elsewhere on this page point at the originals <span class="flag live">unchanged</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-cal-duplicates-0921','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-cal-duplicates-0921','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="na-zantari-0916">
-        <div class="li-row">
-          <span class="nolinkwrap">
-            <span class="txt-block"><strong>Your own flag — "Reply Zantari – urgent today"</strong> is still open on the Keep to-do list (added Wed, now a week)<span class="tag">— from Google Keep, To-do (Ed). <span class="flag nolink">no link — Keep has no per-item URL</span> Also still open: US visas · reschedule Dr Glass 5–12 Oct · school fees check · haircuts (Graduation is Thursday)</span></span>
-          </span>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-zantari-0916','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-zantari-0916','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="na-harry-detention">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
-            <span class="who harry">H</span>
-            <span class="txt-block">Harry's 1-hour detention (3 White Cards, logged Fri 11 Sep) — C1.1 (Communitas) 3:30–4:30pm, <strong>day still not stated</strong>. With today missed too there are two school days left to serve it this term: Wed or Fri (Thursday is Graduation)<span class="tag">→ SEQTA dashboard, Harry's pastoral care <span class="flag live">unchanged</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-harry-detention','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-harry-detention','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="na-saintscard-collect">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a0a3028d75c20f7" target="_blank">
-            <span class="txt-block">SaintsCard order is <strong>ready to collect</strong> — ICT Helpdesk, Goold Level 3, 8am–4pm Mon–Fri (three school days left before the holidays). The auto top-up went through this morning (10:52am receipt)<span class="tag">→ opens the SaintsCard collection email; today's receipt is <span class="sublink" data-href="https://mail.google.com/mail/u/0/#all/1a0c6999f923c4a6" style="color:#2F9E5A;">here</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-saintscard-collect','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-saintscard-collect','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="na-cabo-trip">
-        <div class="li-row">
-          <a class="linkwrap" href="https://www.google.com/calendar/event?eid=XzY5MWsyYzloNzUxamNiYTE4NTE0Y2I5azY4cjMyYmExNjRzajZiYTU4Y3JqaWgxajhjcGpnaGhwNmMgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank">
-            <span class="txt-block">Cabo trip 5–13 Oct — <strong>13 days.</strong> AA 72 SYD → LAX Mon 5 Oct 10:10am (booking HARKMW), AA 6449 on to SJD, AA 73 home Tue 13 Oct. Still clashing while you're away: Pilates 1-1, Maths tutor and Yin on Mon 5 and Mon 12 Oct, Dr Glass Mon 12 Oct, STRIVE Tue 6 Oct. New: Land Rover drop-off for the door handle is Fri 2 Oct, the Friday before you fly<span class="tag">→ opens the SYD→LAX flight event. Keep: "US visas" and "Reply to Dr Glass and reschedule 5–12 appointment asap" still open <span class="flag live">clashes unchanged</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('na-cabo-trip','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('na-cabo-trip','done')">Done</button>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+Next 4–6 weeks highlights
+from calendar
+	•	Mon 26 Oct Weekly: Pilates 1-1 11am · Harry maths tutor Sam 6pm · Pilates Yin 7pm · Freddie water polo 4pm (repeats each Monday; Tue 6:45pm training too)→ opens the calendar event  ↗
+	•	Tue 27 Oct, 4pm Both boys’ haircuts (4–5pm)→ opens the calendar event  ↗
+	•	Wed 28 Oct, 7:30pm Hans Zimmer concert — Qudos Bank Arena, with Mark & Kayia. Dinner in Manly beforehand; Ed drives.→ opens the calendar event  ↗
+	•	Mon 2 Nov, 9am Harry — Dr Pauline Leung, Frenchs Forest (fortnightly: 16 & 30 Nov, 14 Dec)→ opens the calendar event  ↗
+	•	Mon 9 Nov, 11:30am Ed — Dr Glass (also Mon 23 Nov, 7 & 21 Dec)→ opens the calendar event  ↗
+	•	by Mon 30 Nov Cholesterol blood test — walk-in only, any time before 30 Nov. Referral in the top bathroom cupboard and in texts under “Dr docker”.→ opens the calendar reminder  ↗
+	•	Sun 29 Nov, 9am Alma St rates — 2nd instalment due Mon 30 Nov→ opens the calendar reminder  ↗
 
-  <!-- 2. SCHOOL NOTICEBOARD -->
-  <div class="card dad">
-    <h2><span class="dot dad"></span>School noticeboard <span class="sub">from Gmail &amp; SEQTA · 5 new in 24h · 2 need a reply</span></h2>
-    <ul>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0c774faf440af7" target="_blank"><span><span class="who harry">H</span><span class="txt-block"><span class="time">Tue 2:51pm</span> <strong>Alison Donnan (Sports Physio)</strong> — does Harry still need medications stored at reception? (unread)<span class="tag">→ opens the email; staff query, reply needed — in Needs attention above</span></span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0c7524ccd7b69f" target="_blank"><span><span class="who harry">H</span><span class="txt-block"><span class="time">Tue 2:14pm</span> <strong>SEQTA Pastoral Note — Carmelo Aragone (English)</strong>: essay result handed back, Harry upset; needs a new English book (unread)<span class="tag">→ opens the Parental Contact email; teacher note = high priority, actioned above</span></span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0c6999f923c4a6" target="_blank"><span><span class="time">Tue 10:52am</span> SaintsCard — payment received, Auto Top Up (receipt)<span class="tag">→ opens the receipt; no action</span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0c62357e5841c0" target="_blank"><span><span class="who freddie">F</span><span class="txt-block"><span class="time">Tue 8:43am</span> Parent Forms — absence request 7273 completed for Freddie (today). Confirms the redirection only; SEQTA still needs the illness form<span class="tag">→ opens the confirmation; in Needs attention above</span></span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0c61fb2569cf08" target="_blank"><span><span class="who harry">H</span><span class="txt-block"><span class="time">Tue 8:39am</span> Parent Forms — absence request 7271 completed for Harry (today)<span class="tag">→ opens the confirmation; in Needs attention above</span></span></span><span class="arrow">↗</span></a></li>
-      <li class="plain"><span class="txt-block"><span class="time">Last 24h</span> The only other inbox item is a Google "Security alert" (1:18pm, new sign-in on halomills29@gmail.com) — not school. Yesterday's water polo emails and Freddie's Merit have dropped out of the 24h window<span class="tag">— Gmail, searched newer_than:1d at 5:03pm: six threads, five school-related. No fundraising or social notices. Nothing in Sent since Friday</span></span></li>
-      <li class="plain"><span class="txt-block">SEQTA notification bell: nothing new since yesterday 12:12pm (Freddie's Science result) · SEQTA Notices: none published<span class="tag">— checked live at 5:08pm; the bell was opened to look and closed again, nothing cleared</span></span></li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0c1df3c1a0f9f2" target="_blank"><span><span class="time">Mon 12:50pm</span> Water Polo Camp Update (Paul Hull) — Mon 28–Tue 29 Sep, Hunters Hill; spots still open via TryBooking · <span class="sublink" data-href="https://mail.google.com/mail/u/0/#all/1a0c146d73ee3e26" style="color:#2F9E5A;">uniform TryBooking links</span><span class="tag">→ opens the email; optional camp, low priority</span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0be774ece294de" target="_blank"><span><span class="who freddie">F</span><span class="txt-block"><span class="time">Sun 8:57pm</span> <strong>Merit for Freddie</strong> — accumulation of three Affirmations (Jonathan Dawson). His fifth Merit this year<span class="tag">→ opens the SEQTA notification email</span></span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank"><span><span class="who harry">H</span><span class="txt-block"><span class="time">Mon 10:10am</span> SEQTA: Harry's RE Task 3 — The Church in Australia Topic Test, <strong>Tue 27 Oct</strong><span class="tag">→ SEQTA upcoming assessments</span></span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0b2644e260f130" target="_blank"><span><span class="time">Fri 12:41pm</span> SEQTA Parental Contact — Katie Quirke (Harry's tutor) checking in after two days' absence (still unanswered)<span class="tag">→ opens the email; actioned in Needs attention above</span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0aded06137d026" target="_blank"><span><span class="time">Thu 3:52pm</span> Head of Year 7 — End of Term Expectations &amp; Year 12 Graduation (Thu 24 Sep, Guard of Honour, hair/uniform rules; Uniform Shop was open today)<span class="tag">→ opens the email</span></span><span class="arrow">↗</span></a></li>
-      <li data-id="notice-laptop-loaned">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a0a2fdd539c116d" target="_blank">
-            <span class="who harry">H</span>
-            <span class="txt-block">IT Helpdesk (Brian, Tue 15 Sep): Harry's laptop loan is done — <strong>IT-5330-15, issued without a charger</strong><span class="tag">→ opens the ticket reply (SR-13255). Check Harry has a compatible charger at home</span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('notice-laptop-loaned','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('notice-laptop-loaned','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="notice-absences">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
-            <span class="txt-block">Unresolved absences on SEQTA — Harry: 11 dates (11 Feb, 13 Mar, 30 Mar–1 Apr, 30 Apr, 28–29 May, 27 Jul, 14 Aug, <strong>17 Sep</strong>); Freddie: 2 Apr, 17 Jun, 26 Jun, <strong>17 Sep</strong>. Fri 18, Mon 21 and Tue 22 not listed yet<span class="tag">→ SEQTA dashboard — Absences → New Absence <span class="flag live">read live 5:05pm, unchanged</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('notice-absences','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('notice-absences','done')">Done</button>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+To-do (Ed)
+from Google Keep + marked-up printout
+Send headstone email Keep
+✕
+Alex plaques for bench and rocks Keep
+✕
+Downloads for monthly CFO health check Keep
+✕
+Measure up to order gyprock etc. to finish the beams Keep
+✕
+Write up each day’s boys’ sports uniform needs on checklists Keep
+✕
+Food for the boys / Mali Keep
+✕
+Email school about learning support for maths and English — Harry & Freddie Keep
+✕
+Make Claude and the dashboard more robust Keep
+✕
+Get a new toll tag and Northern Beaches skip bin for the BYD Keep
+✕
+Rebook appointment at the reseller, Freshwater/Manly Keep
+✕
+Awning fabric Keep
+✕
+Book the plumber for Harry’s blocked toilet ASAP Keep
+✕
+Sort out Spriggy on Harry’s phone Keep
+✕
+Get fully comp insurance on the BYD — cost to name Kate Keep
+✕
+Get fortnight back up Keep
+✕
+Send Daniel Erko stuff (2 emails) Keep
+✕
+Claude to pull all direct debits/payments so monthly living costs are the same Keep
+✕
+Cancel Google Play on Alex’s phone Keep
+✕
+Update myGov email Keep
+✕
+Move ChatGPT chats across to Claude for more context on the boys and ops Keep
+✕
+Get Harry’s blood test — fasting Keep
+✕
+Freddie: WP (water polo) shirt — needed printout
+✕
+Freddie: phone case printout
+✕
+Laptop case for both boys printout
+✕
+UK passport log in — Harry & Freddie printout
+✕
+Mum’s bed printout
+✕
+Fix broken BYD lights printout
+✕
+Cancel BJJ direct debits printout
+✕
+Book lunch with Alex + Rich — Thursday, in the City printout
+✕
+Rebook doctor appointment — mental health renewal printout
+✕
+Email Dr Glass: confirm sessions are ongoing (Thu 15 Oct appt cancelled) — next sessions? printout
+✕
+Email Dr Alex (Beckwith): confirm Freddie’s next sessions are booked, fortnightly (nothing after 15 Oct) printout
+✕
+Book boys’ dental check-ups for DECEMBER (hygienist booking is Ed’s only) printout
+✕
+Rozelle Total Health: set up Automed (store card, add Freddie as dependent) — or unsubscribe printout
+✕
 
-  <!-- TONIGHT / TOMORROW -->
-  <div class="card family">
-    <h2><span class="dot family"></span>Today &amp; tomorrow <span class="sub">from edjmills1@gmail.com calendar + SEQTA</span></h2>
-    <ul>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhsMzM0ZHBvODhyajZiYTM3NTJqY2I5azZkMjRhYjlvNzEyNDhiOW43MHMzZWhobzhrb2tjZHBuODggZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Tue 22</span> STRIVE 8:15am (Freddie — home sick) · Defender / Bear car viewings 11am · journ3y Check in 1pm · Adam King 2pm · <strong>"Put my annual leave in a stew" 3pm</strong> (added 9:30am — the Keep list says Astute) · both boys home<span class="tag">→ opens the 3pm annual-leave reminder (new today)</span></span><span class="arrow">↗</span></a></li>
-      <li class="plain"><span class="txt-block"><span class="time">Tonight</span> The jobs: three short replies (Ms Quirke · Mr Aragone · Alison Donnan) · SEQTA illness forms (Harry Thu/Mon/Tue, Freddie Thu/Tue) · new English exercise book for Harry · Freddie's results chat + Maths 10.04 start · bags: sports uniform (H), laptop/AirPods/wide-reading book (F) · haircuts before Thursday</span></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhnczMyZWE0NzRyM2diOW04b3NqY2I5azhvcms2YmExODhxa2FiOXA3NTBqYWc5ajZvcjM4Z2kxODQgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Wed 23</span> <strong>Meeting catch up with Journ3y AI 1pm</strong> (added 9:31am today) — otherwise clear; candidate afternoon for Harry's detention<span class="tag">→ opens the Journ3y AI event <span class="flag">new today</span></span></span><span class="arrow">↗</span></a></li>
-      <li class="plain"><span class="txt-block"><span class="time">Wed 23</span> Timetables — Harry: Science 8:40 + 9:35 (Tess Binfield, lab second period), Goold House 10:30 (Katie Quirke), <strong>PDHPE 11:05 (Jon McMahon — sports uniform)</strong>, English 12:00 (Carmelo Aragone), Commerce 13:35 (Thomas Baker), Industrial Tech Timber 14:30 (Jenna Robinson) · Freddie: Maths 8:40 + 9:35 (Caoimhe Wright), Goold House 10:30 (Kristian Oates), English 11:05 (Kirsten Begg — AirPods), Visual Arts 12:00 (Robyn Larbalestier), History 13:35 (Campbell Butt), Science 14:30 (Joshua Don)<span class="tag">— SEQTA timetables, read live 5:05pm</span></span></li>
-    </ul>
-  </div>
-
-  <!-- 3. HARRY -->
-  <div class="card harry">
-    <h2><span class="dot harry"></span>Harry <span class="sub">from SEQTA, Gmail &amp; calendar, read live 5:05pm · absent today · 2 new emails</span></h2>
-    <ul>
-      <li data-id="harry-absent-0922">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a0c61fb2569cf08" target="_blank">
-            <span class="txt-block"><span class="time">Tue 22</span> <strong>Absent — Parent Form 7271 submitted 8:39am.</strong> Fourth school day in a row (Thu, Fri, Mon, Tue). SEQTA illness forms still to do for Thu 17 (unresolved) plus Fri, Mon and today once they appear<span class="tag">→ opens the form confirmation <span class="flag">new today</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('harry-absent-0922','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('harry-absent-0922','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="harry-aragone-0922">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/4551:17092:6048" target="_blank">
-            <span class="txt-block"><span class="time">Tue 2:14pm</span> <strong>English Task 3 Essay (1 Sep) handed back — Mr Aragone says Harry was "quite upset" with the result</strong> and needs to change how he prepares. Mark not yet on SEQTA ("results pending"). Year so far: Task 1 Crime Genre 50% (avg 60.68), Task 2 Perspectives of War 60% (avg 64.47). <strong>Needs a new English exercise book</strong><span class="tag">→ opens Harry's English assessments on SEQTA; the note itself is <span class="sublink" data-href="https://mail.google.com/mail/u/0/#all/1a0c7524ccd7b69f" style="color:#2E5FE8;">in Gmail</span> <span class="flag">new today</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('harry-aragone-0922','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('harry-aragone-0922','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="harry-meds-0922">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a0c774faf440af7" target="_blank">
-            <span class="txt-block"><span class="time">Tue 2:51pm</span> Alison Donnan (Sports Physio) — still need meds stored at reception for Harry? One-line reply<span class="tag">→ opens the email <span class="flag">new today · reply</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('harry-meds-0922','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('harry-meds-0922','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="harry-quirke-0918">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a0b2644e260f130" target="_blank">
-            <span class="txt-block"><span class="time">Fri 12:41pm</span> Tutor Katie Quirke checked in — "absent for 2 consecutive days… and not in school today"; asks if everything is okay and whether the school can help him return<span class="tag">→ opens the email <span class="flag">reply today · day 5</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('harry-quirke-0918','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('harry-quirke-0918','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="harry-hw-check">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
-            <span class="txt-block">Open work: Commerce crypto research (2 reasons for / 3 against — send to Mr Baker; Commerce is Wed 13:35) · History worksheet questions into folder. Homework panel still empty. Four days missed now, so Wednesday is a catch-up day — Science double first thing with Ms Binfield (who logged the 9 Sep Challenge)<span class="tag">→ SEQTA task list, read live <span class="flag live">unchanged</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('harry-hw-check','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('harry-hw-check','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/timetable" target="_blank">
-        <span><span class="time">Wed 23</span> Science ×2, Goold House (Ms Quirke), <strong>PDHPE 11:05 — sports uniform</strong>, English (new book), Commerce, Timber</span><span class="arrow">↗</span></a></li>
-      <li data-id="harry-re-test-1027">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank">
-            <span class="txt-block"><span class="time">Tue 27 Oct</span> <strong>RE Task 3 — The Church in Australia Topic Test</strong> · <span class="time">Mon 2 Nov</span> Commerce Task 4 Exam · <span class="time">Fri 6 Nov</span> Industrial Tech Task 4 Pinball — three assessments in the first fortnight back<span class="tag">→ SEQTA upcoming assessments <span class="flag live">unchanged</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('harry-re-test-1027','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('harry-re-test-1027','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
-        <span><span class="time">Fri 11 Sep</span> 1-hour detention pending, day TBC (C1.1, 3:30–4:30pm) · <span class="time">Mon 14 Sep</span> White Card — accumulation of 3 Challenges (David Badlan)</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank">
-        <span>Industrial Tech (Timber) Task 3 theory exam, PDHPE Task 3 and now English Task 3 Essay — results still pending on SEQTA</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=Xzc0b2o2aDIyODRyM2ViYTM4ZDBqMmI5azZsMmoyYmExOGNwM2NiYTI3NG9rNGdpNTY0cDQ4YzlsNjRfMjAyNjA5MjhUMDgwMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank">
-        <span><span class="time">Mon 28 Sep, 6pm</span> Maths tutor (Sam) — next session, first day of the holidays</span><span class="arrow">↗</span></a></li>
-      <li class="plain"><span class="txt-block">Pastoral this term: White Cards ×4 → one detention pending; September so far 3 Challenges, 2 White Cards, 1 Detention, 1 Affirmation. Nothing new logged since Monday 14 — today's Aragone note is a Parental Contact, not a pastoral entry<span class="tag">— SEQTA pastoral care, read live. Keep "Harry Tasks" (unchecked): clean bedroom for Eva · put sheets on bed · help Freddie advertise his forks · check bike-contract tasks done. Also "Get Harry's blood tests — fasting" on your list</span></span></li>
-    </ul>
-  </div>
-
-  <!-- 4. FREDDIE -->
-  <div class="card freddie">
-    <h2><span class="dot freddie"></span>Freddie <span class="sub">from SEQTA, Gmail &amp; calendar, read live 5:05pm · absent today</span></h2>
-    <ul>
-      <li data-id="freddie-absent-0922">
-        <div class="li-row">
-          <a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a0c62357e5841c0" target="_blank">
-            <span class="txt-block"><span class="time">Tue 22</span> <strong>Absent — Parent Form 7273 submitted 8:41am.</strong> Missed STRIVE 8:15 and the Maths lesson where Thursday's 10.04 homework was explained. SEQTA illness form still to do for Thu 17 and today<span class="tag">→ opens the form confirmation <span class="flag">new today</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('freddie-absent-0922','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('freddie-absent-0922','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="freddie-science-result-0921">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4694:17569:6009&item=9950" target="_blank">
-            <span class="txt-block"><span class="time">Mon 12:12pm</span> <strong>Result — Science Task 3, Cells &amp; Classification Data Processing (31 Aug): 63.33%</strong>, class average 79.81. Booklet 10/10 · Multiple choice 7/10 · Short response 5/25. Year so far: Task 1 40%, Task 2 62%, Task 3 63%<span class="tag">→ opens the result on SEQTA <span class="flag live">carried over</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('freddie-science-result-0921','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('freddie-science-result-0921','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0be774ece294de" target="_blank">
-        <span><span class="time">Sun 20 Sep</span> <strong>Merit — accumulation of 3 Affirmations</strong> (Jonathan Dawson). Fifth Merit this year; 15 Affirmations to 5 Challenges</span><span class="arrow">↗</span></a></li>
-      <li data-id="freddie-maths-result-0918">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4690:17411:6009&item=9988" target="_blank">
-            <span class="txt-block"><span class="time">Fri 3:18pm</span> Result — Maths Task 3, Algebra &amp; Equations alternate task: <strong>20.16%</strong> (avg 60.19) · <span class="time">Fri 4:56pm</span> Technology Task 2: <strong>33%</strong> (avg 64.45)<span class="tag">→ opens the Maths result; Technology is <span class="sublink" data-href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/4695:17692:6009&item=10072" style="color:#8B5CF6;">here</span> <span class="flag live">carried over</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('freddie-maths-result-0918','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('freddie-maths-result-0918','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="freddie-absent-0917">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
-            <span class="txt-block"><span class="time">Thu 17</span> Absent periods 1, TG, 3, 4, 5, 6 — <strong>still unresolved on SEQTA</strong>; today not listed yet. Parent Forms 7136 done, but SEQTA needs the illness form finished too<span class="tag">→ SEQTA dashboard <span class="flag live">unchanged</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('freddie-absent-0917','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('freddie-absent-0917','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li data-id="freddie-hw-0921">
-        <div class="li-row">
-          <a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/#?page=/dashboard" target="_blank">
-            <span class="txt-block">Homework: <strong>Maths 10.04 Q1–4 + MathSpace Stem &amp; Leaf, due Thursday</strong> ("description in Tuesday 22nd Sept lesson" — which he missed; Maths double tomorrow 8:40 is the chance to catch up) · English: complete the PowerPoint; bring laptop/AirPods/headphones/wide-reading book; AirPods for tomorrow; complete classwork for tomorrow. Task list: RE Human Rights PowerPoint · English classwork · Technology booklets + branding<span class="tag">→ SEQTA homework panel + task list <span class="flag live">unchanged since yesterday</span></span></span>
-          </a>
-          <div class="status-btns">
-            <button class="status-btn underway" onclick="setStatus('freddie-hw-0921','underway')">Underway</button>
-            <button class="status-btn done" onclick="setStatus('freddie-hw-0921','done')">Done</button>
-          </div>
-        </div>
-      </li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/timetable" target="_blank">
-        <span><span class="time">Wed 23</span> Maths 8:40 + 9:35, Goold House, English 11:05 (AirPods), Visual Arts 12:00, History 13:35, Science 14:30 — no PDHPE</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0aded06137d026" target="_blank">
-        <span><span class="time">Thu 24 Sep</span> Year 12 Graduation — Guard of Honour (haircut + full uniform; #2 or longer, no fades)</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank">
-        <span><span class="time">Thu 22 Oct</span> RE Task 3 — Affirming Human Dignity timed responses · <span class="time">Mon 26 Oct</span> PDHPE Task 3 — research report · <span class="time">Fri 6 Nov</span> Technology Task 3 · <span class="time">Mon 9 Nov</span> PDHPE Task 4 — Space Invaders</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjEwMDVUMjExNTAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank">
-        <span><span class="time">Tue 6 Oct, 8:15am</span> Next STRIVE — school holidays and you're in Mexico; check it's still on</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a09dd574a37742c" target="_blank">
-        <span><span class="time">Mon 14 Sep</span> Challenge — Japanese (Qilin Zhang) · Japanese Task 3 and Visual Arts ceramics task: no results yet</span><span class="arrow">↗</span></a></li>
-      <li class="plain"><span class="txt-block">Pastoral: 15 Affirmations, 5 Challenges, 5 Merits this year — nothing new since Sunday's Merit<span class="tag">— SEQTA pastoral care, read live. Keep "Freddie Tasks" (unchecked): advertise forks with Harry's help · clean bedroom · take sheets off bed · everyone's dirty washing next to the machine · check bike-contract tasks done</span></span></li>
-    </ul>
-  </div>
-
-  <!-- 5. THIS WEEK -->
-  <div class="card family full">
-    <h2><span class="dot family"></span>This week <span class="sub">Mon 21 – Sun 27 Sep · last week of Term 3 · from edjmills1@gmail.com calendar + SEQTA + Gmail</span></h2>
-    <ul>
-      <li class="plain"><span class="txt-block"><span class="time">Mon 21</span> Done — Dr Pauline (Harry) 9am · Pilates 1-1 4pm · Maths tutor 6pm · Pilates Yin 7pm · Harry home sick<span class="tag">— yesterday</span></span></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhsMzM0ZHBvODhyajZiYTM3NTJqY2I5azZkMjRhYjlvNzEyNDhiOW43MHMzZWhobzhrb2tjZHBuODggZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Tue 22</span> Car viewings 11am · journ3y Check in 1pm · Adam King 2pm · annual leave into Astute 3pm · both boys home · tonight: three replies + SEQTA forms + haircuts<span class="tag">→ opens the annual-leave reminder</span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhnczMyZWE0NzRyM2diOW04b3NqY2I5azhvcms2YmExODhxa2FiOXA3NTBqYWc5ajZvcjM4Z2kxODQgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Wed 23</span> <strong>Journ3y AI catch-up 1pm</strong> (new) · Harry PDHPE 11:05 (uniform) · Freddie Maths double 8:40 · candidate afternoon for Harry's detention<span class="tag">→ opens the Journ3y AI event <span class="flag">new today</span></span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0aded06137d026" target="_blank"><span><span class="time">Thu 24</span> Year 12 Graduation — Freddie in the Guard of Honour · Freddie Maths 10.04 due · <span class="sublink" data-href="https://www.google.com/calendar/event?eid=XzhwMzNpY2E0NzByazZiYTQ2NTEzaWI5azZvcms4YjlwNmQwajhiOWg4cDBrY2RxMTZncWplYzFsNm8gZWRqbWlsbHMxQG0&ctz=Australia/Sydney" style="color:#F2994A;">Dental hygienist (Dr Hocking) 2pm</span> · <span class="sublink" data-href="https://www.google.com/calendar/event?eid=XzhoMmtjY2k1ODhwMzBiYTU2MG8zZWI5azZrc2syYjlvNzRwamFiYTM2a29qNGQ5aDcwcjRhZTFpNzAgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" style="color:#F2994A;">Book Bistecca before Hans Zimmer</span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=Yzh2dTdmYjd2czdrbTVocmh0azl2bTVvbWcgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Fri 25</span> <span class="sublink" data-href="https://www.google.com/calendar/event?eid=XzZ0Mmo2ZTlwNnAwazhiOWs4b3AzYWI5azg4czQ0YmExNjBya2FiYTI3NTFrMmNoaTcwcjNnZTIyNjRfMjAyNjA5MjRUMjEwMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" style="color:#F2994A;">Pilates 7am</span> · Last day of Term 3 — holidays to Fri 9 Oct · last chance for the detention and SaintsCard collection<span class="tag">→ opens the "Last day Term 3" event</span></span><span class="arrow">↗</span></a></li>
-      <li class="plain"><span class="txt-block"><span class="time">Sat 26</span> Kate moves in — first weekend of the holidays<span class="tag">— from your notes, not on the calendar <span class="flag nolink">no link — add it to the calendar if you want it here as a link</span></span></span></li>
-      <li class="plain"><span class="txt-block"><span class="time">Sun 27</span> Clear on the calendar<span class="tag">— water polo camp is Mon–Tue next week</span></span></li>
-      <li class="plain"><span class="txt-block">Any school day left (Wed, Fri): Harry's 1-hour detention (3:30–4:30pm, C1.1, day not stated) · SaintsCard collection · new English book for Harry<span class="tag">— from SEQTA and Gmail</span></span></li>
-    </ul>
-  </div>
-
-  <!-- 6. NEXT 4–6 WEEKS -->
-  <div class="card family full">
-    <h2><span class="dot family"></span>Next 4–6 weeks highlights <span class="sub">from edjmills1@gmail.com calendar + SEQTA + Gmail · 2 new dates (Check in 29 Sep, Land Rover 2 Oct)</span></h2>
-    <ul>
-      <li><a href="https://mail.google.com/mail/u/0/#all/1a0c1df3c1a0f9f2" target="_blank"><span><span class="time">Mon 28 – Tue 29 Sep</span> Saints Water Polo holiday camp, Hunters Hill (optional, TryBooking — still spaces; Nathan Power coaching)</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhnbzM0ZDI0OG9yamdiYTU4NHE0NGI5azg4cWpjYmEyNjBzamliYTY4Y3FqY2dxNDZnczQyZ3BvNmdfMjAyNjA5MjhUMDEzMDAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Mon 28 Sep, 11:30am</span> Dr Glass — Ed (fortnightly; 12 &amp; 26 Oct too) · Pilates 1-1 back at 11am · Maths tutor 6pm · Yin 7pm</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc4ZDIzZ2MyNTg1MTM0aDFpNmdxNDhoMWc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnNmNvNGNlOWo4b3IzNmhhMjZrcGplZTlrNnAwamVlMWk3NHJqOGRxMzhkMzQ0ZGhvOGNyMCBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Tue 29 Sep, 1pm</span> "Check in" — Adam King &amp; Kevin Morrell, journ3y (Teams) — moved from today at 4:03pm; on the calendar twice<span class="tag">→ opens Adam's invite <span class="flag">moved today</span></span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhkMWo0aDFwOGwxamViOWc2NHMzMGI5azhsMzNnYmExNmtyM2NiOW82Z3EzNGNwZzc0cTM0Z2E2NmcgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Fri 2 Oct</span> Drop off the Land Rover for the new door handle (added 5:02pm today) · Pilates 7am<span class="tag">→ opens the event <span class="flag">new today</span></span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=a3N0N3JxM2hwYWo1cjBhNXA0ZjVkMmp0cXMgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Sun 4 Oct</span> Daylight saving starts — clocks forward 1hr · <span class="sublink" data-href="https://www.google.com/calendar/event?eid=aG0yb2xsM240Mm84b24xZXFkcjg4am5xYzAgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" style="color:#F2994A;">Mon 5 Oct — Labour Day</span></span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzY5MWsyYzloNzUxamNiYTE4NTE0Y2I5azY4cjMyYmExNjRzajZiYTU4Y3JqaWgxajhjcGpnaGhwNmMgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Mon 5 Oct, 10:10am</span> ✈ AA 72 Sydney → LAX (booking HARKMW)</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzYwb2thaGhwNnAzNDZiOW42NTMzZ2I5azZvcms4YjlwNnNyM2ViOWg2MHI0MmgxZzg4cDQyaGEyNnMgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Mon 5 Oct (US)</span> ✈ AA 6449 LAX → San José del Cabo</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjEwMDVUMjExNTAwWiBlZGptaWxsczFAbQ&ctz=Australia/Sydney" target="_blank"><span><span class="time">Tue 6 Oct, 8:15am</span> STRIVE — Freddie (school holidays + you're overseas — check)</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=Xzg5Mmo4Y2hvODUya2FiOW44OG8zZ2I5azhncjM2YjlvNmNzazJiYTI4cDI0YWUyNThjcTNpYzFsNmMgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Tue 13 Oct (US)</span> ✈ AA 73 LAX → Sydney, lands Wed 14 Oct</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzZrc2o2Z3E1OGQwajJiOW02b3JqNmI5azhvcms2YjlwNzExNGFiYTM4cDEzYWhoajY1Mms4aGhrOGsgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Fri 16 Oct, 11am</span> Parent-only session — Ed and Dr Alex Beckwith (on the calendar twice)</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank"><span><span class="time">Thu 22 Oct</span> Freddie Religious Education Task 3 — timed responses</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhsMGtjZTFrNzUxa2NiOW03NHNqNGI5azY4czM4YjlwOG9yM2ViOWo4OHNqY2gxZzYwcjNnZHBoODQgZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Sat 24 Oct</span> Bondi to Manly run — meet George, Tim &amp; Conor at the leg switch</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6009/upcoming:6009" target="_blank"><span><span class="time">Mon 26 Oct</span> Freddie PDHPE research report due</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank"><span><span class="time">Tue 27 Oct</span> Harry RE Task 3 — The Church in Australia Topic Test</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://www.google.com/calendar/event?eid=XzhoMWowZTlwODRvamViYTY4OTEzMGI5azg4c2oyYmExNmdyMzZiOWw2dDIzMmhocDZjbzNnZTFwNm8gZWRqbWlsbHMxQG0&ctz=Australia/Sydney" target="_blank"><span><span class="time">Wed 28 Oct, 7:30pm</span> Hans Zimmer — Qudos Bank Arena, with Mark &amp; Kayia</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank"><span><span class="time">Mon 2 Nov</span> Harry Commerce Task 4 — Examination</span><span class="arrow">↗</span></a></li>
-      <li><a href="https://seqta-p.saintaug.nsw.edu.au/#?page=/assessments/6048/upcoming:6048" target="_blank"><span><span class="time">Fri 6 Nov</span> Harry Industrial Tech Task 4 — Pinball · Freddie Technology Task 3 · <span class="time">Mon 9 Nov</span> Freddie PDHPE Task 4</span><span class="arrow">↗</span></a></li>
-      <li class="plain"><span class="time">Weekly</span> Pilates Fri 7am · Pilates 1-1 Mon 11am · Pilates Yin Mon 7pm · Maths tutor (Harry) Mon 6pm · STRIVE (Freddie) fortnightly Tue 8:15am<span class="tag">— recurring through October, including the week you're in Mexico</span></li>
-    </ul>
-  </div>
-
-  <!-- 7. TO-DO (ED) -->
-  <div class="card todo full">
-    <h2><span class="dot todo"></span>To-do (Ed) <span class="sub">from Google Keep · 23 open · read live 5:12pm, unchanged (note last edited Sun 20) · ordered by urgency</span></h2>
-    <div class="pills" id="todoPills"></div>
-  </div>
-
-  <!-- 8. SHOPPING LIST -->
-  <div class="card shop full">
-    <h2><span class="dot shop"></span>Shopping list <span class="sub">from Google Keep · 4 open · read live 5:12pm, unchanged</span></h2>
-    <div class="pills" id="shopPills"></div>
-  </div>
-
-  <!-- 9. OUTSTANDING TASKS — omitted tonight: ~/MillsTasks/tasks-master.md not found on this Mac -->
-
-</div>
-
-<div class="key">
-  <span><span class="dot harry"></span>Harry</span>
-  <span><span class="dot freddie"></span>Freddie</span>
-  <span><span class="dot dad"></span>Dad / School</span>
-  <span><span class="dot family"></span>Family</span>
-  <span><span class="dot special"></span>Special / urgent</span>
-  <span><span class="dot todo"></span>Ed (Keep)</span>
-  <span><span class="dot shop"></span>Shopping (Keep)</span>
-</div>
-
-<div class="note">Built Tue 22 Sep, 5:20pm (evening run). Default calendar: edjmills1@gmail.com, read 22 Sep – 8 Nov. Changes since last night: three events added today — "Put my annual leave in a stew" (Tue 3pm, 9:30am), "Meeting catch up with Journ3y AI" (Wed 1pm, 9:31am) and "Drop-off Land Rover for new door handle" (Fri 2 Oct, 5:02pm); Adam King's "Check in" moved from today to Tue 29 Sep 1pm (both copies, 4:03pm). Sunday's duplicates are otherwise still there; links on this page point at the originals. The shared "Family" and "SCGT" calendars are empty. No separate school calendar is shared to Google, so school dates come from SEQTA and school email. Gmail, last 24h (searched 5:03pm): six threads — Parent Forms 7271 (Harry) and 7273 (Freddie), SaintsCard auto top-up receipt, Mr Aragone's pastoral note, Alison Donnan's medications query, and a Google security alert for halomills29@gmail.com (not school). Sent folder: nothing since Friday, so Katie Quirke's check-in is still unanswered. SEQTA was already logged in — no credentials were entered; the dashboard (pastoral, unresolved absences, homework, task list, Wednesday timetables), both boys' upcoming assessments, Harry's English assessment list, the notification bell and Notices were read live 5:05–5:08pm. The bell was opened to check for anything new — nothing since yesterday 12:12pm; nothing was cleared or dismissed. Harry's English Task 3 Essay shows "results pending" on SEQTA even though Mr Aragone says it was handed back today. Google Keep read live at 5:12pm as edjmills1@gmail.com: the To-do (Ed) note was opened to read the full list and closed with Escape — no edit, nothing ticked or typed; 23 open, unchanged (note last edited Sun 20 Sep). Shopping list 4 open, unchanged, read from the card without opening it. To-do pills are shown in priority order (deadline-driven first), not Keep's order. Keep pills: tap ✕ to dismiss here only — it does not change Keep. Outstanding-tasks section omitted: <code>~/MillsTasks/tasks-master.md</code> wasn't found on this Mac (it lives on the M5 MacBook Air). Kate's Sat 26 move-in comes from your notes, not the calendar, so it's shown without a link. Underway/Done states carry over from previous nights (same item IDs).</div>
-
-<!-- ================= PRINT SNAPSHOT — plain text, no hyperlinks ================= -->
-<div id="printSheet">
-  <div class="p-header">
-    <h1>Home Dashboard</h1>
-    <div class="p-updated">Tuesday 22 Sep, 5:20pm</div>
-  </div>
-
-  <div class="p-card special">
-    <h2>Needs attention today</h2>
-    <ul>
-      <li>BOTH BOYS ABSENT — Parent Forms 7271 (H) + 7273 (F) done 8:39–8:43am · SEQTA illness forms still needed: Harry Thu 17 + Fri/Mon/Tue, Freddie Thu 17 + Tue</li>
-      <li>REPLY — Mr Aragone (English, 2:14pm): Harry's essay handed back, upset with result; needs a NEW ENGLISH BOOK. Mark not on SEQTA yet</li>
-      <li>REPLY — Katie Quirke (Fri, day 5, nothing sent): "is everything okay / any support we can provide"</li>
-      <li>REPLY — Alison Donnan (Sports Physio, 2:51pm): does Harry still need meds stored at reception?</li>
-      <li>Freddie results still to talk through: Science Task 3 63% (short response 5/25) · Maths Task 3 20% · Technology Task 2 33% · Maths 10.04 + Stem &amp; Leaf due THU</li>
-      <li>Tomorrow Wed — Harry: Science double 8:40, PDHPE 11:05 (SPORTS UNIFORM), English (new book), Commerce, Timber · Freddie: Maths double 8:40, English 11:05 (AirPods), Art, History, Science · You: Journ3y AI 1pm · detention candidate day</li>
-      <li>Calendar: Adam King "Check in" moved to Tue 29 Sep 1pm · duplicates still there (Adam King, dental, Fri Pilates, AA72, Dr Beckwith) — delete the copies</li>
-      <li>Keep (your flag): "Reply Zantari – urgent today" (1 week) · US visas · reschedule Dr Glass · haircuts before Thu</li>
-      <li>Harry's 1-hour detention (3 WC, 11 Sep) — C1.1 3:30–4:30pm, day not stated: Wed or Fri left</li>
-      <li>SaintsCard ready to collect — ICT Helpdesk, Goold Level 3 (auto top-up receipt 10:52am today)</li>
-      <li>Cabo 5–13 Oct (13 days) — AA 72 SYD→LAX Mon 5 Oct 10:10am (HARKMW); Mon 5 &amp; 12 Oct appointments and Tue 6 Oct STRIVE clash · Land Rover drop-off Fri 2 Oct</li>
-    </ul>
-  </div>
-
-  <div class="p-card dad">
-    <h2>School noticeboard</h2>
-    <ul>
-      <li>Tue — Alison Donnan: Harry's meds at reception? (reply) · Mr Aragone pastoral note: English essay, new book (reply) · SaintsCard auto top-up receipt · Parent Forms 7271 Harry, 7273 Freddie</li>
-      <li>SEQTA bell: nothing new since Mon 12:12pm · SEQTA Notices — none</li>
-      <li>Mon — Water Polo camp update + uniform links (optional) · SEQTA: Harry RE Task 3 Topic Test Tue 27 Oct</li>
-      <li>Sun — MERIT for Freddie (3 Affirmations, Jonathan Dawson)</li>
-      <li>Fri — SEQTA Parental Contact, Katie Quirke: checking in on Harry (reply)</li>
-      <li>Thu — Head of Year 7: End of Term Expectations &amp; Year 12 Graduation</li>
-      <li>Unresolved absences on SEQTA — Harry 11 dates incl. Thu 17; Freddie 2 Apr, 17 Jun, 26 Jun, Thu 17 · Harry's loan laptop IT-5330-15, no charger</li>
-    </ul>
-  </div>
-
-  <div class="p-card harry">
-    <h2>Harry</h2>
-    <ul>
-      <li><span class="p-time">Tue 22 Sep</span>ABSENT (4th day) — form 7271 done · English essay handed back, upset (Aragone) · new English book · meds-at-reception query</li>
-      <li><span class="p-time">Fri 18 Sep</span>Tutor Katie Quirke checked in by email — reply</li>
-      <li><span class="p-time">Wed 23 Sep</span>Science ×2 (Binfield), House (Quirke), PDHPE 11:05 (uniform), English (Aragone), Commerce (Baker), Timber (Robinson)</li>
-      <li><span class="p-time">TBC</span>Detention pending (C1.1, 3:30–4:30pm) — Wed or Fri · Mon 14 White Card (3 Challenges)</li>
-      <li><span class="p-time">Tue 27 Oct</span>RE Task 3 Topic Test · <span class="p-time">Mon 2 Nov</span>Commerce Task 4 Exam · <span class="p-time">Fri 6 Nov</span>Industrial Tech Task 4 — Pinball</li>
-      <li>Open work: Commerce crypto research (to Mr Baker, Wed) · History worksheet · English Task 3, Timber exam + PDHPE Task 3 results pending · Blood tests (fasting)</li>
-      <li>Keep chores: clean bedroom for Eva · sheets on bed · help Freddie advertise forks · bike-contract tasks</li>
-    </ul>
-  </div>
-
-  <div class="p-card freddie">
-    <h2>Freddie</h2>
-    <ul>
-      <li><span class="p-time">Tue 22 Sep</span>ABSENT — form 7273 done · missed STRIVE and the Maths lesson explaining Thursday's homework</li>
-      <li><span class="p-time">Mon 21 Sep</span>RESULT — Science Task 3: 63.33% (avg 79.81; short response 5/25)</li>
-      <li><span class="p-time">Sun 20 Sep</span>MERIT — accumulation of 3 Affirmations (Jonathan Dawson)</li>
-      <li><span class="p-time">Fri 18 Sep</span>Maths Task 3 alt task 20.16% (avg 60.19) · Technology Task 2 33% (avg 64.45)</li>
-      <li><span class="p-time">Homework</span>Maths 10.04 Q1–4 + MathSpace Stem &amp; Leaf (due Thu) · English PowerPoint · AirPods + laptop + reading book · RE Human Rights PPT</li>
-      <li><span class="p-time">Wed 23 Sep</span>Maths ×2 (Wright), House, English (Begg), Visual Arts, History, Science (Don) · <span class="p-time">Thu 24 Sep</span>Year 12 Graduation — Guard of Honour</li>
-      <li><span class="p-time">Thu 22 Oct</span>RE Task 3 · <span class="p-time">Mon 26 Oct</span>PDHPE research report · <span class="p-time">Fri 6 Nov</span>Technology Task 3 · <span class="p-time">Mon 9 Nov</span>PDHPE Task 4</li>
-      <li>Keep chores: advertise forks with Harry · clean bedroom · sheets off bed · dirty washing to machine · bike-contract tasks</li>
-    </ul>
-  </div>
-
-  <div class="p-card family">
-    <h2>This week (Mon 21 – Sun 27 Sep, last week of term)</h2>
-    <ul>
-      <li><span class="p-time">Tue 22</span>Car viewings 11am · journ3y Check in 1pm · Adam King 2pm · annual leave into Astute 3pm · both boys home · tonight: 3 replies, SEQTA forms, haircuts</li>
-      <li><span class="p-time">Wed 23</span>Journ3y AI catch-up 1pm · Harry PDHPE (uniform) · Freddie Maths double · detention candidate day</li>
-      <li><span class="p-time">Thu 24</span>Year 12 Graduation (Freddie, Guard of Honour) · Freddie Maths hw due · Dental hygienist 2pm · Book Bistecca</li>
-      <li><span class="p-time">Fri 25</span>Pilates 7am · last day of Term 3 (holidays to 9 Oct) · last chance: detention, SaintsCard</li>
-      <li><span class="p-time">Sat 26</span>Kate moves in</li>
-    </ul>
-  </div>
-
-  <div class="p-card family">
-    <h2>Next 4–6 weeks highlights</h2>
-    <ul>
-      <li><span class="p-time">Mon 28–Tue 29 Sep</span>Water Polo camp (optional) · Dr Glass Mon 28 (also 12 &amp; 26 Oct) · Check in with Adam King Tue 29 1pm (moved)</li>
-      <li><span class="p-time">Fri 2 Oct</span>Land Rover drop-off for door handle · <span class="p-time">Sun 4 Oct</span>Daylight saving · <span class="p-time">Mon 5 Oct</span>Labour Day</li>
-      <li><span class="p-time">5–13 Oct</span>Cabo trip — AA 72 SYD→LAX Mon 5 Oct 10:10am; AA 6449 LAX→SJD; AA 73 LAX→SYD Tue 13 Oct (lands 14 Oct)</li>
-      <li><span class="p-time">Fri 16 Oct, 11am</span>Parent-only session — Ed and Dr Alex Beckwith</li>
-      <li><span class="p-time">Thu 22 Oct</span>Freddie RE Task 3 · <span class="p-time">Sat 24 Oct</span>Bondi to Manly run · <span class="p-time">Mon 26 Oct</span>Freddie PDHPE report · <span class="p-time">Tue 27 Oct</span>Harry RE Topic Test</li>
-      <li><span class="p-time">Wed 28 Oct, 7:30pm</span>Hans Zimmer — Qudos Bank Arena · <span class="p-time">Mon 2 Nov</span>Harry Commerce exam · <span class="p-time">Fri 6 Nov</span>Harry Timber Task 4, Freddie Technology Task 3</li>
-    </ul>
-  </div>
-
-  <div class="p-card todo">
-    <h2>To-do (Ed) — from Google Keep</h2>
-    <div class="p-pills" id="todoPrint"></div>
-  </div>
-
-  <div class="p-card shop">
-    <h2>Shopping list — from Google Keep</h2>
-    <div class="p-pills" id="shopPrint"></div>
-  </div>
-</div>
-
-<script>
-  const STORE_KEY = 'homeDashboardStatus';
-
-  // ---- Keep lists (unchecked items only, read live Tue 22 Sep 5:12pm) ----
-  // To-do order = priority (deadline-driven first), not Keep's order. Text is Keep's, lightly tidied.
-  // Since last night: no changes in Keep (23 open, none ticked; note last edited Sun 20 Sep).
-  const TODO_ITEMS = [
-    // Flagged urgent by you / real deadlines this week
-    {t:"Reply Zantari — urgent today"},
-    {t:"US visas"},
-    {t:"Reply to Dr Glass and reschedule 5–12 Oct appointment asap"},
-    {t:"Pay school fees — check if I've done them first"},
-    {t:"Book haircut"},
-    {t:"Book hair cuts Monday"},
-    {t:"Get Harry's blood tests — fasting"},
-    // Before Cabo
-    {t:"Rebook doctor appointment for my mental health plan (diazepam)"},
-    {t:"Cancel Google Play on Alex's phone"},
-    {t:"Update myGov email"},
-    // Batch on one admin afternoon
-    {t:"New oven door and LED screen"},
-    {t:"Send Daniel Erko stuff x 2 emails"},
-    {t:"Rebook appointment at the reseller, Freshwater / Manly"},
-    {t:"Print Dan's towels"},
-    {t:"Get another Boost SIM"},
-    {t:"Get fortnight back up"},
-    // Hand to Claude
-    {t:"Put the boys' iCloud and Snap through Claude and run a test"},
-    {t:"Get Claude to pull up all direct debits and payments so monthly living cost is fixed"},
-    {t:"Move ChatGPT chats across to Claude for context on the boys and the ops"},
-    // Own time, not a to-do slot
-    {t:"Send headstone email"},
-    {t:"Alex plaques for bench and rocks"},
-    {t:"Amend Will and sign"},
-    {t:"Design the two boxes — one for Alex, one for the trauma (picture like Allyson's)"}
-  ];
-  const SHOP_ITEMS = [
-    {t:"Frozen raspberries"},
-    {t:"Mild green chillies for Freddie (Hardboard Growers)"},
-    {t:"Pasta sauce"},
-    {t:"Brown sugar"}
-  ];
-
-  function slug(prefix, text){
-    let h = 0; for (let i=0;i<text.length;i++){ h = (h*31 + text.charCodeAt(i)) | 0; }
-    return prefix + '-' + Math.abs(h).toString(36);
-  }
-
-  function getStatuses(){
-    try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
-    catch(e){ return {}; }
-  }
-  function saveStatuses(s){
-    try{ localStorage.setItem(STORE_KEY, JSON.stringify(s)); }
-    catch(e){ /* storage unavailable, status just won't persist */ }
-  }
-
-  function setStatus(id, status){
-    const statuses = getStatuses();
-    // toggle: clicking the same status again reverts to default (not started)
-    statuses[id] = (statuses[id] === status) ? undefined : status;
-    if(statuses[id] === undefined) delete statuses[id];
-    saveStatuses(statuses);
-    applyStatuses();
-  }
-
-  function dismissPill(id, el){
-    const statuses = getStatuses();
-    statuses[id] = 'done';
-    saveStatuses(statuses);
-    el.classList.add('fading');
-    setTimeout(()=>{ el.classList.add('is-done'); checkEmpty(); }, 250);
-  }
-
-  function renderPills(items, containerId, printId, cls, prefix){
-    const statuses = getStatuses();
-    const box = document.getElementById(containerId);
-    const print = document.getElementById(printId);
-    const printLines = [];
-    items.forEach(item=>{
-      const text = item.t;
-      const id = slug(prefix, text);
-      const pill = document.createElement('div');
-      pill.className = 'pill ' + cls + (statuses[id]==='done' ? ' is-done' : '');
-      pill.dataset.id = id;
-      const span = document.createElement('span'); span.textContent = text;
-      pill.appendChild(span);
-      if(item.n){ const nb = document.createElement('span'); nb.className='new'; nb.textContent='new'; pill.appendChild(nb); }
-      const x = document.createElement('button'); x.className='x'; x.title='Done'; x.setAttribute('aria-label','Mark done'); x.textContent='✕';
-      x.onclick = ()=>dismissPill(id, pill);
-      pill.appendChild(x);
-      box.appendChild(pill);
-      if(statuses[id] !== 'done') printLines.push('☐ ' + text);
-    });
-    if(print) print.textContent = printLines.join('   ·   ');
-  }
-
-  function checkEmpty(){
-    document.querySelectorAll('.pills').forEach(box=>{
-      const live = box.querySelectorAll('.pill:not(.is-done)').length;
-      let e = box.querySelector('.empty');
-      if(live===0 && !e){ e=document.createElement('div'); e.className='empty'; e.textContent='All done here.'; box.appendChild(e); }
-      if(live>0 && e){ e.remove(); }
-    });
-  }
-
-  function applyStatuses(){
-    const statuses = getStatuses();
-    document.querySelectorAll('li[data-id]').forEach(li=>{
-      const id = li.dataset.id;
-      const status = statuses[id];
-      li.classList.remove('is-underway','is-done');
-      li.querySelectorAll('.status-btn').forEach(b=>b.classList.remove('active'));
-      if(status === 'underway'){
-        li.classList.add('is-underway');
-        li.querySelector('.status-btn.underway')?.classList.add('active');
-      } else if(status === 'done'){
-        li.classList.add('is-done');
-      }
-    });
-  }
-
-  // Secondary links inside a linked row (anchors can't nest, so these are spans)
-  document.querySelectorAll('.sublink').forEach(s=>{
-    s.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); window.open(s.dataset.href, '_blank'); });
-  });
-
-  renderPills(TODO_ITEMS, 'todoPills', 'todoPrint', 'todo', 'keep-todo');
-  renderPills(SHOP_ITEMS, 'shopPills', 'shopPrint', 'shop', 'keep-shop');
-  checkEmpty();
-  applyStatuses();
-</script>
-</body>
-</html>
+Doctors’ appointments
+from calendar · this week + next week
+Ed Mon 26 Oct 11:30am · Dr Glass, Suite 33, 90 Mona Vale Rd
+✕
+HarryFreddieDad / SchoolFamilySpecial / urgentEd (Keep)Shopping (Keep)
+Built Tue 20 Oct (evening run). Gmail last 24h: Freddie behaviour notices, English exam notice, pizza night, absence confirmations and SaintsCard receipts (already actioned, not shown). Calendar: edjmills1@gmail.com 20 Oct – 30 Nov (Sydney time); Family and SCGT calendars empty. SEQTA assessments read via the live session (no credentials entered); homework not pulled. Google Keep read via the signed-in Chrome session (read-only; checked items excluded); Shopping list had only Toothpaste and Nutragrain, both already bought, so it is omitted. Status buttons and dismiss taps are local to this device.

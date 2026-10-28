@@ -1,139 +1,232 @@
-Home Dashboard Every evening 6pm
-Rebuilt Tue 20 Oct evening. New: three teacher notices about Freddie (Challenge today, White Card and a changing-room reminder Mon), Year 7 English exam Tue 3 Nov with study booklet, and Water Polo pizza night Fri 23 Oct. Assessments read live from SEQTA tonight (new: Harry Science Thu 5 Nov). Google Keep read live in Chrome: To-do (Ed) now includes the unchecked Keep items; the shopping list has nothing unchecked (Toothpaste and Nutragrain are already bought), so that section is omitted. Each item appears once; ticked-off items are gone.
-🖨️ Print me
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Dashboard</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Home">
+<meta name="theme-color" content="#F7F5F0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<style>
+  :root{
+    --harry:#2E5FE8;--freddie:#8B5CF6;--dad:#2F9E5A;--family:#F2994A;--special:#E5484D;
+    --todo:#5B21B6;--shop:#65A30D;
+    --ink:#1C1F26;--paper:#F7F5F0;--card:#FFFFFF;--line:#E4E0D8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,'Segoe UI',system-ui,sans-serif;background:var(--paper);color:var(--ink);padding:24px;max-width:900px;margin:0 auto;}
+  header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;border-bottom:3px solid var(--ink);padding-bottom:12px;flex-wrap:wrap;gap:10px;}
+  h1{font-size:1.6rem;letter-spacing:-0.02em;}
+  .badge{display:inline-block;background:var(--ink);color:#fff;font-size:0.7rem;padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;}
+  .updated{font-size:0.85rem;color:#666;margin-top:2px;}
+  .printbtn{background:var(--ink);color:#fff;border:none;border-radius:8px;padding:9px 16px;font-size:0.85rem;font-weight:600;cursor:pointer;white-space:nowrap;}
+  .printbtn:hover{opacity:0.85;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:600px){.grid{grid-template-columns:1fr;}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;border-left:6px solid var(--family);}
+  .card h2{font-size:1rem;margin-bottom:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .card h2 .sub{font-size:0.72rem;font-weight:400;color:#888;margin-left:auto;}
+  .card.harry{border-left-color:var(--harry);} .card.freddie{border-left-color:var(--freddie);}
+  .card.dad{border-left-color:var(--dad);} .card.family{border-left-color:var(--family);} .card.special{border-left-color:var(--special);}
+  .card.todo{border-left-color:var(--todo);} .card.shop{border-left-color:var(--shop);}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0;}
+  .dot.harry{background:var(--harry);} .dot.freddie{background:var(--freddie);} .dot.dad{background:var(--dad);}
+  .dot.family{background:var(--family);} .dot.special{background:var(--special);}
+  .dot.todo{background:var(--todo);} .dot.shop{background:var(--shop);}
+  ul{list-style:none;font-size:0.9rem;line-height:1.5;}
+  li{border-bottom:1px dashed var(--line);}
+  li:last-child{border-bottom:none;}
+  li a{display:flex;gap:8px;align-items:flex-start;padding:7px 4px;color:inherit;text-decoration:none;border-radius:6px;}
+  li a:hover{background:#F0EEE7;}
+  li a .arrow{margin-left:auto;color:#aaa;flex-shrink:0;}
+  li .plain{display:flex;gap:8px;padding:7px 4px;}
+  .time{font-weight:600;color:#555;flex-shrink:0;}
+  .tag{font-size:0.68rem;color:#999;display:block;margin-top:1px;}
+  .who{font-size:0.65rem;font-weight:700;border-radius:4px;padding:1px 5px;color:#fff;flex-shrink:0;margin-top:3px;}
+  .who.harry{background:var(--harry);} .who.freddie{background:var(--freddie);} .who.ed{background:var(--todo);}
+  .flag{font-size:0.62rem;font-weight:700;border-radius:4px;padding:1px 5px;background:#FFF3E0;color:#B85C00;border:1px solid #FFCF99;margin-left:4px;white-space:nowrap;}
+  .flag.live{background:#E6F4EA;color:#1F7A44;border-color:#9FD5B0;}
+  .flag.nolink{background:#F0EEE7;color:#777;border-color:#D8D3C8;}
+  .full{grid-column:1/-1;}
+  .key{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;font-size:0.8rem;color:#555;}
+  .key span{display:flex;align-items:center;gap:5px;}
 
-Needs attention today
-from Gmail & SEQTA
-	•	F Challenge entered (Mr Ellison, today): threw a classmate’s worksheet out of the window in a maths lesson. Worth a chat tonight.→ opens the Gmail thread · teacher notice, high priority  Underway Done
-	•	F White Card (Mr Ramsden, Mon 19 Oct): “poor choices” entry for Freddie.→ opens the Gmail thread · teacher notice, high priority  Underway Done
-	•	F Mr Ramsden (Head of House): changing-room behaviour reminder after a public complaint at the WAC — reinforce that he represents the College at sports events.→ opens the Gmail thread · teacher notice, high priority  Underway Done
-	•	F Year 7 English exam Tue 3 Nov (Week 4) — Tim Burton / Auteur unit. Study booklet PDF attached; work through it progressively (Ms Xu).→ opens the Gmail thread · teacher notice, high priority  Underway Done
-	•	F Freddie needs to CHOOSE a novel for Tutor Group — today Tue 20 Oct (every Tuesday; no picture books or magazines) (Mr Oates)→ opens the Gmail thread · teacher notice, high priority  Underway Done
-	•	F Sports uniform infringement: didn’t bring sports uniform to PE prac Mon 19 Oct (Mr Burke). A second time in a term = uniform detention — pack it for the next PE prac.→ opens the Gmail thread · teacher notice  Underway Done
-	•	Assessments due within a week: Freddie RE Task 3 Thu 22 Oct · Harry RE Task 3 Tue 27 Oct (full lists under each boy)→ opens SEQTA · read live Tue 20 Oct  Underway Done
+  .li-row{display:flex;align-items:flex-start;gap:8px;padding:7px 4px;border-radius:6px;}
+  .li-row .txt-block{flex:1;min-width:0;}
+  .li-row a.linkwrap{display:flex;gap:8px;flex:1;min-width:0;color:inherit;text-decoration:none;}
+  .li-row a.linkwrap:hover{background:#F0EEE7;border-radius:6px;}
+  .li-row .nolinkwrap{display:flex;gap:8px;flex:1;min-width:0;}
+  .status-btns{display:flex;gap:4px;flex-shrink:0;margin-left:6px;}
+  .status-btn{
+    font-size:0.65rem;font-weight:700;border:1px solid var(--line);background:#fff;color:#999;
+    border-radius:20px;padding:3px 9px;cursor:pointer;white-space:nowrap;
+  }
+  .status-btn.underway.active{background:#FFF3E0;border-color:#FF8A3D;color:#B85C00;}
+  .status-btn.done.active{background:#E6F4EA;border-color:#2F9E5A;color:#1F7A44;}
+  li.is-underway{background:#FFFCF6;}
+  li.is-done{display:none;}
 
-School noticeboard
-from Gmail · low priority
-	•	Fri 23 Oct, 6–8pm Water Polo Season Launch Pizza Night — tickets via Try Booking (Mr Hull)→ opens the Gmail thread · social event, low priority  ↗
-	•	Mon 19 Oct Parent WhatsApp groups per year level for lifts to games/training (Year 7 — Evadne Janeke; Year 9 — Carolyn Northcote)→ opens the Gmail thread · low priority, optional  ↗
+  /* ---- Pills (Keep lists + Outstanding tasks) ---- */
+  .pills{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;line-height:1.3;padding:5px 6px 5px 11px;border-radius:999px;border:1.5px solid;background:#fff;transition:opacity .25s,transform .25s;max-width:100%;}
+  .pill span{word-break:break-word;}
+  .pill .x{border:none;background:transparent;font-size:0.9rem;line-height:1;width:22px;height:22px;border-radius:50%;cursor:pointer;color:inherit;opacity:0.55;flex-shrink:0;}
+  .pill .x:hover{opacity:1;background:rgba(0,0,0,0.06);}
+  .pill.todo{border-color:var(--todo);color:var(--todo);background:#F3EEFB;}
+  .pill.shop{border-color:var(--shop);color:#3F6B0A;background:#F1F8E4;}
+  .pill.special{border-color:var(--special);color:#B3262B;background:#FDECEC;}
+  .pill.is-done{display:none;}
+  .pill.fading{opacity:0;transform:scale(0.9);}
+  .pill a{color:inherit;text-decoration:underline;}
+  .pill .new{font-size:0.6rem;font-weight:700;background:#E6F4EA;color:#1F7A44;border-radius:4px;padding:0 4px;}
+  .empty{font-size:0.8rem;color:#999;font-style:italic;padding:4px;}
+  .sublink{text-decoration:underline;cursor:pointer;}
+  .sublink:hover{opacity:0.75;}
 
-Harry
-assessments by date · from SEQTA
-	•	H Tue 27 Oct · Religious Education · Task 3 — The Church in Australia Topic Test→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	H Fri 30 Oct · History · Task 2 — Multimedia Presentation WW2→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	H Mon 2 Nov · Commerce · Task 4 — Examination→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	H Mon 2 Nov · English · Task 4 — Examination→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	H Mon 2 Nov · Maths Core + Standard · Task 4 — Examination→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	H Thu 5 Nov · Science · Task 4 — Examination→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	H Fri 6 Nov · Industrial Technology (Timber) · Task 4 — Pinball Practical & Portfolio→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	H Fri 6 Nov · PDHPE · Task 4 — Cricket & Softball Practical→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	H Follow-up with Dr Ryan Lee — Mon 14 Dec, 2pmnot on calendar yet · from marked-up printout  Underway Done
+  .note{font-size:0.78rem;color:#888;margin-top:20px;border-top:1px solid var(--line);padding-top:10px;line-height:1.5;}
 
-Freddie
-assessments by date · from Gmail & SEQTA
-	•	F Sat 24 Oct 9:30am: water polo 14B v SJC at St Joseph’s Pool — tell Mr Hull ASAP of any unavailability→ opens the Gmail thread · not on calendar  Underway Done
-	•	F Thu 22 Oct · Religious Education · Task 3 — Affirming Human Dignity Timed Responses→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	F Wed 28 Oct · Japanese · Task 4 — In-Class Test→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	F Join Northern Beaches Libraries by Fri 30 Oct (free sign-up; card delivered to school) (Mr O’Brien)→ opens the Gmail thread · Head of Year deadline  Underway Done
-	•	F Mon 2 Nov · Mathematics · Task 4 — Examination→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	F Tue 3 Nov · English · Task 4 — Exam (study booklet: see Needs attention)→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	F Tue 3 Nov · Science · Task 4 — Solutions & Mixtures Practical Investigation→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	F Fri 6 Nov · History · Task 4 — The Vikings Examination→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	F Fri 6 Nov · PDHPE · Task 3 — Celebrating Diversity Research Report→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	F Fri 6 Nov · Technology · Task 3 — Unit Practical and Portfolio→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	F Fri 6 Nov · Visual Arts · Task 2 — Self-Portrait Drawing→ opens SEQTA · read live Tue 20 Oct  Underway Done
-	•	F Mon 9 Nov · PDHPE · Task 4 — Space Invaders Practical→ opens SEQTA · read live Tue 20 Oct  Underway Done
+  /* ---- Print snapshot ---- */
+  #printSheet{display:none;}
+  @media print{
+    header, .grid, .key, .note{display:none !important;}
+    body{padding:0;max-width:none;background:#fff;}
+    #printSheet{display:block;position:static;width:100%;padding:12px;}
+    .printbtn{display:none;}
+    @page{margin:8mm;}
+  }
+  .p-header{border-bottom:3px solid #000;padding-bottom:6px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:baseline;}
+  .p-header h1{font-size:1.3rem;}
+  .p-updated{font-size:0.8rem;color:#555;}
+  .p-card{border:1px solid #bbb;border-left:5px solid #999;border-radius:5px;padding:5px 9px;margin-bottom:6px;break-inside:avoid;page-break-inside:avoid;}
+  .p-card.harry{border-left-color:var(--harry);} .p-card.freddie{border-left-color:var(--freddie);}
+  .p-card.dad{border-left-color:var(--dad);} .p-card.family{border-left-color:var(--family);} .p-card.special{border-left-color:var(--special);}
+  .p-card.todo{border-left-color:var(--todo);} .p-card.shop{border-left-color:var(--shop);}
+  .p-card h2{font-size:0.9rem;margin-bottom:4px;} .p-card h2 small{font-weight:400;color:#777;font-size:0.68rem;margin-left:6px;}
+  .p-card ul{list-style:none;font-size:0.72rem;line-height:1.22;}
+  .p-card li{padding:1px 0 1px 16px;border-bottom:1px dotted #ddd;position:relative;}
+  .p-card li:last-child{border-bottom:none;}
+  .p-card li:before{content:"\2610";position:absolute;left:0;top:1px;}
+  .p-card.cal li:before{content:"\2022";left:4px;}
+  .p-card.cols ul{columns:2;column-gap:18px;}
+  .p-card.cols li{break-inside:avoid;}
+  .p-time{font-weight:700;margin-right:4px;}
+  .p-who{font-size:0.65rem;font-weight:700;border:1px solid #888;border-radius:3px;padding:0 3px;margin-right:4px;}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Home Dashboard <span class="badge">Every evening 6pm</span></h1>
+    <div class="updated">Rebuilt Wed 28 Oct. Calendars read tonight; Google Keep read from your live Chrome session (checked-off items excluded); SEQTA dashboard and homework read from your live session. SEQTA's Assessments list would not load, so assessment dates are carried over from the last read (Wed 21 Oct). Gmail was rate-limited, so only subject lines from the last 24h were visible (no new school threads). Past-dated items removed.</div>
+  </div>
+  <button class="printbtn" onclick="window.print()">🖨️ Print me</button>
+</header>
+<div class="grid">
+<div class="card special full"><h2><span class="dot special"></span>Needs attention today <span class="sub">from Gmail &amp; SEQTA</span></h2><ul><li data-id="na-pexam-1027"><div class="li-row"><a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a17b582493cd4f5" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Year 9 practice exam (Mr Aragone, Dean of Teaching &amp; Learning), Tue 27 Oct:</strong> Section 1 sat in class; <strong>Section 2 is homework, due next lesson</strong>. He will mark any drafts handed in. Booklet PDFs attached to the email.<span class="tag">→ opens the Gmail thread · teacher notice, high priority</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('na-pexam-1027','underway')">Underway</button><button class="status-btn done" onclick="setStatus('na-pexam-1027','done')">Done</button></div></div></li><li data-id="na-y7exam-1027"><div class="li-row"><a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a179e9c2c71d065" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Year 7 Week 4 exam timetable is on SEQTA Notices</strong> (Mr O’Brien, Head of Year 7). Exams start Mon 2 Nov — equipment collected at start, no borrowing. ARC open after school Tue/Wed/Thu; tutor study session Fri (AWE).<span class="tag">→ opens the Gmail thread · Head of Year notice, high priority</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('na-y7exam-1027','underway')">Underway</button><button class="status-btn done" onclick="setStatus('na-y7exam-1027','done')">Done</button></div></div></li><li data-id="na-seqta-1027"><div class="li-row"><a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a17c2a6aa6e1b12" target="_blank"><span class="txt-block"> <strong>SEQTA: unread notifications pending</strong> incl. details changed for <strong>Harry’s Science assessment</strong> — check SEQTA, then update dates below.<span class="tag">→ opens the Gmail thread · <span class="flag">pending review — open SEQTA to confirm</span></span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('na-seqta-1027','underway')">Underway</button><button class="status-btn done" onclick="setStatus('na-seqta-1027','done')">Done</button></div></div></li><li data-id="na-chall-1020"><div class="li-row"><a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a1577b7e3d8865e" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Challenge entered (Mr Ellison, Tue 20 Oct):</strong> threw a classmate’s worksheet out of the window in a maths lesson. Worth a chat.<span class="tag">→ opens the Gmail thread · teacher notice, high priority</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('na-chall-1020','underway')">Underway</button><button class="status-btn done" onclick="setStatus('na-chall-1020','done')">Done</button></div></div></li><li data-id="na-white-1019"><div class="li-row"><a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a15365130c484ae" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>White Card (Mr Ramsden, Mon 19 Oct):</strong> “poor choices” at water polo training (threw the goal sandbag into the pool).<span class="tag">→ opens the Gmail thread · teacher notice, high priority</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('na-white-1019','underway')">Underway</button><button class="status-btn done" onclick="setStatus('na-white-1019','done')">Done</button></div></div></li><li data-id="na-parent-1019"><div class="li-row"><a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a15360a3113f476" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Mr Ramsden (Head of House):</strong> changing-room behaviour reminder after a public complaint at the WAC — he represents the College at sports events.<span class="tag">→ opens the Gmail thread · teacher notice, high priority</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('na-parent-1019','underway')">Underway</button><button class="status-btn done" onclick="setStatus('na-parent-1019','done')">Done</button></div></div></li><li data-id="na-welfare-1021"><div class="li-row"><a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a15b99c3764df96" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Mr Badlan (Head of Year 9)</strong> suggests a chat at home first, then with Kim and Ambrose, before the Rites of Passage camp.<span class="tag">→ opens the Gmail thread · teacher notice, high priority</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('na-welfare-1021','underway')">Underway</button><button class="status-btn done" onclick="setStatus('na-welfare-1021','done')">Done</button></div></div></li><li data-id="na-goold-1024"><div class="li-row"><a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a16c4490c59d42e" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Goold senior tutor group form (Ms Ellison):</strong> complete the form and nominate one friend — groups were being finalised last weekend, so check it is done. <em>(Assumed Harry, 09GOO2 — email addressed to “boys”.)</em><span class="tag">→ opens the Gmail thread · teacher notice, high priority</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('na-goold-1024','underway')">Underway</button><button class="status-btn done" onclick="setStatus('na-goold-1024','done')">Done</button></div></div></li><li data-id="na-camp-form"><div class="li-row"><a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a15e6640e2d30b0" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Rites of Passage camp — Parent Acceptance form</strong> (Request 6905, Excursion Tue 10 Nov 7:30am). Open the school forms portal link in the email to accept.<span class="tag">→ opens the Gmail thread · school forms notice, high priority</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('na-camp-form','underway')">Underway</button><button class="status-btn done" onclick="setStatus('na-camp-form','done')">Done</button></div></div></li></ul></div>
+<div class="card dad"><h2><span class="dot dad"></span>School noticeboard <span class="sub">from Gmail · low priority</span></h2><ul><li><a href="https://mail.google.com/mail/u/0/#all/1a11f1c9f4d688e2" target="_blank"><span><span class="txt-block"><span class="time">Tue 17 Nov</span> <strong>Swimming Carnival</strong> (Mr Badlan, “Welcome back to Term 4”)<span class="tag">→ opens the Gmail thread · on calendar · from chat 20 Oct</span></span></span><span class="arrow">↗</span></a></li></ul></div>
+<div class="card harry"><h2><span class="dot harry"></span>Harry <span class="sub">assessments by date · from SEQTA</span></h2><ul><li data-id="h-hw-comm28"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Homework</strong> · Commerce · Research and send to Mr Baker: 2 reasons to invest in cryptocurrency, 3 reasons to avoid<span class="tag">→ opens SEQTA · task list read Wed 28 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('h-hw-comm28','underway')">Underway</button><button class="status-btn done" onclick="setStatus('h-hw-comm28','done')">Done</button></div></div></li><li data-id="h-hw-hist28"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Homework</strong> · History · Finish the questions on the attached worksheet and place in history folder<span class="tag">→ opens SEQTA · task list read Wed 28 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('h-hw-hist28','underway')">Underway</button><button class="status-btn done" onclick="setStatus('h-hw-hist28','done')">Done</button></div></div></li><li data-id="h-a-1030"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Fri 30 Oct</strong> · History · Task 2 — Multimedia Presentation WW2<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('h-a-1030','underway')">Underway</button><button class="status-btn done" onclick="setStatus('h-a-1030','done')">Done</button></div></div></li><li data-id="h-a-1102c"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Mon 2 Nov</strong> · Commerce · Task 4 — Examination<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('h-a-1102c','underway')">Underway</button><button class="status-btn done" onclick="setStatus('h-a-1102c','done')">Done</button></div></div></li><li data-id="h-a-1102e"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Mon 2 Nov</strong> · English · Task 4 — Examination<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('h-a-1102e','underway')">Underway</button><button class="status-btn done" onclick="setStatus('h-a-1102e','done')">Done</button></div></div></li><li data-id="h-a-1102m"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Mon 2 Nov</strong> · Maths Core + Standard · Task 4 — Examination<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('h-a-1102m','underway')">Underway</button><button class="status-btn done" onclick="setStatus('h-a-1102m','done')">Done</button></div></div></li><li data-id="h-a-1105s"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Thu 5 Nov</strong> · Science · Task 4 — Examination<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('h-a-1105s','underway')">Underway</button><button class="status-btn done" onclick="setStatus('h-a-1105s','done')">Done</button></div></div></li><li data-id="h-a-1106i"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Fri 6 Nov</strong> · Industrial Technology (Timber) · Task 4 — Pinball Practical &amp; Portfolio<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('h-a-1106i','underway')">Underway</button><button class="status-btn done" onclick="setStatus('h-a-1106i','done')">Done</button></div></div></li><li data-id="h-a-1106p"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Fri 6 Nov</strong> · PDHPE · Task 4 — Cricket &amp; Softball Practical<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('h-a-1106p','underway')">Underway</button><button class="status-btn done" onclick="setStatus('h-a-1106p','done')">Done</button></div></div></li><li data-id="h-camp-1110"><div class="li-row"><a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a11f1c9f4d688e2" target="_blank"><span class="who harry">H</span><span class="txt-block"><strong>Rites of Passage camp — Tue 10 to Fri 13 Nov (Week 5)</strong> · Year 9. Parent Acceptance form pending (see Needs attention); medical, cost, kit list and any parent session not yet found.<span class="tag">→ opens the Gmail thread (Mr Badlan) · on calendar · from chat 20 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('h-camp-1110','underway')">Underway</button><button class="status-btn done" onclick="setStatus('h-camp-1110','done')">Done</button></div></div></li><li data-id="h-lee-1214"><div class="li-row"><span class="nolinkwrap"><span class="who harry">H</span><span class="txt-block">Follow-up with <strong>Dr Ryan Lee — Mon 14 Dec, 2pm</strong><span class="tag">from marked-up printout · <span class="flag nolink">not on calendar yet</span></span></span></span><div class="status-btns"><button class="status-btn underway" onclick="setStatus('h-lee-1214','underway')">Underway</button><button class="status-btn done" onclick="setStatus('h-lee-1214','done')">Done</button></div></div></li></ul></div>
+<div class="card freddie"><h2><span class="dot freddie"></span>Freddie <span class="sub">assessments by date · from Gmail &amp; SEQTA</span></h2><ul><li data-id="f-hw-eng28"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Mon 2 Nov, period 1</strong> · English · Finish IDEAL (2x EA) in English book<span class="tag">→ opens SEQTA · task list read Wed 28 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-hw-eng28','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-hw-eng28','done')">Done</button></div></div></li><li data-id="f-hw-tech28"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Mon 2 Nov</strong> · Technology · Complete booklets and healthy food company branding for hand in<span class="tag">→ opens SEQTA · task list read Wed 28 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-hw-tech28','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-hw-tech28','done')">Done</button></div></div></li><li data-id="f-hw-re28"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Homework</strong> · Religious Education · Complete PowerPoint on Human Rights (checked next lesson)<span class="tag">→ opens SEQTA · task list read Wed 28 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-hw-re28','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-hw-re28','done')">Done</button></div></div></li><li data-id="f-novel-1027"><div class="li-row"><a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a13c61101077cb6" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Tue 3 Nov (every Tuesday):</strong> Freddie needs to CHOOSE a novel for Tutor Group — no picture books or magazines (Mr Oates)<span class="tag">→ opens the Gmail thread · teacher notice · printout</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-novel-1027','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-novel-1027','done')">Done</button></div></div></li><li data-id="f-a-1028"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>TODAY Wed 28 Oct</strong> · Japanese · Task 4 — In-Class Test (period 5, 2:30pm)<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-a-1028','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-a-1028','done')">Done</button></div></div></li><li data-id="f-library-1030"><div class="li-row"><a class="linkwrap" href="https://mail.google.com/mail/u/0/#all/1a14312cdf9f5a7d" target="_blank"><span class="who freddie">F</span><span class="txt-block">Join Northern Beaches Libraries <strong>by Fri 30 Oct</strong> (free sign-up; card delivered to school) (Mr O’Brien)<span class="tag">→ opens the Gmail thread · Head of Year deadline</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-library-1030','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-library-1030','done')">Done</button></div></div></li><li data-id="f-a-1102"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Mon 2 Nov</strong> · Mathematics · Task 4 — Examination<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-a-1102','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-a-1102','done')">Done</button></div></div></li><li data-id="f-a-1103e"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Tue 3 Nov</strong> · English · Task 4 — Auteur Exam (Year 7, Tim Burton). Study booklet PDF in the <span class="sublink" data-href="https://mail.google.com/mail/u/0/#all/1a1571387e74afd5">Gmail thread</span> (Ms Xu)<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-a-1103e','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-a-1103e','done')">Done</button></div></div></li><li data-id="f-a-1103s"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Tue 3 Nov</strong> · Science · Task 4 — Solutions &amp; Mixtures Practical Investigation<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-a-1103s','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-a-1103s','done')">Done</button></div></div></li><li data-id="f-a-1106h"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Fri 6 Nov</strong> · History · Task 4 — The Vikings Examination<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-a-1106h','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-a-1106h','done')">Done</button></div></div></li><li data-id="f-a-1106p"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Fri 6 Nov</strong> · PDHPE · Task 3 — Celebrating Diversity Research Report<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-a-1106p','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-a-1106p','done')">Done</button></div></div></li><li data-id="f-a-1106t"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Fri 6 Nov</strong> · Technology · Task 3 — Unit Practical and Portfolio<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-a-1106t','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-a-1106t','done')">Done</button></div></div></li><li data-id="f-a-1106v"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Fri 6 Nov</strong> · Visual Arts · Task 2 — Self-Portrait Drawing<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-a-1106v','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-a-1106v','done')">Done</button></div></div></li><li data-id="f-a-1109"><div class="li-row"><a class="linkwrap" href="https://seqta-p.saintaug.nsw.edu.au/" target="_blank"><span class="who freddie">F</span><span class="txt-block"><strong>Mon 9 Nov</strong> · PDHPE · Task 4 — Space Invaders Practical<span class="tag">→ opens SEQTA · last read Wed 21 Oct</span></span></a><div class="status-btns"><button class="status-btn underway" onclick="setStatus('f-a-1109','underway')">Underway</button><button class="status-btn done" onclick="setStatus('f-a-1109','done')">Done</button></div></div></li></ul></div>
+<div class="card family full"><h2><span class="dot family"></span>This week <span class="sub">Wed 28 Oct – Sun 1 Nov · from calendar</span></h2><ul><li><a href="https://www.google.com/calendar/event?eid=XzhoMTQyYzlrNmgxMzhiYTU2NHJqYWI5azY5MTNpYmEyOGdxajJiYTE4NTFrNmRwZzhjcWtjZGEzNzBfMjAyNjEwMjdUMTMwMDAwWiBlZGptaWxsczFAbQ" target="_blank"><span><span class="txt-block"><span class="time">Wed 28</span> Pete / Ed fortnightly catch up<span class="tag">→ opens the calendar event</span></span></span><span class="arrow">↗</span></a></li><li><a href="https://www.google.com/calendar/event?eid=XzhoMWowZTlwODRvamViYTY4OTEzMGI5azg4c2oyYmExNmdyMzZiOWw2dDIzMmhocDZjbzNnZTFwNm8gZWRqbWlsbHMxQG0" target="_blank"><span><span class="txt-block"><span class="time">Wed 28, 6pm &amp; 7:30pm</span> Hans Zimmer concert — Qudos Bank Arena, with Mark &amp; Kayia. <strong>Dinner beforehand (reservation at Bacar, 6pm); Ed drives.</strong><span class="tag">→ opens the calendar event · printout note</span></span></span><span class="arrow">↗</span></a></li><li><a href="https://www.google.com/calendar/event?eid=XzZoMmpjZHBqNjhzMzhiOW04NHBqOGI5azY0czM4YjlvNnNwM2liYTU3NTFrNmUxbzZncGo2ZDFvNzAgZWRqbWlsbHMxQG0" target="_blank"><span><span class="txt-block"><span class="time">Thu 29, 12pm</span> Journey3 meeting<span class="tag">→ opens the calendar event</span></span></span><span class="arrow">↗</span></a></li><li><a href="https://www.google.com/calendar/event?eid=XzZ0Mmo2ZTlwNnAwazhiOWs4b3AzYWI5azg4czQ0YmExNjBya2FiYTI3NTFrMmNoaTcwcjNnZTIyNjRfMjAyNjEwMjlUMjAwMDAwWiBlZGptaWxsczFAbQ" target="_blank"><span><span class="txt-block"><span class="time">Fri 30, 7am</span> Pilates<span class="tag">→ opens the calendar event</span></span></span><span class="arrow">↗</span></a></li><li><a href="https://mail.google.com/mail/u/0/#all/1a17a42bc8161b71" target="_blank"><span><span class="txt-block"><span class="time">Sat 31 Oct</span> <span class="who freddie">F</span> Water polo — away at Ruth Everess Aquatic Centre, Church St Lidcombe. Freddie (14B) vs Trinity: <strong>arrive 11:15, game 12:00</strong> (Harry’s team, if playing, not listed — check email). Everyone plays; no pool entry fee.<span class="tag">→ opens the Gmail thread (Mr Hull) · <span class="flag nolink">not on calendar yet</span></span></span></span><span class="arrow">↗</span></a></li></ul></div>
+<div class="card family full"><h2><span class="dot family"></span>Next 4–6 weeks highlights <span class="sub">from calendar</span></h2><ul><li><a href="https://www.google.com/calendar/event?eid=XzhncDM2Z2hvOGwwajBiYTU4Y3BrOGI5azYxMmpnYjlwNjkxamFiOWc2NTMzOGg5bjZncms0Y2hrNmNfMjAyNjExMDJUMjExNTAwWiBlZGptaWxsczFAbQ" target="_blank"><span><span class="txt-block"><span class="time">Tue 3 Nov, 8:15am</span> Freddie — STRIVE (fortnightly: 17 Nov, 1 Dec)<span class="tag">→ opens the calendar event</span></span></span><span class="arrow">↗</span></a></li><li><a href="https://www.google.com/calendar/event?eid=XzhnbzM0ZDI0OG9yamdiYTU4NHE0NGI5azg4cWpjYmEyNjBzamliYTY4Y3FqY2dxNDZnczQyZ3BvNmdfMjAyNjExMDlUMDAzMDAwWiBlZGptaWxsczFAbQ" target="_blank"><span><span class="txt-block"><span class="time">Mon 9 Nov, 11:30am</span> Ed — Dr Glass, Mona Vale (also Mon 23 Nov, 7 &amp; 21 Dec)<span class="tag">→ opens the calendar event</span></span></span><span class="arrow">↗</span></a></li><li><a href="https://www.google.com/calendar/event?eid=Xzc1MzQyZ2hpOG9wazRiOWk4NHMzMGI5azYxMTNpYmExOGgxNGNiOW84a3EzNGNwajZnc2s4Z3BwNjAgZWRqbWlsbHMxQG0" target="_blank"><span><span class="txt-block"><span class="time">Sat 14 Nov</span> Ben in Sydney<span class="tag">→ opens the calendar event</span></span></span><span class="arrow">↗</span></a></li><li><a href="https://www.google.com/calendar/event?eid=XzhoMGpjYzlwNmdza2FiYTY4OHFrNGI5azY4bzMyYmExNzUxM2diYTU3MG8zYWc5bjZsMGphY2hqNmMgZWRqbWlsbHMxQG0" target="_blank"><span><span class="txt-block"><span class="time">Sat 14 Nov, 10:30am</span> DRB therapy (session 11am) with Dr Glass, Crows Nest<span class="tag">→ opens the calendar event</span></span></span><span class="arrow">↗</span></a></li><li><a href="https://www.google.com/calendar/event?eid=MXN1MjQ5ZThycHJqZzVzcXVncWEwMGdjMXMgZWRqbWlsbHMxQG0" target="_blank"><span><span class="txt-block"><span class="time">Sun 29 Nov, 9am</span> Alma St rates — 2nd instalment due Mon 30 Nov<span class="tag">→ opens the calendar event</span></span></span><span class="arrow">↗</span></a></li><li><a href="https://www.google.com/calendar/event?eid=XzY0cWo0ZWE0NmQyNDhiYTQ2Y3FqNGI5azhkMjM0YmExNjkyM2FiOWs2Z3JqMmM5azZ0MWtjaGhoNm8gZWRqbWlsbHMxQG0" target="_blank"><span><span class="txt-block"><span class="time">by Mon 30 Nov</span> <strong>Cholesterol blood test</strong> — walk-in only, any time before 30 Nov. Referral in the top bathroom cupboard and in texts under “Dr docker”.<span class="tag">→ opens the calendar event</span></span></span><span class="arrow">↗</span></a></li></ul></div>
+<div class="card todo full"><h2><span class="dot todo"></span>To-do (Ed) <span class="sub">from Google Keep</span></h2><div class="pills"><span class="pill todo" data-pid="todo"><span>Send headstone email</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Alex plaques for bench and rocks</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Downloads for monthly CFO health check</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Tixu ai course</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Put software on Harry’s computer</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Rebook appointment at the reseller Freshwater Manly</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Awning fabric</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Set Harry up with MyGov and TFN</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Sort out Springy on Harry’s phone</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Amend Will and sign</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Get fully comp insurance on the BYD and see how much it costs to name Kate</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Get fortnight back up</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Send Daniel Erko stuff x 2 emails</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Cancel Google Play on Alex’s phone</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Design your two boxes — one for Alex, one for the trauma in my head (with a picture of each)</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Update myGov email</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Move my ChatGPT chats across to Claude for more context, especially on the boys and the ops</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Get Harry’s blood tests — fasting</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>UK passport log in — Harry &amp; Freddie <span class="new">Keep + printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Find Rites of Passage camp pack on SEQTA — consent, medical, cost, kit list, any parent session <span class="new">chat 20 Oct</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Optional: order “The Making of Men” (Arne Rubinstein) — <a href="https://ritesofpassageinstitute.org/shop/" target="_blank">ritesofpassageinstitute.org/shop</a> · <a href="https://mail.google.com/mail/u/0/#all/19fde24eaefaaca9" target="_blank">Mr Waterhouse, 7 Aug</a> <span class="new">chat 20 Oct</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Freddie: WP (water polo) shirt — needed <span class="new">printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Freddie: phone case <span class="new">printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Laptop case for both boys <span class="new">printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Mum’s bed <span class="new">printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Fix broken BYD lights <span class="new">printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Cancel BJJ direct debits <span class="new">printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Book lunch with Alex + Rich — Thursday, in the City <span class="new">printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Rebook doctor appointment — mental health plan renewal; also take Harry’s stitches out (10 days on) <span class="new">Keep + printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Email Dr Glass: confirm sessions are ongoing (Thu 15 Oct appt cancelled) — next sessions? <span class="new">printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Email Dr Alex (Beckwith): confirm Freddie’s next sessions are booked, fortnightly (nothing after 15 Oct) <span class="new">printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Book boys’ dental check-ups for DECEMBER (hygienist booking is Ed’s only) <span class="new">printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span><span class="pill todo" data-pid="todo"><span>Rozelle Total Health: set up Automed (store card, add Freddie as dependent) — or unsubscribe <span class="new">printout</span></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span></div></div>
+<div class="card shop full"><h2><span class="dot shop"></span>Shopping list <span class="sub">from Google Keep</span></h2><div class="pills"><span class="pill shop" data-pid="shop"><span>Nutragrain</span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span></div></div>
+<div class="card todo full"><h2><span class="dot todo"></span>Doctors’ appointments <span class="sub">from calendar · this week + next week</span></h2><div class="pills"><span class="pill todo" data-pid="doc"><span><span class="who harry">Harry</span> <a href="https://www.google.com/calendar/event?eid=anJyMmlxazhvNTNidnZubzEwOGRpOGozZDBfMjAyNjExMDFUMjIwMDAwWiBlZGptaWxsczFAbQ" target="_blank">Mon 2 Nov 9am · Dr Pauline Leung, Frenchs Forest</a></span><button class="x" onclick="dismissPill(this)" aria-label="Done">✕</button></span></div></div>
+</div>
+<div class="key">
+  <span><span class="dot harry"></span>Harry</span><span><span class="dot freddie"></span>Freddie</span><span><span class="dot dad"></span>Dad / School</span><span><span class="dot family"></span>Family</span><span><span class="dot special"></span>Special / urgent</span><span><span class="dot todo"></span>Ed (To-do)</span><span><span class="dot shop"></span>Shopping</span>
+</div>
+<div class="note">Built Wed 28 Oct (scheduled run). Calendars (edjmills1@gmail.com, Family, SCGT; 26 Oct – 13 Dec, Sydney time) read tonight. Keep To-do: all unchecked items read (19, unchanged). Shopping list: only Nutragrain is unchecked (it was re-added in Keep this morning, despite the printout tick). SEQTA: live session, dashboard and task list read; Assessments page did not load so exam dates are from Wed 21 Oct. Gmail rate-limited tonight: no new school emails seen beyond a SEQTA 'notifications pending' alert and a SaintsCard auto top-up receipt. Status buttons and dismiss taps are local to this device.</div>
+<div id="printSheet"></div>
+<script>
+  const STORE_KEY = 'homeDashboardStatus';
 
-This week
-Tue 20 – Sun 25 Oct · from calendar
-	•	Tue 20, 6:45pm Freddie water polo training (14B), Brookvale  ↗
-	•	Fri 23, 7am Pilates  ↗
-	•	Sat 24 Bondi to Manly run — meet George, Tim & Conor  ↗
+  function getStatuses(){
+    try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
+    catch(e){ return {}; }
+  }
+  function saveStatuses(s){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(s)); }
+    catch(e){ /* storage unavailable, status just won't persist */ }
+  }
 
-Next 4–6 weeks highlights
-from calendar
-	•	Mon 26 Oct Weekly: Pilates 1-1 11am · Harry maths tutor Sam 6pm · Pilates Yin 7pm · Freddie water polo 4pm (repeats each Monday; Tue 6:45pm training too)→ opens the calendar event  ↗
-	•	Tue 27 Oct, 4pm Both boys’ haircuts (4–5pm)→ opens the calendar event  ↗
-	•	Wed 28 Oct, 7:30pm Hans Zimmer concert — Qudos Bank Arena, with Mark & Kayia. Dinner in Manly beforehand; Ed drives.→ opens the calendar event  ↗
-	•	Mon 2 Nov, 9am Harry — Dr Pauline Leung, Frenchs Forest (fortnightly: 16 & 30 Nov, 14 Dec)→ opens the calendar event  ↗
-	•	Mon 9 Nov, 11:30am Ed — Dr Glass (also Mon 23 Nov, 7 & 21 Dec)→ opens the calendar event  ↗
-	•	by Mon 30 Nov Cholesterol blood test — walk-in only, any time before 30 Nov. Referral in the top bathroom cupboard and in texts under “Dr docker”.→ opens the calendar reminder  ↗
-	•	Sun 29 Nov, 9am Alma St rates — 2nd instalment due Mon 30 Nov→ opens the calendar reminder  ↗
+  function setStatus(id, status){
+    const statuses = getStatuses();
+    // toggle: clicking the same status again reverts to default (not started)
+    statuses[id] = (statuses[id] === status) ? undefined : status;
+    if(statuses[id] === undefined) delete statuses[id];
+    saveStatuses(statuses);
+    applyStatuses();
+  }
 
-To-do (Ed)
-from Google Keep + marked-up printout
-Send headstone email Keep
-✕
-Alex plaques for bench and rocks Keep
-✕
-Downloads for monthly CFO health check Keep
-✕
-Measure up to order gyprock etc. to finish the beams Keep
-✕
-Write up each day’s boys’ sports uniform needs on checklists Keep
-✕
-Food for the boys / Mali Keep
-✕
-Email school about learning support for maths and English — Harry & Freddie Keep
-✕
-Make Claude and the dashboard more robust Keep
-✕
-Get a new toll tag and Northern Beaches skip bin for the BYD Keep
-✕
-Rebook appointment at the reseller, Freshwater/Manly Keep
-✕
-Awning fabric Keep
-✕
-Book the plumber for Harry’s blocked toilet ASAP Keep
-✕
-Sort out Spriggy on Harry’s phone Keep
-✕
-Get fully comp insurance on the BYD — cost to name Kate Keep
-✕
-Get fortnight back up Keep
-✕
-Send Daniel Erko stuff (2 emails) Keep
-✕
-Claude to pull all direct debits/payments so monthly living costs are the same Keep
-✕
-Cancel Google Play on Alex’s phone Keep
-✕
-Update myGov email Keep
-✕
-Move ChatGPT chats across to Claude for more context on the boys and ops Keep
-✕
-Get Harry’s blood test — fasting Keep
-✕
-Freddie: WP (water polo) shirt — needed printout
-✕
-Freddie: phone case printout
-✕
-Laptop case for both boys printout
-✕
-UK passport log in — Harry & Freddie printout
-✕
-Mum’s bed printout
-✕
-Fix broken BYD lights printout
-✕
-Cancel BJJ direct debits printout
-✕
-Book lunch with Alex + Rich — Thursday, in the City printout
-✕
-Rebook doctor appointment — mental health renewal printout
-✕
-Email Dr Glass: confirm sessions are ongoing (Thu 15 Oct appt cancelled) — next sessions? printout
-✕
-Email Dr Alex (Beckwith): confirm Freddie’s next sessions are booked, fortnightly (nothing after 15 Oct) printout
-✕
-Book boys’ dental check-ups for DECEMBER (hygienist booking is Ed’s only) printout
-✕
-Rozelle Total Health: set up Automed (store card, add Freddie as dependent) — or unsubscribe printout
-✕
+  function applyStatuses(){
+    const statuses = getStatuses();
+    document.querySelectorAll('li[data-id]').forEach(li=>{
+      const id = li.dataset.id;
+      const status = statuses[id];
+      li.classList.remove('is-underway','is-done');
+      li.querySelectorAll('.status-btn').forEach(b=>b.classList.remove('active'));
+      if(status === 'underway'){
+        li.classList.add('is-underway');
+        li.querySelector('.status-btn.underway')?.classList.add('active');
+      } else if(status === 'done'){
+        li.classList.add('is-done');
+      }
+    });
+  }
 
-Doctors’ appointments
-from calendar · this week + next week
-Ed Mon 26 Oct 11:30am · Dr Glass, Suite 33, 90 Mona Vale Rd
-✕
-HarryFreddieDad / SchoolFamilySpecial / urgentEd (Keep)Shopping (Keep)
-Built Tue 20 Oct (evening run). Gmail last 24h: Freddie behaviour notices, English exam notice, pizza night, absence confirmations and SaintsCard receipts (already actioned, not shown). Calendar: edjmills1@gmail.com 20 Oct – 30 Nov (Sydney time); Family and SCGT calendars empty. SEQTA assessments read via the live session (no credentials entered); homework not pulled. Google Keep read via the signed-in Chrome session (read-only; checked items excluded); Shopping list had only Toothpaste and Nutragrain, both already bought, so it is omitted. Status buttons and dismiss taps are local to this device.
+  // Secondary links inside a linked row (anchors can't nest, so these are spans)
+  document.querySelectorAll('.sublink').forEach(s=>{
+    s.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); window.open(s.dataset.href, '_blank'); });
+  });
+
+  function dismissPill(btn){
+    const pill=btn.closest('.pill'); const id='pill:'+pill.dataset.pid+':'+pill.querySelector('span').innerText.trim().slice(0,30);
+    pill.classList.add('fading');
+    const st=getStatuses(); st[id]='done'; saveStatuses(st);
+    setTimeout(()=>pill.classList.add('is-done'),250);
+  }
+  function applyPills(){
+    const st=getStatuses();
+    document.querySelectorAll('.pill[data-pid]').forEach(p=>{
+      const id='pill:'+p.dataset.pid+':'+p.querySelector('span').innerText.trim().slice(0,30);
+      if(st[id]==='done') p.classList.add('is-done');
+    });
+  }
+  function buildPrint(){
+    const sheet=document.getElementById('printSheet');
+    const d=new Date();
+    let h='<div class="p-header"><h1>Home Dashboard</h1><div class="p-updated">Printed '+d.toLocaleDateString('en-AU',{weekday:'long',day:'numeric',month:'long'})+'</div></div>';
+    document.querySelectorAll('.grid > .card').forEach(card=>{
+      const cls=[...card.classList].find(c=>['harry','freddie','dad','family','special','todo','shop'].includes(c))||'family';
+      const h2=card.querySelector('h2'); const sub=h2.querySelector('.sub');
+      const title=[...h2.childNodes].filter(n=>n.nodeType===3||(n.nodeType===1&&!n.classList.contains('sub')&&!n.classList.contains('dot'))).map(n=>n.textContent).join('').trim();
+      let items=[];
+      card.querySelectorAll('li').forEach(li=>{
+        if(li.classList.contains('is-done')) return;
+        const c=li.cloneNode(true);
+        c.querySelectorAll('.tag,.arrow,.status-btns,.flag,.sublink').forEach(e=>e.remove());
+        c.querySelectorAll('.who').forEach(w=>{w.outerHTML='<span class="p-who">'+w.textContent+'</span>';});
+        c.querySelectorAll('.time').forEach(t=>{t.className='p-time';});
+        const txt=c.innerHTML.replace(/<a[^>]*>|<\/a>|<div[^>]*>|<\/div>/g,'').trim();
+        if(txt) items.push('<li>'+txt+'</li>');
+      });
+      card.querySelectorAll('.pill').forEach(p=>{
+        if(p.classList.contains('is-done')) return;
+        items.push('<li>'+p.querySelector('span').innerHTML+'</li>');
+      });
+      if(!items.length) return;
+      const extra=(cls==='todo'?' cols':'')+((cls==='family')?' cal':'');
+      h+='<div class="p-card '+cls+extra+'"><h2>'+title+(sub?'<small>'+sub.textContent+'</small>':'')+'</h2><ul>'+items.join('')+'</ul></div>';
+    });
+    sheet.innerHTML=h;
+  }
+  window.addEventListener('beforeprint',buildPrint);
+  buildPrint();
+  applyStatuses(); applyPills();
+</script>
+</body>
+</html>
